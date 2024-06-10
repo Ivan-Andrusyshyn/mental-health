@@ -1,0 +1,47 @@
+.store-info-container {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.store-info-container h1 {
+  margin-bottom: 20px;
+
+  text-align: center;
+  color: #2c3e50;
+}
+
+.store-section {
+  margin-bottom: 20px;
+}
+
+.store-section h2 {
+  color: #34495e;
+  border-bottom: 2px solid #ecf0f1;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.store-section p,
+.store-section ul {
+  font-size: 16px;
+  color: #7f8c8d;
+  line-height: 1.5;
+}
+
+.store-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.store-section ul li {
+  background: #ecf0f1;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+}

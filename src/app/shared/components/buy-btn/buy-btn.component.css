@@ -1,0 +1,25 @@
+.buy-btn {
+  width: 138px;
+  height: 38px;
+  font-size: 12px;
+
+  line-height: 4.5rem;
+  border: none;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: green;
+  border-radius: 12px;
+  color: #fff;
+  cursor: pointer;
+}
+.buy-btn:hover {
+  color: #ffffffb9;
+}
+.dialog-btn-wrap {
+  gap: 1rem;
+
+  display: flex;
+  align-items: center;
+}

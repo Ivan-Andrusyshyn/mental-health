@@ -1,0 +1,25 @@
+.container-item a {
+  text-decoration: none;
+}
+.item-btn-edit {
+  border-radius: 0.5rem;
+  width: 138px;
+  height: 38px;
+  outline: none;
+  border: 1px solid green;
+  font-weight: 600;
+  padding: 0.5rem;
+
+  box-sizing: border-box;
+  cursor: pointer;
+  color: #020202;
+  background-color: transparent;
+  transition: all 0.25s;
+  z-index: 999;
+
+  text-decoration: none;
+}
+
+.item-btn-edit:hover {
+  border: none;
+}

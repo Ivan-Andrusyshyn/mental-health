@@ -1,0 +1,45 @@
+<nav>
+  <ul class="nav-list">
+    <div class="header-logo-wrap">
+      <li
+        class="nav-item"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <a [routerLink]="['/']">
+          <img
+            class="header-nav-logo"
+            src="../../../../../assets/logo.CsmsUg0x.svg"
+            alt=""
+          />
+        </a>
+      </li>
+    </div>
+    <li class="nav-item" routerLinkActive="active">
+      <a [routerLink]="['/products']">Товари</a>
+    </li>
+    @if(isAuthUser){
+
+    <li class="nav-item" routerLinkActive="active">
+      <a [routerLink]="['/about-shop']">Про нас</a>
+    </li>
+    <li class="nav-item" routerLinkActive="active">
+      <a [routerLink]="['/my-products']">Мій вибір </a>
+      @if( amountProducts > 0){
+
+      <span>{{ amountProducts }}</span>
+      }@else{
+
+      <span> 🛒 </span>
+      }
+    </li>
+    }@else if(isAuthAdmin){
+    <li class="nav-item" routerLinkActive="active">
+      <a [routerLink]="['/add-new-product']">Додати товар</a>
+    </li>
+    <li class="nav-item" routerLinkActive="active">
+      <app-menu></app-menu>
+    </li>
+    }
+  </ul>
+</nav>

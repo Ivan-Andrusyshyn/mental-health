@@ -1,0 +1,10 @@
+<mat-menu #appMenu="matMenu">
+  <span [routerLink]="['/change-email']" mat-menu-item
+    >Змінити пошту замовлень</span
+  >
+  <span [routerLink]="['/support']" mat-menu-item>Підтримка</span>
+</mat-menu>
+
+<span class="header-menu-btn" mat-icon-button [matMenuTriggerFor]="appMenu">
+  Додатково
+</span>

@@ -1,0 +1,32 @@
+<div class="change-email-container">
+  <mat-form-field appearance="outline">
+    <mat-label>Emails</mat-label>
+    <mat-select
+      [(value)]="selectedEmail"
+      (selectionChange)="onEmailChange($event.value)"
+    >
+      <mat-option *ngFor="let email of email_list" [value]="email.email">
+        {{ email.name }} - {{ email.email }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div *ngIf="selectedEmail" class="selected-email-table">
+  <mat-card>
+    <mat-card-title>Selected Email</mat-card-title>
+    <table
+      mat-table
+      [dataSource]="[{ email: selectedEmail }]"
+      class="mat-elevation-z8"
+    >
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="['email']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['email']"></tr>
+    </table>
+  </mat-card>
+</div>

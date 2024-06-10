@@ -1,0 +1,21 @@
+<div class="store-info-container">
+  <h1>{{ storeName }}</h1>
+  <div class="store-section">
+    <h2>Розташування</h2>
+    <p>{{ location }}</p>
+  </div>
+  <div class="store-section">
+    <h2>Контактні номери:</h2>
+    <ul>
+      <li *ngFor="let number of contactNumbers">{{ number }}</li>
+    </ul>
+  </div>
+  <div class="store-section">
+    <h2>Поточні години роботи</h2>
+    <p>{{ currentHours }}</p>
+  </div>
+  <div class="store-section">
+    <h2>Історія</h2>
+    <p>{{ history }}</p>
+  </div>
+</div>

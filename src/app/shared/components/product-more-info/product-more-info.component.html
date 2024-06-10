@@ -1,0 +1,87 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Склад </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>{{ product.composition.extract }}</p>
+    <p>{{ product.composition.folicAcid }}</p>
+    <p>{{ product.composition.vitaminB6 }}</p>
+    <p>{{ product.composition.vitaminB1 }}</p>
+    <p>{{ product.composition.vitaminB12 }}</p>
+    <p>{{ product.composition.magnesium }}</p>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Рекомендації </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>{{ product.recommendations }}</p>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Симптоми </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>{{ product.symptoms }}</p>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Переваги </mat-panel-title>
+    </mat-expansion-panel-header>
+    <ul>
+      <li *ngFor="let advantage of product.advantages">
+        {{ product.advantages }}
+      </li>
+    </ul>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Клінічний досвід </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>{{ product.clinicalExperience }}</p>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Інструкція щодо використання </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>{{ product.usageInstructions }}</p>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Застереження </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>{{ product.warnings }}</p>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Вікові обмеження </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>{{ product.ageRestrictions }}</p>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Упаковка та зберігання </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>{{ product.packagingAndStorage }}</p>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Виробник </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>{{ product.manufacturer }}</p>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Імпортер </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>{{ product.importer }}</p>
+  </mat-expansion-panel>
+</mat-accordion>

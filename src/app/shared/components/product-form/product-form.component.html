@@ -1,0 +1,218 @@
+<form [formGroup]="productForm" (ngSubmit)="submitForm()" class="product-form">
+  <div class="add-product-form-part">
+    <h2>Основна інформація</h2>
+    <label for="name">Назва:</label>
+    <input type="text" formControlName="name" id="name" class="form-control" />
+    <label for="name">Ціна:</label>
+    <input
+      type="number"
+      formControlName="price"
+      id="name"
+      class="form-control"
+    />
+    <span> (Використовуйте цифри) </span>
+
+    <label for="name">Кількість товару:</label>
+    <input
+      type="number"
+      formControlName="obviously"
+      id="name"
+      class="form-control"
+    />
+    <span> (Використовуйте цифри) </span>
+
+    <label for="description">Опис:</label>
+    <textarea
+      formControlName="description"
+      id="description"
+      class="form-control"
+    ></textarea>
+    <label for="name">URL фото товару:</label>
+    <input type="text" formControlName="photo" id="name" class="form-control" />
+    <label for="name">Короткий опис:</label>
+    <input
+      type="text"
+      formControlName="shortDescription"
+      id="name"
+      class="form-control"
+    />
+  </div>
+  <label for="extract">В наявності:</label>
+  <input
+    type="checkbox"
+    formControlName="inStock"
+    id="inStock"
+    class="form-control"
+    [checked]="productForm.get('inStock')?.value"
+  />
+  <div class="add-product-form-part" formGroupName="composition">
+    <h2>Склад</h2>
+    <div class="form-checkbox-container">
+      <div class="form-checkbox-wrap">
+        <label for="extract">Екстракт:</label>
+        <input
+          type="checkbox"
+          formControlName="extract"
+          id="extract"
+          value="Екстракт"
+          class="form-control"
+          [checked]="
+            productForm.get('composition.extract')?.value === 'Екстракт'
+          "
+        />
+      </div>
+
+      <div class="form-checkbox-wrap">
+        <label for="folicAcid">Фолієва кислота:</label>
+        <input
+          type="checkbox"
+          id="folicAcid"
+          formControlName="folicAcid"
+          value="Фолієва кислота"
+          class="form-control"
+          [checked]="
+            productForm.get('composition.extract')?.value === 'Фолієва кислота'
+          "
+        />
+      </div>
+
+      <div class="form-checkbox-wrap">
+        <label for="vitaminB6">Вітамін B6:</label>
+        <input
+          type="checkbox"
+          formControlName="vitaminB6"
+          id="vitaminB6"
+          value="Вітамін B6"
+          class="form-control"
+          [checked]="
+            productForm.get('composition.extract')?.value === 'Вітамін B6'
+          "
+        />
+      </div>
+
+      <div class="form-checkbox-wrap">
+        <label for="vitaminB1">Вітамін B1:</label>
+        <input
+          type="checkbox"
+          formControlName="vitaminB1"
+          id="vitaminB1"
+          value="Вітамін B1"
+          class="form-control"
+          [checked]="
+            productForm.get('composition.extract')?.value === 'Вітамін B1'
+          "
+        />
+      </div>
+
+      <div class="form-checkbox-wrap">
+        <label for="vitaminB12">Вітамін B12:</label>
+        <input
+          type="checkbox"
+          formControlName="vitaminB12"
+          id="vitaminB12"
+          value="Вітамін B12"
+          class="form-control"
+          [checked]="
+            productForm.get('composition.extract')?.value === 'Вітамін B12'
+          "
+        />
+      </div>
+
+      <div class="form-checkbox-wrap">
+        <label for="magnesium">Магній:</label>
+        <input
+          type="checkbox"
+          formControlName="magnesium"
+          id="magnesium"
+          value="Магній"
+          class="form-control"
+          [checked]="productForm.get('composition.extract')?.value === 'Магній'"
+        />
+      </div>
+    </div>
+    <button type="button" class="reset-btn" (click)="onReset()">
+      Змінити вибір
+    </button>
+  </div>
+
+  <div class="add-product-form-part">
+    <h2>Рекомендації</h2>
+    <label for="recommendations">Рекомендації:</label>
+    <textarea
+      formControlName="recommendations"
+      id="recommendations"
+      class="form-control"
+    ></textarea>
+  </div>
+
+  <div class="add-product-form-part">
+    <h2>Додаткова інформація</h2>
+    <label for="symptoms">Симптоми:</label>
+    <textarea
+      formControlName="symptoms"
+      id="symptoms"
+      class="form-control"
+    ></textarea>
+
+    <label for="advantages">Переваги:</label>
+    <textarea
+      formControlName="advantages"
+      id="advantages"
+      class="form-control"
+    ></textarea>
+
+    <label for="clinicalExperience">Клінічний досвід:</label>
+    <textarea
+      formControlName="clinicalExperience"
+      id="clinicalExperience"
+      class="form-control"
+    ></textarea>
+
+    <label for="usageInstructions">Інструкції з використання:</label>
+    <textarea
+      formControlName="usageInstructions"
+      id="usageInstructions"
+      class="form-control"
+    ></textarea>
+
+    <label for="warnings">Попередження:</label>
+    <textarea
+      formControlName="warnings"
+      id="warnings"
+      class="form-control"
+    ></textarea>
+
+    <label for="ageRestrictions">Обмеження за віком:</label>
+    <input
+      type="text"
+      formControlName="ageRestrictions"
+      id="ageRestrictions"
+      class="form-control"
+    />
+
+    <label for="packagingAndStorage">Упаковка та зберігання:</label>
+    <textarea
+      formControlName="packagingAndStorage"
+      id="packagingAndStorage"
+      class="form-control"
+    ></textarea>
+
+    <label for="manufacturer">Виробник:</label>
+    <input
+      type="text"
+      formControlName="manufacturer"
+      id="manufacturer"
+      class="form-control"
+    />
+
+    <label for="importer">Імпортер:</label>
+    <input
+      type="text"
+      formControlName="importer"
+      id="importer"
+      class="form-control"
+    />
+  </div>
+
+  <button type="submit" class="submit-btn">{{ textBtn }}</button>
+</form>

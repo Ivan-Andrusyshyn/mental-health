@@ -1,0 +1,36 @@
+<div>
+  <ul class="product-list">
+    @for(product of products;track product.id){
+    <div class="container-item">
+      <img [src]="product.photo" alt="" />
+
+      <div class="product-info-wrap">
+        <div>
+          <h2>{{ product.name }}</h2>
+          <p>Product ID: {{ product.id }}</p>
+          <div class="product-item-price">
+            {{ product.price * product.productQuantity }}
+            <sub> грн </sub>
+            <span>( {{ product.price }} / 1шт)</span>
+          </div>
+
+          <div class="quantity-product-wrap">
+            <span class="quantity-product">
+              Кількість
+              <span> ⭐ </span> {{ product.productQuantity }}
+            </span>
+          </div>
+          <div class="product-item-btns-wrap">
+            <app-buy-btn
+              [quantity]="product.productQuantity"
+              [obviously]="product.obviously"
+              [productId]="product.id"
+            />
+            <app-cancel-btn [productId]="product.id"></app-cancel-btn>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </ul>
+</div>

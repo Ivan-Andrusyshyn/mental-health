@@ -1,0 +1,27 @@
+<button
+  [matMenuTriggerFor]="myMenu"
+  (click)="openMyMenu(menuTrigger1)"
+  #menuTrigger1="matMenuTrigger"
+  class="buy-btn"
+>
+  Купити
+</button>
+<mat-menu #myMenu="matMenu">
+  <div class="dialog-btn-wrap" matMenuContent>
+    <button
+      [disabled]="quantity === 0"
+      (click)="decrementProduct($event)"
+      mat-menu-item
+    >
+      -
+    </button>
+    <span>{{ quantity }}</span>
+    <button
+      [disabled]="quantity === obviously"
+      (click)="incrementProduct($event)"
+      mat-menu-item
+    >
+      +
+    </button>
+  </div>
+</mat-menu>

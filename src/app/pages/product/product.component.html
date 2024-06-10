@@ -1,0 +1,27 @@
+<div class="product-container">
+  <div class="product-wrap">
+    <app-slider></app-slider>
+
+    <div>
+      <h2>{{ product.name }}</h2>
+      <article style="margin-bottom: 1rem; max-width: 600px">
+        {{ product.description }}
+      </article>
+      <div class="btns-wrap">
+        <app-edit-link
+          *ngIf="authAdmin"
+          [productId]="product.id"
+        ></app-edit-link>
+        <app-go-back-btn></app-go-back-btn>
+        <app-buy-btn
+          *ngIf="authUser"
+          [quantity]="product.productQuantity"
+          [obviously]="product.obviously"
+          [productId]="product.id"
+        ></app-buy-btn>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <app-product-more-info [product]="product" />
+</div>

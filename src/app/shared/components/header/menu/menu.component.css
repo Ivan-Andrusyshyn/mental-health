@@ -1,0 +1,12 @@
+.header-menu-btn {
+  text-decoration: none;
+
+  font-weight: 600;
+  color: #060606;
+  background-color: transparent;
+  cursor: pointer;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.active a {
+  color: #ca3838be;
+}

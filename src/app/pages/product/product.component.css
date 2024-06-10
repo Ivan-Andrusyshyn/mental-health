@@ -1,0 +1,17 @@
+.product-container {
+  padding: 2rem;
+}
+
+.product-wrap {
+  gap: 2rem;
+
+  display: flex;
+}
+.product-wrap h2 {
+  margin-bottom: 1rem;
+}
+.btns-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}

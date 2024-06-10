@@ -1,0 +1,19 @@
+.product-back-btn {
+  border-radius: 0.5rem;
+  border: 1px solid green;
+  font-weight: 600;
+  padding: 0.5rem;
+  z-index: 999;
+  width: 178px;
+  height: 38px;
+  outline: none;
+
+  box-sizing: border-box;
+  cursor: pointer;
+  color: #020202;
+  background-color: transparent;
+  transition: all 0.25s;
+}
+.product-back-btn:hover {
+  border: none;
+}

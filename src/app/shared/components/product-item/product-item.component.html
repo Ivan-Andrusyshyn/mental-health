@@ -1,0 +1,38 @@
+<div class="container-item">
+  <img [src]="product.photo" [alt]="product.name" />
+  <div class="product-info-wrap">
+    <div>
+      <h2>{{ product.name }}</h2>
+      <p class="subtitle">{{ product.shortDescription }}</p>
+      <div class="product-item-price">
+        {{ product.price }}
+        <sub> грн </sub>
+      </div>
+    </div>
+    <div class="item-declaimer">
+      @if (product.inStock) {
+      <p>в наявності {{ product.obviously }}шт</p>
+
+      } @else {
+      <p>відстуній</p>
+
+      }
+    </div>
+    <div class="item-btns-wrap">
+      <app-buy-btn
+        *ngIf="currentPageProduct && authUser"
+        [quantity]="product.productQuantity"
+        [productId]="product.id"
+        [obviously]="product.obviously"
+      />
+      <app-edit-link *ngIf="authAdmin" [productId]="product.id" />
+
+      <button class="product-item-link" [routerLink]="['/product', product.id]">
+        Детальніше
+      </button>
+    </div>
+    <button (click)="removeProduct()" class="item-remove-btn" *ngIf="authAdmin">
+      Видалити товар
+    </button>
+  </div>
+</div>

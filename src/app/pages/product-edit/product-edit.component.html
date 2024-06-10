@@ -1,0 +1,15 @@
+<div class="edit-container">
+  <div class="product-wrap">
+    <div class="title-wrap">
+      <app-go-back-btn></app-go-back-btn>
+      <h2>Редагування товару</h2>
+    </div>
+    <app-product-form
+      (onSubmit)="onChangeProduct()"
+      [productForm]="productForm"
+      (resetSelection)="resetSelection()"
+      [textBtn]="'Змінити товар'"
+    ></app-product-form>
+  </div>
+</div>
+<hr />

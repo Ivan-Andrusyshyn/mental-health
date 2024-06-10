@@ -1,0 +1,18 @@
+<div class="container">
+  @if(products.length === 0){
+  <div class="no-content">
+    <img
+      src="https://tse1.mm.bing.net/th?id=OIP.M4xNU05rCc_5yHL4wuxqhgHaHa&pid=Api&P=0&h=180"
+      alt=""
+    />
+    <h2>You don't choose any products yet.</h2>
+  </div>
+  }@else{
+  <app-total-amount [totalAmount]="calculateTotalAmount"></app-total-amount>
+  <app-my-product-list [products]="products"></app-my-product-list>
+
+  <hr />
+  <br />
+  <button class="order-btn" (click)="openDialog()">Замовити</button>
+  }
+</div>

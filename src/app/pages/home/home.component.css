@@ -1,0 +1,38 @@
+.home-container {
+  margin: 0 auto;
+}
+.home-btns-wrap {
+  height: 80vh;
+  gap: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home-btn-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.home-btn-info img {
+  width: 200px;
+  height: 250px;
+  margin-bottom: 1rem;
+}
+.home-btn {
+  width: 200px;
+  padding: 0.5rem;
+
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.home-btn:hover {
+  transform: scale(1.05);
+}
+.btn-user {
+  background-color: green;
+  color: #fff;
+}
+.btn-admin {
+  background-color: yellow;
+  color: #020202;
+}

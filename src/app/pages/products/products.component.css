@@ -1,0 +1,5 @@
+.container {
+  background-color: #f4f4f4;
+  scrollbar-color: rgba(0, 102, 126, 0.5) transparent;
+  scrollbar-width: thin;
+}

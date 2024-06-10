@@ -1,0 +1,76 @@
+.product-form {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.product-form label {
+  display: block;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.product-form input[type="text"],
+.product-form input[type="number"],
+.product-form textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 4px;
+  resize: vertical;
+}
+
+.product-form .submit-btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.form-checkbox-container {
+  gap: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.add-product-form-part span {
+  font-size: 1rem;
+
+  color: gray;
+}
+.form-checkbox-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.form-checkbox-wrap input[type="text"] {
+  cursor: pointer;
+}
+.add-product-form-part {
+  margin-bottom: 1rem;
+}
+.product-form .submit-btn:hover {
+  background-color: #45a049;
+}
+.submit-btn {
+}
+.reset-btn {
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-size: 1em;
+  margin-top: 10px;
+
+  cursor: pointer;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+}
+
+.reset-btn:hover {
+  background-color: #c82333;
+}

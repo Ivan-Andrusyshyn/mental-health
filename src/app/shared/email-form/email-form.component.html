@@ -1,0 +1,70 @@
+<!-- nbvvoqqb  brother email-->
+<form action="https://getform.io/f/qalordqb" method="POST" class="form">
+  <div class="amount-price">
+    <span> Загальна сумма: </span>
+    {{ calculateTotalAmount }} грн
+  </div>
+  <div class="form-group">
+    <label for="name">Ім'я:</label>
+    <input type="text" name="name" id="name" class="form-control" required />
+  </div>
+  <div class="form-group">
+    <label for="email">Пошта:</label>
+    <input type="email" name="email" id="email" class="form-control" required />
+  </div>
+  <div class="form-group">
+    <label for="number">Номер телефону:</label>
+    <input
+      type="number"
+      name="number"
+      id="number"
+      class="form-control"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="message">Додаткова інформація:</label>
+    <textarea
+      name="message"
+      id="message"
+      class="form-control"
+      required
+    ></textarea>
+  </div>
+  <div class="form-group">
+    <label>Вибрані товари:</label>
+    <ul class="product-list">
+      <li *ngFor="let product of productList">
+        <span class="product-name">
+          {{ product.name }}
+        </span>
+        <input
+          type="hidden"
+          name="products[]"
+          [value]="
+            product.name +
+            ' (ID: ' +
+            product.id +
+            ')' +
+            ' (Quantity: ' +
+            product.productQuantity +
+            ')' +
+            ' (Price-per-one: ' +
+            product.price +
+            ')'
+          "
+        />
+        <img [src]="product.photo" alt="" />
+        <span>Ціна: {{ product.price * product.productQuantity }}</span>
+
+        <span>Кількість: {{ product.productQuantity }}</span>
+        <span class="remove-product" (click)="removeProduct(product)">❌</span>
+      </li>
+    </ul>
+  </div>
+  <input type="hidden" name="_gotcha" style="display: none !important" />
+
+  <input type="hidden" name="subscribe" value="no" />
+
+  <button type="submit" class="btn-submit">Надіслати</button>
+</form>
