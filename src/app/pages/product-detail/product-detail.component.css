@@ -1,7 +1,9 @@
 .product-container {
   padding: 2rem;
 }
-
+.product-detail {
+  margin-bottom: 2rem;
+}
 .product-wrap {
   gap: 2rem;
 

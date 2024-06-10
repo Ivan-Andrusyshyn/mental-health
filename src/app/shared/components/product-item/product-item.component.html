@@ -3,15 +3,18 @@
   <div class="product-info-wrap">
     <div>
       <h2>{{ product.name }}</h2>
-      <p class="subtitle">{{ product.shortDescription }}</p>
+      <p class="subtitle">
+        {{ product.shortDescription }}
+      </p>
       <div class="product-item-price">
         {{ product.price }}
         <sub> грн </sub>
       </div>
     </div>
+
     <div class="item-declaimer">
       @if (product.inStock) {
-      <p>в наявності {{ product.obviously }}шт</p>
+      <p>в наявності {{ product.obviously }} шт</p>
 
       } @else {
       <p>відстуній</p>
@@ -27,7 +30,10 @@
       />
       <app-edit-link *ngIf="authAdmin" [productId]="product.id" />
 
-      <button class="product-item-link" [routerLink]="['/product', product.id]">
+      <button
+        class="product-btn-detail"
+        [routerLink]="['/product', product.id]"
+      >
         Детальніше
       </button>
     </div>

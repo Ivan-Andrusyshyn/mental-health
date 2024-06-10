@@ -4,7 +4,6 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ProductEditComponent } from './pages/product-edit/product-edit.component';
-import { ProductComponent } from './pages/product/product.component';
 import { AboutShopComponent } from './pages/about-shop/about-shop.component';
 import { authUserGuard } from './authUserGuard.guard';
 import { authAdminGuard } from './auth-admin.guard';
@@ -13,6 +12,7 @@ import { MyProductsComponent } from './pages/my-products/my-products.component';
 import { ChangeEmailComponent } from './pages/change-email/change-email.component';
 import { SupportComponent } from './pages/support/support.component';
 import { ProductsResolver } from './products.resolver';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,7 +22,7 @@ export const routes: Routes = [
   },
   {
     path: 'product/:id',
-    component: ProductComponent,
+    component: ProductDetailComponent,
   },
   {
     path: 'my-products',

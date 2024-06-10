@@ -16,7 +16,7 @@ export class AuthService {
   }
 
   getIsAuthUser(): boolean {
-    return JSON.parse(localStorage.getItem(STORAGE_USER) || 'false');
+    return JSON.parse(localStorage.getItem(STORAGE_USER) || 'true');
   }
 
   getIsAuthAdmin(): boolean {

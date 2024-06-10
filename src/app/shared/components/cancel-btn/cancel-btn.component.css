@@ -2,6 +2,9 @@
   border-radius: 0.5rem;
   outline: none;
   border: none;
+  z-index: 999;
+  width: 158px;
+  height: 38px;
   font-weight: 600;
   padding: 0.5rem;
 
@@ -10,9 +13,6 @@
   color: #fff;
   background-color: rgb(236, 28, 13);
   transition: all 0.25s;
-  z-index: 999;
-  width: 138px;
-  height: 38px;
 }
 .cancel-btn:hover {
   color: #ffffffb9;

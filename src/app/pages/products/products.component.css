@@ -3,3 +3,16 @@
   scrollbar-color: rgba(0, 102, 126, 0.5) transparent;
   scrollbar-width: thin;
 }
+.filter-wrap {
+  padding: 0 2rem;
+}
+.no-content {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.no-content img {
+  margin-bottom: 1rem;
+}
