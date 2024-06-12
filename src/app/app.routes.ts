@@ -13,6 +13,7 @@ import { ChangeEmailComponent } from './pages/change-email/change-email.componen
 import { SupportComponent } from './pages/support/support.component';
 import { ProductsResolver } from './products.resolver';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
+import { OnlineTestsComponent } from './pages/online-tests/online-tests.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,6 +24,11 @@ export const routes: Routes = [
   {
     path: 'product/:id',
     component: ProductDetailComponent,
+  },
+  {
+    path: 'online-tests',
+    component: OnlineTestsComponent,
+    canActivate: [authUserGuard],
   },
   {
     path: 'my-products',

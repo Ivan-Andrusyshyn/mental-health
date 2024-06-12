@@ -1,6 +1,6 @@
 <div class="container">
   <div class="filter-wrap">
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" style="width: 300px">
       <mat-label>Пошук товару</mat-label>
       <input
         matInput
@@ -19,9 +19,10 @@
   <app-product-list [products]="paginatedProducts"></app-product-list>
   <ng-container *ngIf="filteredProducts.length > 5">
     <mat-paginator
+      style="background-color: #f4f4f4"
       [length]="filteredProducts.length"
       [pageSize]="pageSize"
-      [pageSizeOptions]="[5, 15]"
+      [pageSizeOptions]="[5, 10]"
       (page)="onPageChange($event)"
     >
     </mat-paginator>

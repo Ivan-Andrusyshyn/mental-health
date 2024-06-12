@@ -1,0 +1,25 @@
+.subtitle-wrap {
+  margin: 0 auto;
+  min-width: 350px;
+  max-width: 1200px;
+}
+.subtitle-wrap h2 {
+  font-weight: 600;
+  font-weight: 600;
+  margin-bottom: 3.2rem;
+
+  color: #004169;
+}
+.subtitle-wrap span {
+  font-weight: 600;
+}
+.subtitle-wrap p {
+  font-style: normal;
+  font-weight: 400;
+  line-height: 177%;
+  margin-bottom: 3.2rem;
+  font-size: 1.3rem;
+
+  color: #3f3f3f;
+  transition: all 0.5s;
+}
