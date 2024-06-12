@@ -1,0 +1,23 @@
+.test-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.test-title {
+  font-size: 2.5rem;
+  margin: 0;
+  color: #3f51b5;
+  font-weight: 700;
+}
+
+.test-subtitle {
+  font-size: 1.5rem;
+  margin: 10px 0 0;
+  color: #757575;
+  font-weight: 400;
+}

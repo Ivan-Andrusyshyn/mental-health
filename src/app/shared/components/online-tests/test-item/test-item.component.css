@@ -12,6 +12,15 @@
   transition: all 0.5s;
   list-style: none;
 }
+
+.btns-wrap {
+  margin: 0 auto;
+  width: 300px;
+
+  display: flex;
+  justify-content: center;
+  justify-content: space-between;
+}
 .test-content {
   margin-bottom: 2rem;
 
@@ -37,15 +46,23 @@
   color: #555;
 }
 
-.test-item button {
+.tests-btn {
   padding: 10px 15px;
   font-size: 14px;
-  background-color: #007bff;
+  border-radius: 8px;
+  border-radius: 3px;
+
   color: #fff;
   border: none;
-  border-radius: 3px;
   cursor: pointer;
   transition: background-color 0.3s;
+}
+.start {
+  background-color: #007bff;
+}
+
+.details {
+  background-color: green;
 }
 
 .test-item button:hover {

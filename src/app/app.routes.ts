@@ -14,6 +14,8 @@ import { SupportComponent } from './pages/support/support.component';
 import { ProductsResolver } from './products.resolver';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { OnlineTestsComponent } from './pages/online-tests/online-tests.component';
+import { SelectedTestComponent } from './pages/selected-test/selected-test.component';
+import { TestDetailsComponent } from './pages/test-details/test-details.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -28,6 +30,16 @@ export const routes: Routes = [
   {
     path: 'online-tests',
     component: OnlineTestsComponent,
+    canActivate: [authUserGuard],
+  },
+  {
+    path: 'test/:id',
+    component: SelectedTestComponent,
+    canActivate: [authUserGuard],
+  },
+  {
+    path: 'test-details/:id',
+    component: TestDetailsComponent,
     canActivate: [authUserGuard],
   },
   {

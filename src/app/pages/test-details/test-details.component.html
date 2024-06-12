@@ -1,0 +1,24 @@
+<div class="container" *ngIf="selectedTest">
+  <div class="test-details">
+    <div class="header">
+      <h2>{{ selectedTest.title }}</h2>
+      <h3>{{ selectedTest.subtitle }}</h3>
+    </div>
+    <div class="content">
+      <img [src]="selectedTest.imgUrl" alt="{{ selectedTest.title }}" />
+      <div class="details">
+        <p><strong>Опис:</strong> {{ selectedTest.describe }}</p>
+        <p>
+          <strong>Детальний опис:</strong> {{ selectedTest.longDescription }}
+        </p>
+        <p><strong>Інструкції:</strong> {{ selectedTest.instructions }}</p>
+        <p>
+          <strong>Цільова аудиторія:</strong> {{ selectedTest.targetAudience }}
+        </p>
+      </div>
+    </div>
+    <div class="actions">
+      <app-go-back-btn></app-go-back-btn>
+    </div>
+  </div>
+</div>

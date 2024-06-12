@@ -4,4 +4,7 @@ export interface Test {
   subtitle: string;
   describe: string;
   imgUrl: string;
+  longDescription: string;
+  instructions: string;
+  targetAudience: string;
 }
