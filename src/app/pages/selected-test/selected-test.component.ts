@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { NgClass, NgIf } from '@angular/common';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Location, NgClass, NgIf } from '@angular/common';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import {
   FormArray,
@@ -15,6 +15,7 @@ import { GoBackBtnComponent } from '../../shared/components/go-back-btn/go-back-
 import { testOptions } from '../../options/tests-options';
 
 import { SelectedTestFormComponent } from '../../shared/components/online-tests/selected-test/selected-test-form/selected-test-form.component';
+import { TestsGoBackBtnComponent } from '../../shared/components/online-tests/tests-go-back-btn/tests-go-back-btn.component';
 
 @Component({
   selector: 'app-selected-test',
@@ -24,7 +25,9 @@ import { SelectedTestFormComponent } from '../../shared/components/online-tests/
     SelectedTestFormComponent,
     MatProgressBarModule,
     ReactiveFormsModule,
+    RouterLink,
     NgClass,
+    TestsGoBackBtnComponent,
     NgIf,
   ],
   templateUrl: './selected-test.component.html',
@@ -66,6 +69,7 @@ export class SelectedTestComponent implements OnInit {
   get questions(): FormArray {
     return this.testForm.get('questions') as FormArray;
   }
+
   calculateScore() {
     this.currentQuestionIndex++;
     this.score = this.questions.controls.reduce((total, control) => {

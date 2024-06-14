@@ -67,6 +67,8 @@
 .test-item p {
   margin: 5px 0 10px;
   font-size: 14px;
+  height: 60px;
+
   color: #555;
 }
 

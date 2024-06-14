@@ -1,5 +1,5 @@
 .tests-title-wrap {
-  padding: 2rem;
+  padding: 1rem 2rem;
   width: 1200px;
   border-radius: 22px;
   box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.06);
@@ -19,12 +19,12 @@
 .tests-title-wrap img {
   max-width: 505px;
   border-radius: 2rem;
-  height: 250p;
+  height: 200px;
 }
 .tests-title-wrap h1 {
   padding-right: 0;
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.3rem;
+  font-weight: 400;
   padding-right: 1rem;
   width: 100%;
   margin-bottom: 2rem;

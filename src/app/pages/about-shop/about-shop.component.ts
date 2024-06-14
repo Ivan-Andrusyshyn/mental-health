@@ -1,6 +1,10 @@
 import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
-
+interface Section {
+  id: number;
+  title: string;
+  description: string;
+}
 @Component({
   selector: 'app-about-shop',
   standalone: true,
@@ -9,11 +13,34 @@ import { Component } from '@angular/core';
   styleUrls: ['./about-shop.component.css'],
 })
 export class AboutShopComponent {
-  storeName: string = 'Дивовижний Магазин';
-  location: string = '123 Головна вулиця, Будь-яке місто, США';
-  contactNumbers: string[] = ['+1 (555) 123-4567', '+1 (555) 987-6543'];
-  currentHours: string = 'Пн-Пт: 9:00 - 21:00, Сб-Нд: 10:00 - 18:00';
-  history: string = `Заснований у 1990 році, Дивовижний Магазин надає якісні продукти
-    та послуги нашій спільноті вже понад 30 років. Наше прагнення до досконалості та
-    задоволення клієнтів зробило нас улюбленим місцем у цьому районі.`;
+  sections: Section[] = [
+    {
+      id: 1,
+      title: 'Корисна інформація',
+      description: 'Статті про ментальне здоров’я та поради як його покращити.',
+    },
+    {
+      id: 2,
+      title: 'Тестування',
+      description:
+        'Інструменти для оцінки вашого психічного стану, схвалені МОЗ України та ВООЗ.',
+    },
+    {
+      id: 3,
+      title: 'Магазин MH',
+      description:
+        'Препарати та ліки, що допомагають полегшити симптоми ментальних розладів.',
+    },
+    {
+      id: 4,
+      title: 'Щоденник MH',
+      description:
+        'Інструмент для кращого розуміння вашого стану, а також формування корисних звичок.',
+    },
+    {
+      id: 5,
+      title: 'Психологічна допомога',
+      description: 'Контакти анонімної безоплатної допомоги від спеціалістів.',
+    },
+  ];
 }
