@@ -1,57 +1,223 @@
 .container {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
-}
-
-.test-details {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.header {
-  max-width: 800px;
-  padding: 20px;
-  text-align: center;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.header h2 {
-  font-size: 2.5rem;
-  margin: 0 0 10px;
-  color: #3f51b5;
-  font-weight: 700;
-}
-
-.header h3 {
-  font-size: 1.5rem;
-  margin: 0;
-  color: #757575;
-  font-weight: 400;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-
-.content img {
-  max-width: 500px;
-  max-height: 500px;
-  border-radius: 8px;
-}
-
-.details {
-  flex-grow: 1;
-}
-.details p {
-  margin-bottom: 2rem;
-}
-.actions {
   display: flex;
   justify-content: center;
+}
+.container h2 {
+  font-size: 2.25rem;
+  color: hsl(0, 0%, 100%);
+  margin-bottom: 1rem;
+
+  font-family: var(--font-title);
+  line-height: 1.1;
+}
+
+.container p {
+  display: block;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin: 1rem 0;
+
+  font-family: var(--font-text);
+  color: #ffffffb2;
+}
+
+.flow > * + * {
+  margin-top: var(--flow-space, 1em);
+}
+
+.card {
+  width: 80vw;
+  border-radius: 0.625rem;
+  box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.25);
+
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.card > * {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.card__background {
+  object-fit: cover;
+  max-width: 100%;
+  height: 100%;
+}
+
+.card__content {
+  --flow-space: 0.9375rem;
+  height: 75%;
+  padding: 10.5% 1.25rem 1.875rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: flex-end;
+  overflow-y: hidden;
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    hsla(0, 0%, 0%, 0) 0%,
+    hsla(0, 0%, 0%, 0.3) 10%,
+    hsl(0, 0%, 0%) 100%
+  );
+}
+
+.card__content--container {
+  --flow-space: 0.1rem;
+}
+
+.card__title {
+  position: relative;
+  width: fit-content;
+  width: -moz-fit-content;
+}
+
+.card__title::after {
+  height: 0.3125rem;
+  width: calc(100% + 1.25rem);
+  bottom: calc((1.25rem - 0.5rem) * -1);
+  left: -1.25rem;
+  content: "";
+  position: absolute;
+
+  background-color: var(--brand-color);
+}
+
+.card__button {
+  margin-top: 1rem;
+  padding: 0.75em 1.6em;
+  font-size: 1.125rem;
+  border-radius: 0.45em;
+  outline: 2px solid hsl(0, 0%, 100%);
+  transition: all cubic-bezier(0.075, 0.82, 0.165, 1);
+  color: hsla(0, 0%, 100%, 0.836);
+  gap: 1rem;
+
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  width: -moz-fit-content;
+  font-variant: small-caps;
+  font-weight: bold;
+  border: none;
+  background-color: var(--brand-color);
+  font-family: var(--font-title);
+
+  cursor: pointer;
+}
+.card__button:hover {
+  outline: none;
+}
+
+@media (any-hover: hover) and (any-pointer: fine) {
+  .card__content {
+    transform: translateY(62%);
+    transition: transform 500ms ease-out;
+    transition-delay: 500ms;
+  }
+
+  .card__title::after {
+    opacity: 0;
+    transform: scaleX(0);
+    transition: opacity 1000ms ease-in, transform 500ms ease-out;
+    transition-delay: 500ms;
+    transform-origin: right;
+  }
+
+  .card__background {
+    transition: transform 500ms ease-in;
+  }
+
+  .card__content--container > :not(.card__title),
+  .card__button {
+    opacity: 0;
+    transition: transform 500ms ease-out, opacity 500ms ease-out;
+  }
+
+  .card:hover,
+  .card:focus-within {
+    transform: scale(1.05);
+    transition: transform 500ms ease-in;
+  }
+
+  .card:hover .card__content,
+  .card:focus-within .card__content {
+    transform: translateY(0);
+    transition: transform 500ms ease-in;
+  }
+
+  .card:focus-within .card__content {
+    transition-duration: 0ms;
+  }
+
+  .card:hover .card__background,
+  .card:focus-within .card__background {
+    transform: scale(1.3);
+  }
+
+  .card:hover .card__content--container > :not(.card__title),
+  .card:hover .card__button,
+  .card:focus-within .card__content--container > :not(.card__title),
+  .card:focus-within .card__button {
+    opacity: 1;
+    transition: opacity 400ms ease-in;
+    transition-delay: 700ms;
+  }
+
+  .card:hover .card__title::after,
+  .card:focus-within .card__title::after {
+    opacity: 1;
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: opacity 500ms ease-in, transform 500ms ease-in;
+    transition-delay: 500ms;
+  }
+}
+/* link */
+
+a {
+  text-transform: uppercase;
+  font-size: 36px;
+  color: white;
+  text-decoration: none;
+  position: relative;
+  display: block;
+}
+p {
+  font-weight: 100;
+  font-size: 80%;
+  margin: 1px;
+}
+
+[class^="link-"] {
+  display: inline-block;
+  margin: 2em;
+}
+.link-1 a:before,
+.link-1 a:after {
+  content: "";
+  border-bottom: solid 1px white;
+  position: absolute;
+  bottom: 0;
+  width: 0;
+}
+
+.link-1 a:before {
+  left: 0;
+}
+.link-1 a:after {
+  right: 0;
+}
+
+.link-1 a:hover:before,
+.link-1 a:hover:after {
+  width: 50%;
+}
+.link-1 a:before,
+.link-1 a:after {
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }

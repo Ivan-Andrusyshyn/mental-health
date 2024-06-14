@@ -15,7 +15,7 @@ export class FormButtonsComponent {
   @Input() testForm!: FormGroup;
   @Input() selectedTest!: Test;
 
-  @Input() disabledButton!: boolean;
+  @Input() isDisabledButton!: boolean;
 
   @Output() onNextQuestion = new EventEmitter<void>();
   @Output() onPreviousQuestion = new EventEmitter<void>();

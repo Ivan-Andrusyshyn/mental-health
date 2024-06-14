@@ -1,5 +1,5 @@
 .card {
-  max-width: 550px;
+  max-width: 800px;
   border: 0;
   width: 100%;
   margin-inline: auto;
@@ -13,11 +13,12 @@
   background-clip: padding-box;
   border-radius: 45px;
   padding: 40px;
-  img {
-    margin-bottom: 32px;
-  }
 }
-
+.container-card img {
+  width: 200px;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
 .bg-green-box,
 .bg-white-box,
 .bg-yellow-box,

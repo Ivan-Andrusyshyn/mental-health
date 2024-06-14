@@ -1,23 +1,49 @@
 <div class="container" *ngIf="selectedTest">
-  <div class="test-details">
-    <div class="header">
-      <h2>{{ selectedTest.title }}</h2>
-      <h3>{{ selectedTest.subtitle }}</h3>
-    </div>
-    <div class="content">
-      <img [src]="selectedTest.img" alt="{{ selectedTest.title }}" />
-      <div class="details">
+  <article class="card">
+    <img
+      class="card__background"
+      [src]="selectedTest.img"
+      alt="{{ selectedTest.title }}"
+      width="1920"
+      height="2193"
+    />
+    <div class="card__content | flow">
+      <div class="card__content--container | flow">
+        <h2 class="card__title">{{ selectedTest.title }}</h2>
+
         <p>
           <strong>Детальний опис:</strong> {{ selectedTest.longDescription }}
+          {{ selectedTest.instructions }}
         </p>
-        <p><strong>Інструкції:</strong> {{ selectedTest.instructions }}</p>
-        <p>
-          <strong>Цільова аудиторія:</strong> {{ selectedTest.targetAudience }}
-        </p>
+        <p><strong> - </strong> {{ selectedTest.targetAudience }}</p>
+      </div>
+
+      <div
+        class="link-1"
+        href="https://www.idrlabs.com/tests.php"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <a href="#">
+          <span class="thin">Більше тестів тут</span>
+        </a>
+        <button class="card__button" [routerLink]="['/test', selectedTest.id]">
+          {{ selectedTest.title }}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 0 24 24"
+            width="24px"
+            fill="none"
+          >
+            <path d="M0 0h24v24H0V0z" fill="none" />
+            <path
+              d="M16.01 11H4v2h12.01v3L20 12l-3.99-4v3z"
+              fill="currentColor"
+            />
+          </svg>
+        </button>
       </div>
     </div>
-    <div class="actions">
-      <app-go-back-btn></app-go-back-btn>
-    </div>
-  </div>
+  </article>
 </div>

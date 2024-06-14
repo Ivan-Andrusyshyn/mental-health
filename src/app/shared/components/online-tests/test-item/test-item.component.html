@@ -1,18 +1,38 @@
 <li class="test-item">
-  <div class="test-content">
-    <div class="test-text-content">
-      <h3>{{ test.title }}</h3>
-      <p>{{ test.subtitle }}</p>
-      <p>{{ test.subscribe }}</p>
-    </div>
+  <article class="information [ card ]">
     <img [src]="test.img" alt="" />
-  </div>
-  <div class="btns-wrap">
-    <button class="tests-btn start" [routerLink]="['/test-details', test.id]">
-      Читати детально
+
+    <h2 class="title">{{ test.title }}</h2>
+    <span class="tag">3хв ⌛</span>
+
+    <p class="info">
+      {{ test.subtitle }}
+    </p>
+    <button class="button" [routerLink]="['/test-details', test.id]">
+      <span> Читати детально </span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="24px"
+        viewBox="0 0 24 24"
+        width="24px"
+        fill="none"
+      >
+        <path d="M0 0h24v24H0V0z" fill="none" />
+        <path d="M16.01 11H4v2h12.01v3L20 12l-3.99-4v3z" fill="currentColor" />
+      </svg>
     </button>
-    <button class="tests-btn details" [routerLink]="['/test', test.id]">
-      Розпочати зараз
+    <button class="button start-test-btn" [routerLink]="['/test', test.id]">
+      <span> Розпочати зараз</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="24px"
+        viewBox="0 0 24 24"
+        width="24px"
+        fill="none"
+      >
+        <path d="M0 0h24v24H0V0z" fill="none" />
+        <path d="M16.01 11H4v2h12.01v3L20 12l-3.99-4v3z" fill="currentColor" />
+      </svg>
     </button>
-  </div>
+  </article>
 </li>

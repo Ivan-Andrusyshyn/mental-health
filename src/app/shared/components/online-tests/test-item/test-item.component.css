@@ -1,9 +1,33 @@
+:root {
+  /* Basic */
+  --c-white: #fff;
+  --c-black: #000;
+
+  /* Greys */
+  --c-ash: #eaeef6;
+  --c-charcoal: #a0a0a0;
+  --c-void: #141b22;
+
+  /* Beige/Browns */
+  --c-fair-pink: #ffedec;
+  --c-apricot: #fbc8be;
+  --c-coffee: #754d42;
+  --c-del-rio: #917072;
+
+  /* Greens */
+  --c-java: #1fcac5;
+
+  /* Purples */
+  --c-titan-white: #f1eeff;
+  --c-cold-purple: #a69fd6;
+  --c-indigo: #6558d3;
+  --c-governor: #4133b7;
+}
+
 .test-item {
   border: 1px solid transparent;
   border-radius: 20px;
   box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.06);
-  padding: 3.3rem 5.9rem 4.3rem;
-  width: 550px;
 
   display: flex;
   flex-direction: column;
@@ -46,29 +70,64 @@
   color: #555;
 }
 
-.tests-btn {
-  padding: 10px 15px;
-  font-size: 14px;
-  border-radius: 8px;
-  border-radius: 3px;
+.card {
+  border-radius: 16px;
+  box-shadow: 0 30px 30px -25px rgba(65, 51, 183, 0.25);
+  max-width: 300px;
+  height: 400px;
+}
 
-  color: #fff;
-  border: none;
+.information {
+  background-color: var(--c-white);
+  padding: 1.5rem;
+}
+.information img {
+  width: 200px;
+}
+
+.information .tag {
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.5em 0.75em;
+  line-height: 1;
+  border-radius: 6px;
+  display: inline-block;
+  background-color: var(--c-titan-white);
+  color: var(--c-indigo);
+}
+
+.information .title {
+  font-size: 1.5rem;
+  color: var(--c-void);
+  line-height: 1.25;
+  margin-top: 1rem;
+}
+
+.information .info {
+  color: var(--c-charcoal);
+  margin-top: 1.25rem;
+}
+
+.information .button {
+  font: inherit;
+  line-height: 1;
+  background-color: var(--c-white);
+  color: var(--c-indigo);
+  padding: 0.5em 1em;
+  border-radius: 6px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  transition: transform 0.3s, color 0.3s;
+}
+.information .start-test-btn {
+  border: 1px solid var(--c-black);
   cursor: pointer;
-  transition: background-color 0.3s;
-}
-.start {
-  background-color: #007bff;
 }
 
-.details {
-  background-color: green;
-}
-
-.test-item button:hover {
-  background-color: #0056b3;
-}
-
-.test-item:hover {
-  background-color: #f1f1f1;
+.information .button:hover,
+.information .button:focus {
+  transform: scale(1.01);
 }

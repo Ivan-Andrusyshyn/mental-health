@@ -12,6 +12,7 @@ import { TestsResult } from '../../../../models/testsResult.model';
 export class SelectedTestResultComponent {
   @Input() score!: number | null;
   @Input() testId!: number;
+  @Input() testImg!: string;
 
   testResult: string = '';
 

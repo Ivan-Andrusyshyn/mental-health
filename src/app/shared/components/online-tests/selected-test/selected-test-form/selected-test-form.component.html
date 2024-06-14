@@ -36,9 +36,9 @@
   <app-form-buttons
     (onNextQuestion)="onNextQuestion()"
     (onPreviousQuestion)="onPreviousQuestion()"
-    [disabledButton]="disabledButton"
     [selectedTest]="selectedTest"
     [currentQuestionIndex]="currentQuestionIndex"
+    [isDisabledButton]="!getCurrentQuestionValid()"
   ></app-form-buttons>
 </form>
 
@@ -46,5 +46,6 @@
   <app-selected-test-result
     [testId]="selectedTest.id"
     [score]="score"
+    [testImg]="selectedTest.img"
   ></app-selected-test-result>
 </ng-template>

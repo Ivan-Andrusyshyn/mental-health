@@ -20,7 +20,7 @@ import { FormButtonsComponent } from './form-buttons/form-buttons.component';
   templateUrl: './selected-test-form.component.html',
   styleUrl: './selected-test-form.component.css',
 })
-export class SelectedTestFormComponent implements OnInit {
+export class SelectedTestFormComponent {
   @Input() currentQuestionIndex: number = 0;
   @Input() selectedTest!: Test;
   @Input() options: TestOptions[] = [];
@@ -31,17 +31,11 @@ export class SelectedTestFormComponent implements OnInit {
   @Output() nextQuestion = new EventEmitter<void>();
   @Output() previousQuestion = new EventEmitter<void>();
 
-  disabledButton = false;
   onNextQuestion() {
     if (this.currentQuestionIndex < this.selectedTest.questions.length - 1) {
       this.currentQuestionIndex++;
       this.nextQuestion.emit();
     }
-  }
-  ngOnInit(): void {
-    this.testForm.valueChanges.subscribe((resp) => {
-      this.getCurrentQuestionValid();
-    });
   }
 
   onPreviousQuestion() {
@@ -54,17 +48,13 @@ export class SelectedTestFormComponent implements OnInit {
     this.calculateScore.emit();
   }
 
-  getCurrentQuestionValid(): void {
-    if (!this.testForm) return;
+  getCurrentQuestionValid(): boolean {
+    if (!this.testForm) return false;
     const questionsArray = this.testForm.get('questions') as FormArray;
-    if (!questionsArray) return;
+    if (!questionsArray) return false;
     const validQuestion = questionsArray.at(
       this.currentQuestionIndex
     ) as FormGroup;
-    if (validQuestion.valid && validQuestion.dirty) {
-      this.disabledButton = true;
-    } else {
-      this.disabledButton = false;
-    }
+    return validQuestion.valid && validQuestion.dirty;
   }
 }
