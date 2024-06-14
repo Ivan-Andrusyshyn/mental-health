@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Product } from '../models/product.model';
-import { croxenInfo, productsOriginal } from '../models/productsOriginal';
+import { croxenInfo, productsOriginal } from '../../options/productsOriginal';
 
 @Injectable({
   providedIn: 'root',

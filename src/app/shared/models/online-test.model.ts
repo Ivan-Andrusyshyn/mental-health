@@ -1,10 +1,12 @@
 export interface Test {
   id: number;
   title: string;
+  problemName: string;
   subtitle: string;
   describe: string;
-  imgUrl: string;
   longDescription: string;
   instructions: string;
+  questions: string[];
   targetAudience: string;
+  img: string;
 }

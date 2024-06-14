@@ -1,5 +1,37 @@
-<div class="test-container">
-  <h2 class="test-title">{{ selectedTest.title }}</h2>
-  <h3 class="test-subtitle">{{ selectedTest.subtitle }}</h3>
-  <app-go-back-btn></app-go-back-btn>
+<div>
+  <div class="title-wrap">
+    <div
+      class="test-title"
+      *ngIf="currentQuestionIndex !== selectedTest.questions.length"
+    >
+      <h1>
+        {{ selectedTest.title }}
+        <span>{{ selectedTest.problemName }}</span>
+      </h1>
+    </div>
+    <img [src]="selectedTest.img" alt="" />
+  </div>
+  <div class="form-wrap">
+    <app-selected-test-form
+      (nextQuestion)="nextQuestion()"
+      (previousQuestion)="previousQuestion()"
+      (calculateScore)="calculateScore()"
+      [testForm]="testForm"
+      [currentQuestionIndex]="currentQuestionIndex"
+      [selectedTest]="selectedTest"
+      [options]="options"
+      [score]="score"
+    ></app-selected-test-form>
+  </div>
+
+  <div class="progress-bar-wrap">
+    <mat-progress-bar
+      class="progress-bar"
+      mode="determinate"
+      [value]="(currentQuestionIndex / selectedTest.questions.length) * 100"
+    ></mat-progress-bar>
+  </div>
+  <div class="goBack-btn-wrap">
+    <app-go-back-btn></app-go-back-btn>
+  </div>
 </div>

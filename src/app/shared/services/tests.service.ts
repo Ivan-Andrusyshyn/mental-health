@@ -1,61 +1,35 @@
 import { Injectable } from '@angular/core';
 import { Test } from '../models/online-test.model';
+import { testsList } from '../../options/tests-list';
+import { TestsResult } from '../models/testsResult.model';
+import { testsResult } from '../../options/tests-options';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TestsService {
-  private tests: Test[] = [
-    {
-      id: 10,
-      title: 'Тест на особистість',
-      subtitle: 'Відкрийте свій тип особистості',
-      describe:
-        'Пройдіть тест для визначення особистості та дізнайтесь більше про себе.',
-      imgUrl:
-        'https://t4.ftcdn.net/jpg/00/96/48/11/360_F_96481143_EDJRxhplkTUrdgXE4R45XAX0cHFr8QTC.jpg',
-      longDescription:
-        'Цей тест допоможе вам краще зрозуміти свій тип особистості, відповідаючи на серію запитань. Ви дізнаєтесь більше про свої сильні та слабкі сторони, а також про те, як ви взаємодієте з іншими людьми.',
-      instructions:
-        'Відповідайте на всі запитання чесно і ретельно, щоб отримати найточніші результати. Тест займає приблизно 15 хвилин.',
-      targetAudience:
-        'Цей тест підходить для всіх, хто хоче краще зрозуміти себе та свої особистісні риси.',
-    },
-    {
-      id: 210,
-      title: "Тест на кар'єрну придатність",
-      subtitle: "Знайдіть найкращий кар'єрний шлях для вас",
-      describe:
-        "Розпочніть зараз, щоб знайти відповідний кар'єрний шлях і досягти успіху.",
-      imgUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxs7zXQA4OjJPuPIesrkdVYPcvoQ1MGYIPzQ&s',
-      longDescription:
-        "Цей тест допоможе вам визначити, які кар’єрні шляхи найкраще підходять для вашої особистості, інтересів і навичок. Ви отримаєте персоналізовані рекомендації щодо кар'єри.",
-      instructions:
-        'Заповніть всі запитання, не пропускаючи жодного, щоб отримати точні рекомендації. Тест займає близько 20 хвилин.',
-      targetAudience:
-        "Цей тест призначений для студентів, випускників та всіх, хто шукає новий кар'єрний шлях або хоче змінити свою професію.",
-    },
-    {
-      id: 321,
-      title: "Перевірка психічного здоров'я",
-      subtitle: 'Оцініть своє психічне благополуччя',
-      describe:
-        'Почніть тестування для оцінки психічного стану та отримайте корисні поради.',
-      imgUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2FsN2KCsaq2KYKLQe9o1-jYQ-O_LxJQthXg&s',
-      longDescription:
-        "Цей тест надасть вам оцінку вашого психічного здоров'я, допоможе виявити можливі проблеми та надасть корисні поради для поліпшення вашого стану.",
-      instructions:
-        'Заповніть всі запитання чесно та ретельно. Тест займе приблизно 10 хвилин. Якщо у вас виникнуть питання або сумніви, зверніться до фахівця.',
-      targetAudience:
-        "Цей тест підходить для всіх, хто хоче оцінити своє психічне здоров'я та отримати поради щодо його поліпшення.",
-    },
-  ];
+  private tests: Test[];
+  private testResults: TestsResult[];
 
-  constructor() {}
+  constructor() {
+    this.tests = testsList;
+    this.testResults = testsResult;
+  }
 
-  getTests() {
+  getTests(): Test[] {
     return this.tests;
+  }
+
+  getTestResults(): TestsResult[] {
+    return this.testResults;
+  }
+
+  getTestResultText(result: TestsResult, score: number): string {
+    for (const explanation of result.explanation) {
+      if (score >= explanation.range.min && score <= explanation.range.max) {
+        return explanation.text;
+      }
+    }
+    return '';
   }
 }

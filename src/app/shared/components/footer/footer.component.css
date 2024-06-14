@@ -68,16 +68,16 @@ ul {
 
 label {
   height: 80px;
-  width: 280px;
+  width: 23%;
   border-radius: 1rem;
+  padding: 4px;
 
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #fff;
 }
-.logo {
-  width: 200px;
+.logo-img {
 }
 .social-links {
   display: flex;

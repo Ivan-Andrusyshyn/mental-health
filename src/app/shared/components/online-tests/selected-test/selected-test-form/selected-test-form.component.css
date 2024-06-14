@@ -1,0 +1,128 @@
+.question-container {
+  max-width: 800px;
+  margin-bottom: 2rem;
+}
+.test-form {
+  max-width: 800px;
+  padding: 20px;
+  margin: 0 8.8rem 3rem 8.8rem;
+  border-radius: 1rem;
+}
+.question-text {
+  display: block;
+  cursor: pointer;
+  line-height: 2;
+  font-size: 1.5em;
+}
+.label {
+  font-weight: bold;
+}
+
+.options-container {
+  margin-top: 10px;
+}
+
+.option-label {
+  display: block;
+  margin-bottom: 1rem;
+}
+.test-question-number {
+  font-weight: 300;
+  font-size: 1.2rem;
+  line-height: 147.523%;
+  margin: 1rem 0 2.4rem 0;
+
+  color: #000;
+  font-style: normal;
+  text-align: right;
+}
+
+.radio-wrap {
+  background: #fff;
+  border: 1px solid rgba(63, 63, 63, 0);
+  border-radius: 16px;
+  box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.06);
+  font-size: 1.6rem;
+  font-weight: 500;
+  overflow: hidden;
+  padding: 0.8rem 1.8rem;
+  width: 100%;
+}
+.resolve-button:focus {
+  color: #171e29;
+}
+
+.resolve-button:hover {
+  border-color: green;
+  color: green;
+  fill: #06f;
+}
+
+.resolve-button:active {
+  border-color: green;
+  color: green;
+  fill: #06f;
+}
+
+@media (min-width: 768px) {
+  .resolve-button {
+    min-width: 170px;
+  }
+}
+.radio-label {
+  background: #fff;
+  border: 1px solid rgba(63, 63, 63, 0);
+  border-radius: 16px;
+  box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.06);
+  font-size: 1.6rem;
+  font-weight: 500;
+  overflow: hidden;
+  padding: 1.8rem 2.8rem;
+  width: 100%;
+}
+.radio-button {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+.radio-button + span {
+  display: block;
+}
+
+.radio-button + span:before {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.25em;
+  border-radius: 1em;
+  border: 0.125em solid #fff;
+  box-shadow: 0 0 0 0.15em #000;
+  margin-right: 0.75em;
+  transition: 0.5s ease all;
+}
+.radio-button:checked + span:before {
+  background: green;
+  box-shadow: 0 0 0 0.25em #000;
+}
+
+.radio-button:focus + span:after {
+  content: "\0020\2190";
+  font-size: 1.5em;
+  line-height: 1;
+  vertical-align: -0.125em;
+}
+
+.score-container {
+  margin-top: 20px;
+}
+
+.score-text {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
