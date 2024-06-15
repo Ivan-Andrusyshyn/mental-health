@@ -1,12 +1,27 @@
 <div class="card">
   <div class="container-card bg-white-box">
-    <img [src]="testImg" />
+    <div class="card-img-wrap">
+      <img [src]="testImg" />
 
-    <p class="card-title">Заключення</p>
-    <p class="card-description">Ваш результат: {{ score }}</p>
+      <p class="card-title">Заключення</p>
+    </div>
+    <p class="test-score-text">Ваш результат: {{ score }}</p>
 
     <p class="card-description">
       {{ testResult }}
     </p>
+    <button class="card__button" title="Кнопка в процесі розробки">
+      Надіслати результат
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="24px"
+        viewBox="0 0 24 24"
+        width="24px"
+        fill="none"
+      >
+        <path d="M0 0h24v24H0V0z" fill="none" />
+        <path d="M16.01 11H4v2h12.01v3L20 12l-3.99-4v3z" fill="currentColor" />
+      </svg>
+    </button>
   </div>
 </div>

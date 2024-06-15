@@ -1,5 +1,5 @@
 .card {
-  max-width: 800px;
+  max-width: 1200px;
   border: 0;
   width: 100%;
   margin-inline: auto;
@@ -58,21 +58,65 @@
 
 .card-title {
   font-weight: 600;
-  color: white;
   letter-spacing: -0.02em;
   line-height: 40px;
-  font-style: normal;
   font-size: 28px;
   padding-bottom: 8px;
-}
 
+  color: #fff;
+  font-style: normal;
+}
+.card-img-wrap {
+  gap: 2rem;
+
+  display: flex;
+  align-items: center;
+}
 .card-description {
   font-weight: 600;
   line-height: 32px;
   color: hsla(0, 0%, 100%, 0.877);
   font-size: 16px;
-  max-width: 470px;
+  max-width: 800px;
+
+  text-align: left;
+}
+
+.test-score-text {
+  font-weight: 600;
+  line-height: 32px;
+  color: hsla(0, 0%, 100%, 0.877);
+  font-size: 16px;
+  max-width: 800px;
+  margin-bottom: 1rem;
+
+  text-align: left;
 }
 .goBack-btn-wrap {
   padding: 0.5rem;
+}
+.card__button {
+  margin-top: 1rem;
+  padding: 0.75em 1.6em;
+  font-size: 1rem;
+  border-radius: 0.45em;
+  outline: 2px solid hsl(0, 0%, 100%);
+  transition: all cubic-bezier(0.075, 0.82, 0.165, 1);
+  color: hsla(0, 0%, 100%, 0.836);
+  gap: 1rem;
+
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  width: -moz-fit-content;
+  font-variant: small-caps;
+  font-weight: bold;
+  border: none;
+  background-color: var(--brand-color);
+  font-family: var(--font-title);
+
+  cursor: pointer;
+}
+.card__button:hover {
+  outline: none;
 }
