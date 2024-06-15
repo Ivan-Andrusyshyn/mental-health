@@ -24,12 +24,15 @@ export class TestsService {
     return this.testResults;
   }
 
-  getTestResultText(result: TestsResult, score: number): string {
+  getTestResultText(
+    result: TestsResult,
+    score: number
+  ): { text: string; problem: string } | null {
     for (const explanation of result.explanation) {
       if (score >= explanation.range.min && score <= explanation.range.max) {
-        return explanation.text;
+        return { text: explanation.text, problem: explanation.results };
       }
     }
-    return '';
+    return null;
   }
 }

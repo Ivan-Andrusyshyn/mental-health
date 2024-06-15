@@ -70,6 +70,10 @@
 }
 .progress-bar-wrap {
   padding: 1rem 1rem 1rem 0rem;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 /*  */
 .option-label {
@@ -79,10 +83,13 @@
 }
 .test-question-number {
   font-weight: 300;
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 147.523%;
-  margin: 1rem 0 2.4rem 0;
+  width: 175px;
 
+  display: flex;
+  align-items: center;
+  text-align: center;
   color: #000;
   font-style: normal;
   text-align: right;

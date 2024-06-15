@@ -1,0 +1,28 @@
+<h1 mat-dialog-title class="dialog-title">Результати тесту</h1>
+<div mat-dialog-content>
+  <div class="image-container">
+    <img [src]="data.testImg" alt="Test Image" />
+  </div>
+  <p class="test-result">{{ data.problem }}</p>
+  <p class="score">Score: {{ data.score }}</p>
+  <form [formGroup]="emailForm" (submit)="onSubmit()">
+    <mat-form-field class="full-width">
+      <mat-label>Введіть вашу електронну адресу</mat-label>
+      <input matInput formControlName="email" placeholder="example@mail.com" />
+      <mat-error
+        *ngIf="
+          emailForm.controls['email'].invalid &&
+          emailForm.controls['email'].touched
+        "
+      >
+        Введіть дійсну електронну адресу
+      </mat-error>
+    </mat-form-field>
+    <div mat-dialog-actions>
+      <button mat-button type="submit" [disabled]="!emailForm.valid">
+        Надіслати
+      </button>
+      <button mat-button (click)="close()">Закрити</button>
+    </div>
+  </form>
+</div>

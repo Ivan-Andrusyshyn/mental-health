@@ -7,10 +7,17 @@
     </div>
     <p class="test-score-text">Ваш результат: {{ score }}</p>
 
+    <p class="card-problem-title">
+      {{ problem }}
+    </p>
     <p class="card-description">
       {{ testResult }}
     </p>
-    <button class="card__button" title="Кнопка в процесі розробки">
+    <button
+      (click)="openDialog()"
+      class="card__button"
+      title="Кнопка в процесі розробки"
+    >
       Надіслати результат
       <svg
         xmlns="http://www.w3.org/2000/svg"

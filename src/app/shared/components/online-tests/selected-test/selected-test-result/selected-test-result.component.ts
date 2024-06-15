@@ -1,6 +1,8 @@
 import { Component, inject, Input } from '@angular/core';
 import { TestsService } from '../../../../services/tests.service';
 import { TestsResult } from '../../../../models/testsResult.model';
+import { ModalComponent } from '../modal/modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-selected-test-result',
@@ -14,12 +16,26 @@ export class SelectedTestResultComponent {
   @Input() testId!: number;
   @Input() testImg!: string;
 
-  testResult: string = '';
+  private testService = inject(TestsService);
+  public dialog = inject(MatDialog);
 
-  constructor(private testService: TestsService) {}
+  testResult: string = '';
+  problem: string = '';
 
   ngOnInit(): void {
     this.loadTestResult();
+  }
+  openDialog(): void {
+    this.dialog.open(ModalComponent, {
+      width: '400px',
+      height: '600px',
+      data: {
+        problem: this.problem,
+        testImg: this.testImg,
+        score: this.score,
+        testResult: this.testResult,
+      },
+    });
   }
 
   private loadTestResult(): void {
@@ -28,7 +44,10 @@ export class SelectedTestResultComponent {
       .find((item) => item.testId === this.testId);
 
     if (result && this.score !== null) {
-      this.testResult = this.testService.getTestResultText(result, this.score);
+      const data = this.testService.getTestResultText(result, this.score);
+      if (!data) return;
+      this.problem = data.problem;
+      this.testResult = data.text;
     }
   }
 }

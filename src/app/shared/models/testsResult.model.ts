@@ -8,5 +8,6 @@ export interface ExplanationItem {
     min: number;
     max: number;
   };
+  results: string;
   text: string;
 }

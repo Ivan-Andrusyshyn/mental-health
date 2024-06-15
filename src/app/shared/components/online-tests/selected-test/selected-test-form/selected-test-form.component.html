@@ -12,9 +12,7 @@
     [id]="'question-' + i"
   >
     <label class="question-text">{{ i + 1 }}. {{ question }}</label>
-    <div class="test-question-number">
-      Запитання {{ i + 1 }} з {{ selectedTest.questions.length }}
-    </div>
+
     <div class="options-container" [formGroupName]="'questions'">
       <div [formGroupName]="i">
         <label class="option-label" *ngFor="let option of options; index as j">
@@ -39,6 +37,9 @@
               (currentQuestionIndex / selectedTest.questions.length) * 100
             "
           ></mat-progress-bar>
+          <div class="test-question-number">
+            Запитання {{ i + 1 }} з {{ selectedTest.questions.length }}
+          </div>
         </div>
       </div>
     </div>
