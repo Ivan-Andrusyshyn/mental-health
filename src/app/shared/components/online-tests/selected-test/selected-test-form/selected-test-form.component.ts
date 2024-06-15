@@ -1,10 +1,21 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { NgClass, NgFor, NgIf } from '@angular/common';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  inject,
+  Input,
+  OnDestroy,
+  Output,
+  QueryList,
+  ViewChildren,
+} from '@angular/core';
+import { NgClass, NgFor, NgIf, NgStyle } from '@angular/common';
 import { Test } from '../../../../models/online-test.model';
 import { TestOptions } from '../../../../models/test-options.model';
 import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { SelectedTestResultComponent } from '../selected-test-result/selected-test-result.component';
 import { FormButtonsComponent } from './form-buttons/form-buttons.component';
+import { ScrollService } from '../../../../services/scroll.service';
 
 @Component({
   selector: 'app-selected-test-form',
@@ -15,13 +26,17 @@ import { FormButtonsComponent } from './form-buttons/form-buttons.component';
     NgFor,
     ReactiveFormsModule,
     NgIf,
+    NgStyle,
     FormButtonsComponent,
   ],
   templateUrl: './selected-test-form.component.html',
   styleUrl: './selected-test-form.component.css',
 })
-export class SelectedTestFormComponent {
-  @Input() currentQuestionIndex: number = 0;
+export class SelectedTestFormComponent implements OnDestroy {
+  private scrollService = inject(ScrollService);
+
+  @Input()
+  currentQuestionIndex: number = 0;
   @Input() selectedTest!: Test;
   @Input() options: TestOptions[] = [];
   @Input() testForm!: FormGroup;
@@ -31,9 +46,16 @@ export class SelectedTestFormComponent {
   @Output() nextQuestion = new EventEmitter<void>();
   @Output() previousQuestion = new EventEmitter<void>();
 
+  @ViewChildren('questionElement') questionElements!: QueryList<ElementRef>;
+
   onNextQuestion() {
     if (this.currentQuestionIndex < this.selectedTest.questions.length - 1) {
       this.currentQuestionIndex++;
+      const setTimeoutSmooth = this.scrollService.scrollToCurrentQuestion(
+        this.currentQuestionIndex,
+        this.questionElements
+      );
+
       this.nextQuestion.emit();
     }
   }
@@ -56,5 +78,9 @@ export class SelectedTestFormComponent {
       this.currentQuestionIndex
     ) as FormGroup;
     return validQuestion.valid && validQuestion.dirty;
+  }
+
+  ngOnDestroy(): void {
+    this.scrollService.cancelSmoothScroll();
   }
 }

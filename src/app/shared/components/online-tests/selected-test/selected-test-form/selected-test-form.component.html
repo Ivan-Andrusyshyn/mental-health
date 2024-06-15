@@ -5,9 +5,11 @@
   *ngIf="currentQuestionIndex !== selectedTest.questions.length; else summary"
 >
   <div
+    #questionElement
     *ngFor="let question of selectedTest.questions; let i = index"
     class="question-container"
-    [hidden]="i !== currentQuestionIndex"
+    [ngClass]="{ 'disabled-question': i !== currentQuestionIndex }"
+    [id]="'question-' + i"
   >
     <label class="question-text">{{ i + 1 }}. {{ question }}</label>
     <div class="test-question-number">
@@ -15,31 +17,40 @@
     </div>
     <div class="options-container" [formGroupName]="'questions'">
       <div [formGroupName]="i">
-        <label class="option-label" *ngFor="let option of options; index as i">
+        <label class="option-label" *ngFor="let option of options; index as j">
           <div class="radio-wrap">
             <input
               class="radio-button"
               type="radio"
+              [id]="'option-' + i + '-' + j"
               formControlName="selectedOption"
               [attr.name]="'question' + i"
               [value]="option.value"
+              (change)="onNextQuestion()"
             />
-            <span>
-              {{ option.label }}
-            </span>
+            <span>{{ option.label }}</span>
           </div>
         </label>
       </div>
     </div>
   </div>
 
-  <app-form-buttons
+  <!-- <app-form-buttons
     (onNextQuestion)="onNextQuestion()"
     (onPreviousQuestion)="onPreviousQuestion()"
     [selectedTest]="selectedTest"
     [currentQuestionIndex]="currentQuestionIndex"
     [isDisabledButton]="!getCurrentQuestionValid()"
-  ></app-form-buttons>
+  ></app-form-buttons> -->
+  <div style="display: flex; justify-content: center">
+    <button
+      type="submit"
+      *ngIf="currentQuestionIndex === selectedTest.questions.length - 1"
+      class="resolve-button"
+    >
+      Результат
+    </button>
+  </div>
 </form>
 
 <ng-template #summary>
