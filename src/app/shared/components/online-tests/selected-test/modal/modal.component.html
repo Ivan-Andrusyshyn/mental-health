@@ -5,10 +5,34 @@
   </div>
   <p class="test-result">{{ data.problem }}</p>
   <p class="score">Score: {{ data.score }}</p>
-  <form [formGroup]="emailForm" (submit)="onSubmit()">
+
+  <form [formGroup]="emailForm" (ngSubmit)="onSubmit()">
     <mat-form-field class="full-width">
-      <mat-label>Введіть вашу електронну адресу</mat-label>
-      <input matInput formControlName="email" placeholder="example@mail.com" />
+      <mat-label for="name">Введіть ваше ім'я</mat-label>
+      <input
+        matInput
+        id="name"
+        formControlName="name"
+        placeholder="Ваше ім'я"
+      />
+      <mat-error
+        *ngIf="
+          emailForm.controls['name'].invalid &&
+          emailForm.controls['name'].touched
+        "
+      >
+        Ім'я є обов'язковим
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label for="email">Введіть вашу електронну адресу</mat-label>
+      <input
+        matInput
+        id="email"
+        formControlName="email"
+        placeholder="example@mail.com"
+      />
       <mat-error
         *ngIf="
           emailForm.controls['email'].invalid &&
@@ -18,11 +42,12 @@
         Введіть дійсну електронну адресу
       </mat-error>
     </mat-form-field>
+
     <div mat-dialog-actions>
       <button mat-button type="submit" [disabled]="!emailForm.valid">
         Надіслати
       </button>
-      <button mat-button (click)="close()">Закрити</button>
+      <button mat-button type="button" (click)="close()">Закрити</button>
     </div>
   </form>
 </div>

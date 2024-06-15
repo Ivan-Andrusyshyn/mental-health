@@ -16,6 +16,7 @@ import { ProductDetailComponent } from './pages/product-detail/product-detail.co
 import { OnlineTestsComponent } from './pages/online-tests/online-tests.component';
 import { SelectedTestComponent } from './pages/selected-test/selected-test.component';
 import { TestDetailsComponent } from './pages/test-details/test-details.component';
+import { SuccessEmailComponent } from './pages/success-email/success-email.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -30,6 +31,11 @@ export const routes: Routes = [
   {
     path: 'online-tests',
     component: OnlineTestsComponent,
+    canActivate: [authUserGuard],
+  },
+  {
+    path: 'test/success-email',
+    component: SuccessEmailComponent,
     canActivate: [authUserGuard],
   },
   {

@@ -1,4 +1,5 @@
 import { NgIf } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -20,6 +21,7 @@ import {
   MatLabel,
 } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal',
@@ -44,7 +46,7 @@ export class ModalComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<ModalComponent>,
-
+    private http: HttpClient,
     @Inject(MAT_DIALOG_DATA)
     public data: {
       testResult: string;
@@ -52,11 +54,14 @@ export class ModalComponent implements OnInit {
       testImg: string;
       score: number;
     },
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {}
   ngOnInit(): void {
     this.emailForm = this.fb.group({
+      name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
+      // message: ['', [Validators.required]],
     });
   }
   close(): void {
@@ -65,15 +70,23 @@ export class ModalComponent implements OnInit {
 
   onSubmit(): void {
     if (this.emailForm.valid) {
-      const email = this.emailForm.value.email;
-      const resultData = {
-        email: email,
-        testResult: this.data.testResult,
-        testImg: this.data.testImg,
-        score: this.data.score,
+      const formData = {
+        name: this.emailForm.value.name,
+        email: this.emailForm.value.email,
+        result: 'Результати тестування' + ' ' + this.data.testResult,
+        score: 'Ваша кількість балів ' + ' ' + this.data.score,
       };
-      console.log('Form Submitted', resultData);
-      this.dialogRef.close(resultData);
+
+      this.http.post('https://submit-form.com/IWivaiDXn', formData).subscribe(
+        (response) => {
+          console.log('Form submitted successfully', response);
+          this.dialogRef.close(formData);
+          this.router.navigate(['test/success-email']);
+        },
+        (error) => {
+          console.error('Error submitting form', error);
+        }
+      );
     }
   }
 }
