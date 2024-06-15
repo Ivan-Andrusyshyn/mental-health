@@ -17,6 +17,7 @@ p {
 }
 .container img {
   margin-bottom: 1rem;
+  width: 800px;
 
   display: block;
 }

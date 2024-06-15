@@ -2,10 +2,11 @@
   background-color: #f4f4f4;
   scrollbar-color: rgba(0, 102, 126, 0.5) transparent;
   scrollbar-width: thin;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .filter-wrap {
-  padding: 0 2rem;
-  padding-left: 2rem;
 }
 .no-content {
   margin: 0 auto;
@@ -16,4 +17,9 @@
 }
 .no-content img {
   margin-bottom: 1rem;
+}
+@media screen and (min-width: 844px) {
+  .container {
+    align-items: flex-start;
+  }
 }
