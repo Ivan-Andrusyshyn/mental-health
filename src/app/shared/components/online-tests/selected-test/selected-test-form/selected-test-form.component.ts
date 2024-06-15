@@ -16,6 +16,7 @@ import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { SelectedTestResultComponent } from '../selected-test-result/selected-test-result.component';
 import { FormButtonsComponent } from './form-buttons/form-buttons.component';
 import { ScrollService } from '../../../../services/scroll.service';
+import { MatProgressBar } from '@angular/material/progress-bar';
 
 @Component({
   selector: 'app-selected-test-form',
@@ -28,6 +29,7 @@ import { ScrollService } from '../../../../services/scroll.service';
     NgIf,
     NgStyle,
     FormButtonsComponent,
+    MatProgressBar,
   ],
   templateUrl: './selected-test-form.component.html',
   styleUrl: './selected-test-form.component.css',

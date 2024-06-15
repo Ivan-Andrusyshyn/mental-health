@@ -1,7 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { Location, NgClass, NgIf } from '@angular/common';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgClass, NgIf } from '@angular/common';
 import {
   FormArray,
   FormBuilder,
@@ -23,7 +22,6 @@ import { TestsGoBackBtnComponent } from '../../shared/components/online-tests/te
   imports: [
     GoBackBtnComponent,
     SelectedTestFormComponent,
-    MatProgressBarModule,
     ReactiveFormsModule,
     RouterLink,
     NgClass,
