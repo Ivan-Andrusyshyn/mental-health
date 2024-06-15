@@ -29,7 +29,7 @@
             <span>{{ option.label }}</span>
           </div>
         </label>
-        <div class="progress-bar-wrap" [hidden]="i !== currentQuestionIndex">
+        <div class="progress-bar-wrap" *ngIf="i === currentQuestionIndex">
           <mat-progress-bar
             class="progress-bar"
             mode="determinate"

@@ -37,8 +37,7 @@ import { MatProgressBar } from '@angular/material/progress-bar';
 export class SelectedTestFormComponent implements OnDestroy {
   private scrollService = inject(ScrollService);
 
-  @Input()
-  currentQuestionIndex: number = 0;
+  @Input() currentQuestionIndex: number = 0;
   @Input() selectedTest!: Test;
   @Input() options: TestOptions[] = [];
   @Input() testForm!: FormGroup;
