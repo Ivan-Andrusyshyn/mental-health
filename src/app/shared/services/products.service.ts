@@ -77,12 +77,10 @@ export class ProductsService {
 
   changeProductInfo(product: Product) {
     const currentProducts = this.productsSubject.value;
-    console.log(currentProducts);
 
     const itemIndex = currentProducts.findIndex(
       (item) => item.id === product.id
     );
-    console.log(itemIndex);
 
     if (itemIndex === -1) return;
 

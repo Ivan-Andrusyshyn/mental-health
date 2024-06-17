@@ -1,5 +1,6 @@
 import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
+import { imgsProduct } from './img-list';
 
 @Component({
   selector: 'app-slider',
@@ -10,21 +11,11 @@ import { Component } from '@angular/core';
 })
 export class SliderComponent {
   slideIndex: number = 0;
+  imgsProduct: any;
 
-  imgsProduct = [
-    {
-      image: '../../../assets/product-main-img.jpg',
-    },
-    {
-      image: '../../../assets/1703619922.0556.jpg',
-    },
-    {
-      image: '../../../assets/1703619922.202.jpg',
-    },
-    {
-      image: '../../../assets/1703619922.1739.jpg',
-    },
-  ];
+  constructor() {
+    this.imgsProduct = imgsProduct;
+  }
 
   prevSlide() {
     this.slideIndex =

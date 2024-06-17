@@ -12,6 +12,7 @@
   align-items: center;
 }
 .no-content img {
+  height: 250px;
   margin-bottom: 1rem;
 }
 .order-btn {

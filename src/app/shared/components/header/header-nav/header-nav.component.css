@@ -8,31 +8,47 @@
 .nav-item {
   position: relative;
 }
+a,
+.icon-cart {
+  transition: all 0.25s;
+}
 .nav-item a {
   text-decoration: none;
 
-  font-weight: 600;
+  font-weight: 500;
   color: #060606;
 }
 .nav-item span {
-  width: 2rem;
-  height: 2rem;
-  font-weight: 600;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-weight: 500;
   border-radius: 50%;
-  right: -2rem;
+  right: -1rem;
   top: -1.5rem;
+  border: 1px solid green;
 
   display: flex;
   position: absolute;
   justify-content: center;
   align-items: center;
-  color: #fff;
-  background-color: blue;
+  color: #010101;
+  background-color: transparent;
 }
 .active a {
   color: #ca3838be;
+  fill: #ca3838be;
 }
-
+.active .icon-cart {
+  fill: #ca3838be;
+}
+.nav-cart svg {
+  width: 28px;
+  height: 28px;
+  fill: #333;
+}
+.social-links-wrap {
+  margin-left: 3rem;
+}
 .header-logo-wrap {
   margin-right: 80px;
 }

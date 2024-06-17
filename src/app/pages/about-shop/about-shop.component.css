@@ -31,6 +31,31 @@ p {
   color: #2c3e50;
 }
 
+.subtitle {
+  color: #004169;
+  font-size: 2.4rem;
+  font-weight: 600;
+  line-height: 150%;
+  margin-bottom: 1.5rem;
+  width: 80%;
+}
+.section-content-wrap {
+  gap: 2rem;
+
+  align-items: center;
+  display: flex;
+}
+.section-bg-wrap {
+  border-radius: 1rem;
+  padding: 1rem;
+
+  background-color: #e3e3e3;
+}
+
+.section-content-wrap img {
+  width: 550px;
+  height: 420px;
+}
 .section-content {
   line-height: 1.6;
   margin-bottom: 1rem;

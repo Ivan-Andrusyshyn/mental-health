@@ -5,6 +5,7 @@ import { BuyBtnComponent } from '../buy-btn/buy-btn.component';
 import { CancelBtnComponent } from '../cancel-btn/cancel-btn.component';
 import { NgIf } from '@angular/common';
 import { ChosenProductsService } from '../../services/chosenProducts.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-my-product-list',
@@ -18,8 +19,11 @@ export class MyProductListComponent {
   cpService = inject(ChosenProductsService);
 
   constructor() {
-    this.cpService.getChosenProducts().subscribe((resp) => {
-      this.products = resp;
-    });
+    this.cpService
+      .getChosenProducts()
+      .pipe(takeUntilDestroyed())
+      .subscribe((resp) => {
+        this.products = resp;
+      });
   }
 }

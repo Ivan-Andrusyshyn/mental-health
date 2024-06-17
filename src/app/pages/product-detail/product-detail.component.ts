@@ -10,6 +10,7 @@ import { AuthService } from '../../shared/services/auth.service';
 import { ProductMoreInfoComponent } from '../../shared/components/product-more-info/product-more-info.component';
 import { SliderComponent } from './slider/slider.component';
 import { GoBackBtnComponent } from '../../shared/components/go-back-btn/go-back-btn.component';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-product-detail',
@@ -34,11 +35,17 @@ export class ProductDetailComponent {
   product!: Product;
 
   constructor() {
-    this.route.params.subscribe((resp) => {
+    let productId: number;
+    this.route.params.pipe(takeUntilDestroyed()).subscribe((resp) => {
       const { id } = resp;
-      const products = this.productsService.getProducts();
-      this.product = products.filter((pr) => pr.id === +id)[0];
+      productId = id;
     });
+    this.productsService
+      .getObservableProducts()
+      .pipe(takeUntilDestroyed())
+      .subscribe((resp) => {
+        this.product = resp.filter((pr) => pr.id === +productId)[0];
+      });
   }
 
   get authAdmin() {

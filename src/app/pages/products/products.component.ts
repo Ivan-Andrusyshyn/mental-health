@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { NgIf } from '@angular/common';
-
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
   MatPaginatorIntl,
   MatPaginatorModule,
@@ -8,12 +8,12 @@ import {
 } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
 
+import { MatInputModule } from '@angular/material/input';
 import { ProductListComponent } from '../../shared/components/product-list/product-list.component';
 import { Product } from '../../shared/models/product.model';
 import { ProductsService } from '../../shared/services/products.service';
-import { debounceTime, distinctUntilChanged } from 'rxjs';
+import { FilterProductsPipe } from '../../shared/pipes/filter-products.pipe';
 
 @Component({
   selector: 'app-products',
@@ -25,6 +25,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs';
     MatPaginatorModule,
     MatInputModule,
     NgIf,
+    FilterProductsPipe,
   ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css',
@@ -41,40 +42,23 @@ export class ProductsComponent {
   searchControl = new FormControl('');
 
   constructor(private paginatorIntl: MatPaginatorIntl) {
-    this.productsService.getObservableProducts().subscribe((resp) => {
-      this.products = resp.slice();
-      this.filteredProducts = resp.slice();
-      this.updatePaginatedProducts();
-    });
+    this.productsService
+      .getObservableProducts()
+      .pipe(takeUntilDestroyed())
+      .subscribe((resp) => {
+        console.log(resp);
+
+        this.products = resp.slice();
+        this.filteredProducts = resp.slice();
+        this.updatePaginatedProducts();
+      });
 
     this.paginatorIntl.itemsPerPageLabel = 'Товарів на сторінці';
-    this.searchControl.valueChanges
-      .pipe(debounceTime(100), distinctUntilChanged())
-      .subscribe((searchTerm) => {
-        this.filterProducts(searchTerm || '');
-      });
-  }
-
-  ngOnInit() {
-    this.updatePaginatedProducts();
   }
 
   onPageChange(event: PageEvent) {
     this.pageSize = event.pageSize;
     this.currentPage = event.pageIndex;
-    this.updatePaginatedProducts();
-  }
-
-  filterProducts(searchTerm: string) {
-    if (searchTerm.trim()) {
-      this.filteredProducts = this.products.filter((product) =>
-        product.name.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    } else {
-      this.filteredProducts = this.products.slice();
-    }
-    this.currentPage = 0;
-
     this.updatePaginatedProducts();
   }
 

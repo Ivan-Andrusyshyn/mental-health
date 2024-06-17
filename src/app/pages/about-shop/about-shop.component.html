@@ -23,7 +23,7 @@
   </p>
 
   <div class="sections">
-    <div *ngFor="let section of sections" class="card">
+    <div *ngFor="let section of aboutShop" class="card">
       <h3 class="card__title">{{ section.title }}</h3>
       <p class="card__description">{{ section.description }}</p>
     </div>
@@ -45,18 +45,25 @@
   </p>
 
   <h2 class="section-title">Про нас</h2>
-  <p class="section-content">
-    Zdravo - Фармацевтична компанія, яка з 2006 року забезпечує пацієнтів
-    дієвими та якісними ліками. За ці роки ми зрозуміли, що лікування будь-якого
-    захворювання не може полягати лише у медикаментозній терапії.
-  </p>
-  <p class="section-content">
-    Тому ми створили комплексний продукт Mental Health (Ментальне здоровʼя),
-    який поєднує не тільки фармацевтичні та симптоматичні засоби, але й
-    інструменти супроводу пацієнта.
-  </p>
-  <p class="section-content">
-    Сподіваємось, що наші ліки, корисні поради та інструменти допоможуть
-    покращити ваше ментальне здоров’я та якість життя.
-  </p>
+  <div class="section-content-wrap">
+    <div class="section-bg-wrap">
+      <p class="section-content">
+        <span class="subtitle"> Zdravo -</span>
+        <br />
+        Фармацевтична компанія, яка з 2006 року забезпечує пацієнтів дієвими та
+        якісними ліками. За ці роки ми зрозуміли, що лікування будь-якого
+        захворювання не може полягати лише у медикаментозній терапії.
+      </p>
+      <p class="section-content">
+        Тому ми створили комплексний продукт Mental Health (Ментальне здоровʼя),
+        який поєднує не тільки фармацевтичні та симптоматичні засоби, але й
+        інструменти супроводу пацієнта.
+      </p>
+      <p class="section-content">
+        Сподіваємось, що наші ліки, корисні поради та інструменти допоможуть
+        покращити ваше ментальне здоров’я та якість життя.
+      </p>
+    </div>
+    <img src="https://mhealthzdravo.com.ua/_nuxt/about_3.CRLnuCBF.svg" alt="" />
+  </div>
 </div>

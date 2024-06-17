@@ -17,6 +17,7 @@ import { OnlineTestsComponent } from './pages/online-tests/online-tests.componen
 import { SelectedTestComponent } from './pages/selected-test/selected-test.component';
 import { TestDetailsComponent } from './pages/test-details/test-details.component';
 import { SuccessEmailComponent } from './pages/success-email/success-email.component';
+import { PsychologicalHelpComponent } from './pages/psychological-help/psychological-help.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -27,6 +28,10 @@ export const routes: Routes = [
   {
     path: 'product/:id',
     component: ProductDetailComponent,
+  },
+  {
+    path: 'psychological-help',
+    component: PsychologicalHelpComponent,
   },
   {
     path: 'online-tests',

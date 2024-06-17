@@ -52,6 +52,7 @@ export class AddNewProductComponent {
       packagingAndStorage: [''],
       manufacturer: [''],
       importer: [''],
+      productQuantity: [0],
     });
   }
   resetSelection(): void {
@@ -62,6 +63,7 @@ export class AddNewProductComponent {
       this.productsService.addProduct(this.productForm.value);
       this.productForm.reset();
       alert('Ви успішно додали новий товар 😊');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       prompt('Form is invalid');
     }

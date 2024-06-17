@@ -23,19 +23,25 @@
       <a [routerLink]="['/online-tests']">Тестування</a>
     </li>
     <li class="nav-item" routerLinkActive="active">
+      <a [routerLink]="['/psychological-help']">Психологічна допомога</a>
+    </li>
+    <li class="nav-item" routerLinkActive="active">
       <a [routerLink]="['/about-shop']">Про нас</a>
     </li>
 
-    <li class="nav-item" routerLinkActive="active">
-      <a [routerLink]="['/my-products']">Мій вибір </a>
-      @if( amountProducts > 0){
+    <li class="nav-item nav-cart" routerLinkActive="active">
+      <a [routerLink]="['/my-products']">
+        <svg class="icon-cart">
+          <use xlink:href="../../../../assets/sprite.svg#icon-cart"></use>
+        </svg>
+      </a>
 
       <span>{{ amountProducts }}</span>
-      }@else{
-
-      <span> 🛒 </span>
-      }
     </li>
+    <div class="social-links-wrap">
+      <app-social-links></app-social-links>
+    </div>
+
     }@else if(isAuthAdmin){
     <li class="nav-item" routerLinkActive="active">
       <a [routerLink]="['/add-new-product']">Додати товар</a>

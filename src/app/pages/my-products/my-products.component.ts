@@ -7,6 +7,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { TotalAmountComponent } from './total-amount/total-amount.component';
 import { ActivatedRoute } from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-my-products',
@@ -29,9 +30,12 @@ export class MyProductsComponent {
   products: Product[] = [];
   chosenProductPage: string = 'chosenProductPage';
   constructor() {
-    this.cpService.getChosenProducts().subscribe((resp) => {
-      this.products = resp;
-    });
+    this.cpService
+      .getChosenProducts()
+      .pipe(takeUntilDestroyed())
+      .subscribe((resp) => {
+        this.products = resp;
+      });
   }
 
   openDialog(): void {

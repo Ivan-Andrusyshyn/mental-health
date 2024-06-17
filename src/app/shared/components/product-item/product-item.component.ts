@@ -30,8 +30,7 @@ export class ProductItemComponent {
   get authAdmin() {
     return this.authService.getIsAuthAdmin();
   }
-
-  ngOnInit() {
+  constructor() {
     if (this.router.url === '/products') {
       this.currentPageProduct = true;
     } else {

@@ -16,7 +16,9 @@
     />
     <h2>Не знайдено жодного товару.</h2>
   </div>
-  <app-product-list [products]="paginatedProducts"></app-product-list>
+  <app-product-list
+    [products]="paginatedProducts | filterProducts : searchControl.value"
+  ></app-product-list>
   <ng-container *ngIf="filteredProducts.length > 5">
     <mat-paginator
       style="background-color: #f4f4f4"

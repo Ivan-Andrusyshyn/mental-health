@@ -4,11 +4,19 @@ import { ChosenProductsService } from '../../../services/chosenProducts.service'
 import { NgIf } from '@angular/common';
 import { AuthService } from '../../../services/auth.service';
 import { MenuComponent } from '../menu/menu.component';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { SocialLinksComponent } from '../../social-links/social-links.component';
 
 @Component({
   selector: 'app-header-nav',
   standalone: true,
-  imports: [RouterLink, NgIf, RouterLinkActive, MenuComponent],
+  imports: [
+    RouterLink,
+    NgIf,
+    SocialLinksComponent,
+    RouterLinkActive,
+    MenuComponent,
+  ],
   templateUrl: './header-nav.component.html',
   styleUrl: './header-nav.component.css',
 })
@@ -18,9 +26,12 @@ export class HeaderNavComponent {
   amountProducts!: number;
 
   constructor() {
-    this.cp.getChosenProducts().subscribe((resp) => {
-      this.amountProducts = resp.length;
-    });
+    this.cp
+      .getChosenProducts()
+      .pipe(takeUntilDestroyed())
+      .subscribe((resp) => {
+        this.amountProducts = resp.length;
+      });
   }
 
   get isAuthUser() {

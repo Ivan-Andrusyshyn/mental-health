@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ProductItemComponent } from '../product-item/product-item.component';
 import { type Product } from '../../models/product.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-product-list',

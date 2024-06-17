@@ -15,6 +15,8 @@ import { testOptions } from '../../options/tests-options';
 
 import { SelectedTestFormComponent } from '../../shared/components/online-tests/selected-test/selected-test-form/selected-test-form.component';
 import { TestsGoBackBtnComponent } from '../../shared/components/online-tests/tests-go-back-btn/tests-go-back-btn.component';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { CalculateScoreService } from './calculateScore.service';
 
 @Component({
   selector: 'app-selected-test',
@@ -35,6 +37,7 @@ export class SelectedTestComponent implements OnInit {
   route = inject(ActivatedRoute);
   testsService = inject(TestsService);
   fb = inject(FormBuilder);
+  calculateService = inject(CalculateScoreService);
 
   selectedTest!: Test;
   options;
@@ -45,7 +48,7 @@ export class SelectedTestComponent implements OnInit {
   constructor() {
     this.options = testOptions;
 
-    this.route.params.subscribe((resp) => {
+    this.route.params.pipe(takeUntilDestroyed()).subscribe((resp) => {
       const { id } = resp;
       const tests = this.testsService.getTests();
       this.selectedTest = tests.filter((pr) => pr.id === +id)[0];
@@ -68,13 +71,10 @@ export class SelectedTestComponent implements OnInit {
     return this.testForm.get('questions') as FormArray;
   }
 
-  calculateScore() {
+  calculateScore(): void {
     this.currentQuestionIndex++;
-    this.score = this.questions.controls.reduce((total, control) => {
-      const selectedValue = control.get('selectedOption')?.value;
-      return total + (selectedValue ? parseInt(selectedValue, 10) : 0);
-    }, 0);
-    console.log(this.score);
+
+    this.score = this.calculateService.calculateScore(this.questions.controls);
   }
 
   nextQuestion() {

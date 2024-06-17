@@ -25,7 +25,6 @@ export class BuyBtnComponent {
   openMyMenu(menuTrigger: MatMenuTrigger) {
     menuTrigger.openMenu();
   }
-
   incrementProduct(event: Event) {
     if (this.quantity === undefined) return;
     this.quantity = this.quantity + 1;

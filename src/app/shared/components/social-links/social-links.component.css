@@ -1,0 +1,42 @@
+.social-links {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
+}
+
+.social-link:hover {
+  background-color: #d4d4d4;
+  transform: scale(1.1);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  fill: #333;
+}
+
+.icon-linkedin {
+  fill: #0077b5;
+}
+
+.icon-telegram {
+  fill: #0088cc;
+}
+
+.icon-instagram {
+  fill: #e1306c;
+}
+
+.icon-facebook {
+  fill: #1877f2;
+}

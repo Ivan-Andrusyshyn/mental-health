@@ -15,4 +15,3 @@ export class GoBackBtnComponent {
     this.location.back();
   }
 }
-``;
