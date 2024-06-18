@@ -1,4 +1,4 @@
-<nav>
+<nav class="header-nav">
   <ul class="nav-list">
     <div class="header-logo-wrap">
       <li
@@ -50,5 +50,17 @@
       <app-menu></app-menu>
     </li>
     }
+    <li
+      class="nav-item auth-btn"
+      routerLinkActive="active"
+      (click)="openLoginModal()"
+    >
+      <button>
+        <svg class="icon-user">
+          <use xlink:href="../../../../assets/sprite.svg#icon-user"></use>
+        </svg>
+        кабінет
+      </button>
+    </li>
   </ul>
 </nav>

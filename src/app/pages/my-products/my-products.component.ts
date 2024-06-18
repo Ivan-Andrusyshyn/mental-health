@@ -22,15 +22,14 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   templateUrl: './my-products.component.html',
   styleUrl: './my-products.component.css',
 })
-export class MyProductsComponent implements OnInit {
+export class MyProductsComponent {
   private cpService = inject(ChosenProductsService);
 
   private dialogRef = inject(MatDialog);
 
   products: Product[] = [];
   chosenProductPage: string = 'chosenProductPage';
-  constructor() {}
-  ngOnInit(): void {
+  constructor() {
     this.cpService
       .getChosenProducts()
       .pipe(takeUntilDestroyed())

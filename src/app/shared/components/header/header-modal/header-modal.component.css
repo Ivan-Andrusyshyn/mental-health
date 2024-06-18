@@ -1,0 +1,74 @@
+.auth-modal {
+  width: 1200px;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.auth-title {
+  font-size: 2rem;
+  margin-bottom: 3rem;
+  font-weight: bold;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.5rem;
+
+  color: #2c3e50;
+}
+
+.auth-container {
+  gap: 1rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+.bg-img {
+  flex: 1;
+  height: 100%;
+  border-radius: 1rem;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.bg-img-admin {
+  background-image: url("https://mhealthzdravo.com.ua/_nuxt/auth_popup_left_img.-l1XQQ3T.svg");
+}
+.bg-img-user {
+  background-image: url("https://tse4.mm.bing.net/th?id=OIP.XKdZgJT9MaVBqYDg-5JlvgAAAA&pid=Api&P=0&h=480");
+}
+.img-wrap {
+  flex: 1;
+
+  display: flex;
+  object-fit: contain;
+  justify-content: center;
+  align-items: center;
+  background-color: #f9f9f9;
+}
+
+.img-wrap img {
+  max-width: 100%;
+  border-radius: 1rem;
+  height: auto;
+}
+
+.form-wrap {
+  flex: 1;
+  padding: 24px;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f4f4;
+}
+
+mat-card {
+  width: 100%;
+  border-radius: 1rem;
+  max-width: 600px;
+}

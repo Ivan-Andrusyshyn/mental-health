@@ -1,0 +1,28 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="form-group" appearance="fill">
+    <mat-label>Role</mat-label>
+    <mat-select (selectionChange)="onChangeRole($event)" formControlName="role">
+      <mat-option value="user">User</mat-option>
+      <mat-option value="admin">Admin</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="form-group" appearance="fill">
+    <mat-label>Пошта</mat-label>
+    <input matInput type="email" formControlName="email" />
+  </mat-form-field>
+
+  <mat-form-field class="form-group" appearance="fill">
+    <mat-label>Пароль</mat-label>
+    <input matInput type="password" formControlName="password" />
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="loginForm.invalid"
+  >
+    Увійти
+  </button>
+</form>

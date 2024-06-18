@@ -1,3 +1,7 @@
+.header-nav {
+  display: flex;
+  align-items: center;
+}
 .nav-list {
   display: flex;
   align-items: center;
@@ -7,17 +11,49 @@
 }
 .nav-item {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 a,
 .icon-cart {
   transition: all 0.25s;
 }
+
 .nav-item a {
   text-decoration: none;
 
   font-weight: 500;
+  display: flex;
+  align-items: center;
   color: #060606;
 }
+.icon-user {
+  width: 28px;
+  height: 28px;
+
+  cursor: pointer;
+  fill: #333333cb;
+}
+.nav-item button:hover {
+  transform: scale(1.05);
+  color: #ca3838be;
+}
+.nav-item button:hover svg {
+  fill: #ca3838be;
+}
+.nav-item button {
+  text-decoration: none;
+
+  font-weight: 500;
+  display: flex;
+  transition: all 0.25s;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  align-items: center;
+  color: #060606;
+}
+
 .nav-item span {
   width: 1.5rem;
   height: 1.5rem;

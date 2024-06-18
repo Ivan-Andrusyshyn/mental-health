@@ -1,0 +1,7 @@
+<div class="form-container">
+  <app-auth-form
+    (submit)="onSubmit()"
+    (changeRole)="changeRole($event)"
+    [loginForm]="loginForm"
+  ></app-auth-form>
+</div>

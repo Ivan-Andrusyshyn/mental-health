@@ -18,19 +18,12 @@ import { SelectedTestComponent } from './pages/selected-test/selected-test.compo
 import { TestDetailsComponent } from './pages/test-details/test-details.component';
 import { SuccessEmailComponent } from './pages/success-email/success-email.component';
 import { PsychologicalHelpComponent } from './pages/psychological-help/psychological-help.component';
-import { LoginComponent } from './pages/home/login/login.component';
-import { SignInComponent } from './pages/home/sign-in/sign-in.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'home/login', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: 'home',
     component: HomeComponent,
-    children: [
-      { path: 'login', component: LoginComponent },
-      { path: 'sign-in', component: SignInComponent },
-      { path: '', redirectTo: 'login', pathMatch: 'full' },
-    ],
   },
   {
     path: 'products',

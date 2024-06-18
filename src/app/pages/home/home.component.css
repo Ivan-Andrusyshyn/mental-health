@@ -1,26 +1,6 @@
 .home-container {
   max-width: 1200px;
+  height: 80vh;
   padding: 1rem;
   margin: 0 auto;
-}
-.home-wrap {
-  gap: 2rem;
-
-  display: flex;
-  align-items: center;
-}
-.home-btn-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.img-wrap {
-  height: 450px;
-  width: 50%;
-}
-.home-container img {
-  width: 100%;
-  height: 100%;
-  border-radius: 1rem;
-  margin-bottom: 1rem;
 }

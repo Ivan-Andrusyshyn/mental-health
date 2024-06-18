@@ -6,6 +6,8 @@ import { AuthService } from '../../../services/auth.service';
 import { MenuComponent } from '../menu/menu.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { SocialLinksComponent } from '../../social-links/social-links.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { HeaderModalComponent } from '../header-modal/header-modal.component';
 
 @Component({
   selector: 'app-header-nav',
@@ -16,6 +18,8 @@ import { SocialLinksComponent } from '../../social-links/social-links.component'
     SocialLinksComponent,
     RouterLinkActive,
     MenuComponent,
+    MatDialogModule,
+    HeaderModalComponent,
   ],
   templateUrl: './header-nav.component.html',
   styleUrl: './header-nav.component.css',
@@ -23,6 +27,8 @@ import { SocialLinksComponent } from '../../social-links/social-links.component'
 export class HeaderNavComponent {
   private cp = inject(ChosenProductsService);
   private authService = inject(AuthService);
+  private dialog = inject(MatDialog);
+
   amountProducts!: number;
 
   constructor() {
@@ -37,7 +43,9 @@ export class HeaderNavComponent {
   get isAuthUser() {
     return this.authService.getIsAuthUser();
   }
-
+  openLoginModal(): void {
+    this.dialog.open(HeaderModalComponent);
+  }
   get isAuthAdmin() {
     return this.authService.getIsAuthAdmin();
   }

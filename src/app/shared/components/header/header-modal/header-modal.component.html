@@ -1,0 +1,21 @@
+<div class="auth-modal">
+  <h2 class="auth-title">Авторизация</h2>
+  <div class="auth-container">
+    <div class="img-wrap">
+      <div [hidden]="isUser" class="bg-img bg-img-user"></div>
+      <div [hidden]="isAdmin" class="bg-img bg-img-admin"></div>
+    </div>
+    <div class="form-wrap">
+      <mat-card>
+        <mat-tab-group>
+          <mat-tab label="Увійти">
+            <app-login></app-login>
+          </mat-tab>
+          <mat-tab label="Зареєструватись">
+            <app-sign-in></app-sign-in>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card>
+    </div>
+  </div>
+</div>

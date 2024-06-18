@@ -10,13 +10,14 @@ import {
   ViewChildren,
 } from '@angular/core';
 import { NgClass, NgFor, NgIf, NgStyle } from '@angular/common';
+import { MatProgressBar } from '@angular/material/progress-bar';
+import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms';
+
 import { Test } from '../../../../models/online-test.model';
 import { TestOptions } from '../../../../models/test-options.model';
-import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { SelectedTestResultComponent } from '../selected-test-result/selected-test-result.component';
 import { FormButtonsComponent } from './form-buttons/form-buttons.component';
 import { ScrollService } from '../../../../services/scroll.service';
-import { MatProgressBar } from '@angular/material/progress-bar';
 
 @Component({
   selector: 'app-selected-test-form',
