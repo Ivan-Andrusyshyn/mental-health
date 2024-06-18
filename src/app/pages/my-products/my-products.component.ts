@@ -1,4 +1,4 @@
-import { Component, Inject, inject } from '@angular/core';
+import { Component, Inject, inject, OnInit } from '@angular/core';
 import { ChosenProductsService } from '../../shared/services/chosenProducts.service';
 import { Product } from '../../shared/models/product.model';
 import { MyProductListComponent } from '../../shared/components/my-product-list/my-product-list.component';
@@ -22,14 +22,15 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   templateUrl: './my-products.component.html',
   styleUrl: './my-products.component.css',
 })
-export class MyProductsComponent {
+export class MyProductsComponent implements OnInit {
   private cpService = inject(ChosenProductsService);
 
   private dialogRef = inject(MatDialog);
 
   products: Product[] = [];
   chosenProductPage: string = 'chosenProductPage';
-  constructor() {
+  constructor() {}
+  ngOnInit(): void {
     this.cpService
       .getChosenProducts()
       .pipe(takeUntilDestroyed())
@@ -37,7 +38,6 @@ export class MyProductsComponent {
         this.products = resp;
       });
   }
-
   openDialog(): void {
     this.dialogRef.open(EmailFormComponent, {
       width: '500px',

@@ -55,7 +55,6 @@ export class ProductsComponent {
 
     this.paginatorIntl.itemsPerPageLabel = 'Товарів на сторінці';
   }
-
   onPageChange(event: PageEvent) {
     this.pageSize = event.pageSize;
     this.currentPage = event.pageIndex;

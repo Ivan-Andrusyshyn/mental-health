@@ -1,21 +1,34 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { AuthService } from '../../shared/services/auth.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [RouterOutlet],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
   private authService = inject(AuthService);
 
-  loginUser() {
-    this.authService.loginUser();
-  }
+  isUser: boolean = false;
+  isAdmin: boolean = false;
 
-  loginAdmin() {
-    this.authService.loginAdmin();
+  constructor() {
+    this.authService
+      .getIsUserObservable()
+      .pipe(takeUntilDestroyed())
+      .subscribe((isUser) => {
+        this.isUser = isUser;
+      });
+
+    this.authService
+      .getIsAdminObservable()
+      .pipe(takeUntilDestroyed())
+      .subscribe((isAdmin) => {
+        this.isAdmin = isAdmin;
+      });
   }
 }

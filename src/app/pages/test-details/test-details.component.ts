@@ -6,6 +6,7 @@ import { TestsService } from '../../shared/services/tests.service';
 import { Test } from '../../shared/models/online-test.model';
 
 import { GoBackBtnComponent } from '../../shared/components/go-back-btn/go-back-btn.component';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-test-details',
@@ -20,7 +21,7 @@ export class TestDetailsComponent {
   selectedTest!: Test;
 
   constructor() {
-    this.route.params.subscribe((resp) => {
+    this.route.params.pipe(takeUntilDestroyed()).subscribe((resp) => {
       const { id } = resp;
       const tests = this.testsService.getTests();
       this.selectedTest = tests.filter((pr) => pr.id === +id)[0];
