@@ -8,6 +8,7 @@ import { SignInComponent } from '../../auth-components/sign-in/sign-in.component
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-header-modal',
@@ -25,6 +26,7 @@ import { MatCardModule } from '@angular/material/card';
 export class HeaderModalComponent {
   private authService = inject(AuthService);
   private location = inject(Location);
+  private dialogRef = inject(MatDialogRef<HeaderModalComponent>);
 
   isUser: boolean = false;
   isAdmin: boolean = false;
@@ -47,5 +49,9 @@ export class HeaderModalComponent {
       .subscribe((isAdmin) => {
         this.isAdmin = isAdmin;
       });
+  }
+
+  closeModal(): void {
+    this.dialogRef.close();
   }
 }

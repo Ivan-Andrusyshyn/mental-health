@@ -8,13 +8,13 @@
 }
 
 .header-wrap {
-  max-width: 1200px;
+  max-width: 1370px;
   margin: 0 auto;
   padding: 2rem 1.5rem;
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   box-sizing: border-box;
 }
 

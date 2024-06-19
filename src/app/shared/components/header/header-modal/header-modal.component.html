@@ -1,9 +1,14 @@
 <div class="auth-modal">
   <h2 class="auth-title">Авторизация</h2>
+  <button mat-icon-button class="close-button" (click)="closeModal()">
+    <svg class="icon-close">
+      <use xlink:href="../../../../assets/sprite.svg#icon-cross"></use>
+    </svg>
+  </button>
   <div class="auth-container">
     <div class="img-wrap">
-      <div [hidden]="isUser" class="bg-img bg-img-user"></div>
-      <div [hidden]="isAdmin" class="bg-img bg-img-admin"></div>
+      <div [hidden]="isUser" class="bg-img bg-img-admin"></div>
+      <div [hidden]="isAdmin" class="bg-img bg-img-user"></div>
     </div>
     <div class="form-wrap">
       <mat-card>

@@ -18,7 +18,26 @@
 
   color: #2c3e50;
 }
+.close-button {
+  top: 10px;
+  right: 10px;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+.close-button svg {
+  width: 20px;
+  height: 20px;
+
+  cursor: pointer;
+  fill: #333333cb;
+  transition: all 0.25s;
+}
+.close-button:hover svg {
+  fill: #ca3838be;
+}
 .auth-container {
   gap: 1rem;
 
@@ -35,11 +54,11 @@
   background-position: center;
   background-size: cover;
 }
-.bg-img-admin {
+.bg-img-user {
   background-image: url("https://mhealthzdravo.com.ua/_nuxt/auth_popup_left_img.-l1XQQ3T.svg");
 }
-.bg-img-user {
-  background-image: url("https://tse4.mm.bing.net/th?id=OIP.XKdZgJT9MaVBqYDg-5JlvgAAAA&pid=Api&P=0&h=480");
+.bg-img-admin {
+  background-image: url("https://mhealthzdravo.com.ua/_nuxt/ps_help_general.CLS-Zifm.svg");
 }
 .img-wrap {
   flex: 1;
