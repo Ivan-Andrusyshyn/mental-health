@@ -3,30 +3,30 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Location } from '@angular/common';
 
 import { AuthService } from '../../../services/auth.service';
-import { LoginComponent } from '../../auth-components/login/login.component';
-import { SignInComponent } from '../../auth-components/sign-in/sign-in.component';
+import { LoginComponent } from '../login/login.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogRef } from '@angular/material/dialog';
+import { SignUpComponent } from '../sign-up/sign-up.component';
 
 @Component({
-  selector: 'app-header-modal',
+  selector: 'app-auth-modal',
   standalone: true,
   imports: [
     LoginComponent,
     MatTabsModule,
     MatCardModule,
     MatButtonModule,
-    SignInComponent,
+    SignUpComponent,
   ],
-  templateUrl: './header-modal.component.html',
-  styleUrl: './header-modal.component.css',
+  templateUrl: './auth-modal.component.html',
+  styleUrl: './auth-modal.component.css',
 })
-export class HeaderModalComponent {
+export class AuthModalComponent {
   private authService = inject(AuthService);
   private location = inject(Location);
-  private dialogRef = inject(MatDialogRef<HeaderModalComponent>);
+  private dialogRef = inject(MatDialogRef<AuthModalComponent>);
 
   isUser: boolean = false;
   isAdmin: boolean = false;
@@ -35,7 +35,6 @@ export class HeaderModalComponent {
   constructor() {
     const state = this.location.path();
     this.isLoginPage = state.includes('login') ? true : false;
-
     this.authService
       .getIsUserObservable()
       .pipe(takeUntilDestroyed())

@@ -1,10 +1,11 @@
 <div class="auth-modal">
-  <h2 class="auth-title">Авторизация</h2>
+  <h2 class="auth-title">Авторизація</h2>
   <button mat-icon-button class="close-button" (click)="closeModal()">
     <svg class="icon-close">
       <use xlink:href="../../../../assets/sprite.svg#icon-cross"></use>
     </svg>
   </button>
+
   <div class="auth-container">
     <div class="img-wrap">
       <div [hidden]="isUser" class="bg-img bg-img-admin"></div>
@@ -16,8 +17,8 @@
           <mat-tab label="Увійти">
             <app-login></app-login>
           </mat-tab>
-          <mat-tab label="Зареєструватись">
-            <app-sign-in></app-sign-in>
+          <mat-tab label="Зареєструватися">
+            <app-sign-up></app-sign-up>
           </mat-tab>
         </mat-tab-group>
       </mat-card>

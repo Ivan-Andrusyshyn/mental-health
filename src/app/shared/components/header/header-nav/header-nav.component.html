@@ -18,7 +18,7 @@
     <li class="nav-item" routerLinkActive="active">
       <a [routerLink]="['/products']">Товари</a>
     </li>
-    @if(isAuthUser){
+    @if(isAuthRoleUser){
     <li class="nav-item" routerLinkActive="active">
       <a [routerLink]="['/online-tests']">Тестування</a>
     </li>
@@ -42,25 +42,25 @@
       <app-social-links></app-social-links>
     </div>
 
-    }@else if(isAuthAdmin){
+    }@else if(isAuthRoleAdmin){
     <li class="nav-item" routerLinkActive="active">
       <a [routerLink]="['/add-new-product']">Додати товар</a>
     </li>
     <li class="nav-item" routerLinkActive="active">
-      <app-menu></app-menu>
+      <app-admin-panel-menu></app-admin-panel-menu>
     </li>
     }
-    <li
-      class="nav-item auth-btn"
-      routerLinkActive="active"
-      (click)="openLoginModal()"
-    >
-      <button>
+    <li class="nav-item auth-btn" routerLinkActive="active">
+      @if(!userData?.uid){
+      <button type="button" (click)="openLoginModal()">
         <svg class="icon-user">
           <use xlink:href="../../../../assets/sprite.svg#icon-user"></use>
         </svg>
         Авторизація
       </button>
+      }@else{
+      <app-user-menu (logOut)="logOut()"></app-user-menu>
+      }
     </li>
   </ul>
 </nav>

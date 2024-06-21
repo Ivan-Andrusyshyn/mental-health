@@ -1,0 +1,44 @@
+<div class="profile-page">
+  <div class="profile-container">
+    <h2>Профіль користувача</h2>
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+      <mat-form-field class="form-group" appearance="fill">
+        <mat-label>Им'я</mat-label>
+        <input
+          matInput
+          id="name"
+          formControlName="name"
+          placeholder="Введите имя"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-group" appearance="fill">
+        <mat-label> Пошта</mat-label>
+        <input
+          matInput
+          id="email"
+          formControlName="email"
+          type="email"
+          placeholder="Введите электронную почту"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-group" appearance="fill">
+        <mat-label>Пароль</mat-label>
+        <input
+          matInput
+          id="password"
+          formControlName="password"
+          type="password"
+          placeholder="Введите новый пароль"
+        />
+      </mat-form-field>
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="profileForm.invalid"
+      >
+        Обновити профіль
+      </button>
+    </form>
+  </div>
+</div>

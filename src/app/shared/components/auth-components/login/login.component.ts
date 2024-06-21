@@ -23,14 +23,16 @@ export class LoginComponent {
   private fb = inject(FormBuilder);
 
   loginForm!: FormGroup;
+
   role: Role = {
     isAdmin: false,
     isUser: true,
   };
+  isLogin: boolean = true;
 
   constructor() {
     this.loginForm = this.fb.group({
-      role: ['user', Validators.required],
+      role: ['User', Validators.required],
       email: ['user@gmail.com', [Validators.required, Validators.email]],
       password: ['123456', [Validators.required, Validators.minLength(6)]],
     });
@@ -42,7 +44,7 @@ export class LoginComponent {
         this.role.isUser = isUser;
         if (isUser)
           this.loginForm.patchValue({
-            role: 'user',
+            role: 'User',
           });
       });
 
@@ -53,7 +55,7 @@ export class LoginComponent {
         this.role.isAdmin = isAdmin;
         if (isAdmin)
           this.loginForm.patchValue({
-            role: 'admin',
+            role: 'Admin',
           });
       });
   }
@@ -61,12 +63,12 @@ export class LoginComponent {
   changeRole(event: MatSelectChange): void {
     const selectedRole = event.value;
     this.authService.onChangeRole(selectedRole);
-    if (selectedRole === 'user') {
+    if (selectedRole === 'User') {
       this.loginForm.patchValue({
         email: 'user@gmail.com',
         password: '123456',
       });
-    } else if (selectedRole === 'admin') {
+    } else if (selectedRole === 'Admin') {
       this.loginForm.patchValue({
         email: 'admin@gmail.com',
         password: '123456',
@@ -80,12 +82,16 @@ export class LoginComponent {
     const formValues = this.loginForm.value;
     const role = formValues.role;
 
-    if (role === 'user') {
+    this.authService.signIn(
+      this.loginForm.value.email,
+      this.loginForm.value.password,
+      role
+    );
+
+    if (role === 'User') {
       this.authService.loginUser();
-    } else if (role === 'admin') {
+    } else if (role === 'Admin') {
       this.authService.loginAdmin();
     }
-
-    console.log('Form Submitted', formValues);
   }
 }

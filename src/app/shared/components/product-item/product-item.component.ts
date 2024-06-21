@@ -6,6 +6,7 @@ import { NgIf } from '@angular/common';
 import { type ChosenProducts, Product } from '../../models/product.model';
 import { AuthService } from '../../services/auth.service';
 import { ProductsService } from '../../services/products.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-product-item',
@@ -25,10 +26,16 @@ export class ProductItemComponent {
   chosenProduct: boolean = false;
 
   get authUser() {
-    return this.authService.getIsAuthUser();
+    return this.authService
+      .getIsUserObservable()
+      .pipe(takeUntilDestroyed())
+      .subscribe((role) => role);
   }
   get authAdmin() {
-    return this.authService.getIsAuthAdmin();
+    return this.authService
+      .getIsAdminObservable()
+      .pipe(takeUntilDestroyed())
+      .subscribe((role) => role);
   }
   constructor() {
     if (this.router.url === '/products') {

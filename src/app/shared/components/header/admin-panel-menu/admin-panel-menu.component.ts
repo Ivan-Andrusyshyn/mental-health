@@ -4,13 +4,13 @@ import { MatMenuModule } from '@angular/material/menu';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
-  selector: 'app-menu',
+  selector: 'app-admin-panel-menu',
   standalone: true,
   imports: [MatMenuModule, RouterLink, RouterLinkActive],
-  templateUrl: './menu.component.html',
-  styleUrl: './menu.component.css',
+  templateUrl: './admin-panel-menu.component.html',
+  styleUrl: './admin-panel-menu.component.css',
 })
-export class MenuComponent {
+export class AdminPanelMenuComponent {
   @ViewChild(MatMenuTrigger) trigger!: MatMenuTrigger;
 
   someMethod() {

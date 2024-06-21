@@ -31,6 +31,7 @@
   width: 20px;
   height: 20px;
 
+  position: absolute;
   cursor: pointer;
   fill: #333333cb;
   transition: all 0.25s;

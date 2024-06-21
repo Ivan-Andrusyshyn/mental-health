@@ -18,6 +18,8 @@ import { SelectedTestComponent } from './pages/selected-test/selected-test.compo
 import { TestDetailsComponent } from './pages/test-details/test-details.component';
 import { SuccessEmailComponent } from './pages/success-email/success-email.component';
 import { PsychologicalHelpComponent } from './pages/psychological-help/psychological-help.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -71,6 +73,11 @@ export const routes: Routes = [
     path: 'add-new-product',
     component: AddNewProductComponent,
     canActivate: [authAdminGuard],
+  },
+  {
+    path: 'user-profile',
+    component: UserProfileComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'change-email',

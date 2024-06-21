@@ -1,0 +1,23 @@
+<div class="user-menu">
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <img
+      src="https://img.freepik.com/free-icon/user_318-563642.jpg"
+      alt="User Menu"
+      class="user-icon"
+    />
+  </button>
+  <mat-menu #menu="matMenu">
+    <button [routerLink]="['/user-profile']" mat-menu-item>
+      <mat-icon>person</mat-icon>
+      <span>Профайл</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>settings</mat-icon>
+      <span>Налаштування</span>
+    </button>
+    <button mat-menu-item (click)="onLogOut()">
+      <mat-icon>logout</mat-icon>
+      <span>Вийти</span>
+    </button>
+  </mat-menu>
+</div>

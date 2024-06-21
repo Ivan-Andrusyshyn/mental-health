@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
+  backendUrl: 'http://127.0.0.1:8000',
   firebaseConfig: {
     apiKey: 'AIzaSyDZySQKBbGVduYe7ZPGQYWT9xJwLpiVI_A',
     authDomain: 'mental-health-6b7e3.firebaseapp.com',

@@ -2,6 +2,7 @@
   <app-auth-form
     (submit)="onSubmit()"
     (changeRole)="changeRole($event)"
-    [loginForm]="loginForm"
+    [formGroupAuth]="loginForm"
+    [isLogin]="isLogin"
   ></app-auth-form>
 </div>

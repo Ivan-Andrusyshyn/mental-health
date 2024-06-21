@@ -1,13 +1,16 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { ChosenProductsService } from '../../../services/chosenProducts.service';
+import { MatButtonModule } from '@angular/material/button';
 import { NgIf } from '@angular/common';
-import { AuthService } from '../../../services/auth.service';
-import { MenuComponent } from '../menu/menu.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { SocialLinksComponent } from '../../social-links/social-links.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { HeaderModalComponent } from '../header-modal/header-modal.component';
+
+import { ChosenProductsService } from '../../../services/chosenProducts.service';
+import { AuthService } from '../../../services/auth.service';
+import { SocialLinksComponent } from '../../social-links/social-links.component';
+import { UserMenuComponent } from '../user-menu/user-menu.component';
+import { AuthModalComponent } from '../../auth-components/auth-modal/auth-modal.component';
+import { AdminPanelMenuComponent } from '../admin-panel-menu/admin-panel-menu.component';
 
 @Component({
   selector: 'app-header-nav',
@@ -17,9 +20,10 @@ import { HeaderModalComponent } from '../header-modal/header-modal.component';
     NgIf,
     SocialLinksComponent,
     RouterLinkActive,
-    MenuComponent,
     MatDialogModule,
-    HeaderModalComponent,
+    MatButtonModule,
+    AdminPanelMenuComponent,
+    UserMenuComponent,
   ],
   templateUrl: './header-nav.component.html',
   styleUrl: './header-nav.component.css',
@@ -30,8 +34,35 @@ export class HeaderNavComponent {
   private dialog = inject(MatDialog);
 
   amountProducts!: number;
+  isAuthRoleUser: boolean = false;
+  isAuthRoleAdmin: boolean = false;
+
+  userData: any = null;
 
   constructor() {
+    this.authService
+      .getIsUserObservable()
+      .pipe(takeUntilDestroyed())
+      .subscribe((role) => {
+        this.isAuthRoleUser = role;
+      });
+    this.authService
+      .getIsAdminObservable()
+      .pipe(takeUntilDestroyed())
+      .subscribe((role) => {
+        this.isAuthRoleAdmin = role;
+      });
+    this.authService.user$.subscribe((user) => {
+      if (!user) return;
+      this.userData = {
+        uid: user?.uid,
+        email: user?.email,
+        displayName: user?.displayName,
+        photoURL: user?.phoneNumber,
+        emailVerified: user?.emailVerified,
+      };
+    });
+
     this.cp
       .getChosenProducts()
       .pipe(takeUntilDestroyed())
@@ -39,14 +70,11 @@ export class HeaderNavComponent {
         this.amountProducts = resp.length;
       });
   }
-
-  get isAuthUser() {
-    return this.authService.getIsAuthUser();
+  logOut() {
+    this.authService.logout();
+    this.userData = null;
   }
   openLoginModal(): void {
-    this.dialog.open(HeaderModalComponent);
-  }
-  get isAuthAdmin() {
-    return this.authService.getIsAuthAdmin();
+    this.dialog.open(AuthModalComponent);
   }
 }

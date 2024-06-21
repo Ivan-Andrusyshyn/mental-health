@@ -77,7 +77,37 @@ License: "MIT"
 
 
 --------------------------------------------------------------------------------
-Package: @firebase/app
+Package: firebase
+License: "Apache-2.0"
+
+
+--------------------------------------------------------------------------------
+Package: @angular/fire
+License: "MIT"
+
+
+--------------------------------------------------------------------------------
+Package: @firebase/app-check
+License: "Apache-2.0"
+
+
+--------------------------------------------------------------------------------
+Package: @firebase/webchannel-wrapper
+License: "Apache-2.0"
+
+
+--------------------------------------------------------------------------------
+Package: @firebase/firestore
+License: "Apache-2.0"
+
+
+--------------------------------------------------------------------------------
+Package: @firebase/firestore-compat
+License: "Apache-2.0"
+
+
+--------------------------------------------------------------------------------
+Package: @firebase/database
 License: "Apache-2.0"
 
 
@@ -88,6 +118,11 @@ License: "Apache-2.0"
 
 --------------------------------------------------------------------------------
 Package: @firebase/component
+License: "Apache-2.0"
+
+
+--------------------------------------------------------------------------------
+Package: @firebase/app
 License: "Apache-2.0"
 
 
@@ -108,16 +143,6 @@ Permission to use, copy, modify, and/or distribute this software for any purpose
 THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 --------------------------------------------------------------------------------
-Package: firebase
-License: "Apache-2.0"
-
-
---------------------------------------------------------------------------------
-Package: @angular/fire
-License: "MIT"
-
-
---------------------------------------------------------------------------------
 Package: @firebase/app-compat
 License: "Apache-2.0"
 
@@ -128,17 +153,7 @@ License: "Apache-2.0"
 
 
 --------------------------------------------------------------------------------
-Package: @firebase/webchannel-wrapper
-License: "Apache-2.0"
-
-
---------------------------------------------------------------------------------
-Package: @firebase/firestore
-License: "Apache-2.0"
-
-
---------------------------------------------------------------------------------
-Package: @firebase/database
+Package: @firebase/auth-compat
 License: "Apache-2.0"
 
 

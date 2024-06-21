@@ -32,6 +32,9 @@ export class ProductDetailComponent {
 
   private authService = inject(AuthService);
 
+  isAuthUser: boolean = false;
+  isAuthAdmin: boolean = false;
+
   product!: Product;
 
   constructor() {
@@ -46,12 +49,17 @@ export class ProductDetailComponent {
       .subscribe((resp) => {
         this.product = resp.filter((pr) => pr.id === +productId)[0];
       });
-  }
-
-  get authAdmin() {
-    return this.authService.getIsAuthAdmin();
-  }
-  get authUser() {
-    return this.authService.getIsAuthUser();
+    this.authService
+      .getIsUserObservable()
+      .pipe(takeUntilDestroyed())
+      .subscribe((role) => {
+        this.isAuthUser = role;
+      });
+    this.authService
+      .getIsAdminObservable()
+      .pipe(takeUntilDestroyed())
+      .subscribe((role) => {
+        this.isAuthAdmin = role;
+      });
   }
 }
