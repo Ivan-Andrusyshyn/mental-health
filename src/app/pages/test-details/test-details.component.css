@@ -1,5 +1,6 @@
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 .container h2 {
@@ -10,7 +11,9 @@
   font-family: var(--font-title);
   line-height: 1.1;
 }
-
+.goBack-btn-wrap {
+  padding: 3rem 1rem;
+}
 .container p {
   display: block;
   font-size: 1.2rem;
@@ -140,7 +143,7 @@
 
   .card:hover,
   .card:focus-within {
-    transform: scale(1.05);
+    transform: scale(1.02);
     transition: transform 500ms ease-in;
   }
 

@@ -29,13 +29,18 @@
   color: gray;
   font-weight: 400;
 }
-
-.goBack-btn-wrap {
-  padding: 1rem;
+.form-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .test-subtitle {
   font-size: 1.5rem;
   margin-bottom: 15px;
+}
+.goBack-btn-wrap {
+  padding: 1rem;
 }
 .summary-container {
   text-align: center;

@@ -16,6 +16,7 @@ export class UserMenuComponent {
   router = inject(Router);
   private authService = inject(AuthService);
 
+  @Input() userName!: string;
   @Output() logOut = new EventEmitter<void>();
 
   onLogOut() {

@@ -24,20 +24,22 @@ export class ProductItemComponent {
 
   currentPageProduct: boolean = true;
   chosenProduct: boolean = false;
+  authUser = false;
+  authAdmin = false;
 
-  get authUser() {
-    return this.authService
+  constructor() {
+    this.authService
       .getIsUserObservable()
       .pipe(takeUntilDestroyed())
-      .subscribe((role) => role);
-  }
-  get authAdmin() {
-    return this.authService
+      .subscribe((role) => {
+        this.authUser = role;
+      });
+    this.authService
       .getIsAdminObservable()
       .pipe(takeUntilDestroyed())
-      .subscribe((role) => role);
-  }
-  constructor() {
+      .subscribe((role) => {
+        this.authAdmin = role;
+      });
     if (this.router.url === '/products') {
       this.currentPageProduct = true;
     } else {

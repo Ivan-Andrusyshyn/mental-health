@@ -55,7 +55,6 @@ export class SignUpComponent {
 
   changeRole(event: MatSelectChange): void {
     const selectedRole = event.value;
-    this.authService.onChangeRole(selectedRole);
     if (selectedRole === 'User') {
       this.signupForm.patchValue({
         displayName: 'User',
@@ -82,6 +81,7 @@ export class SignUpComponent {
     this.authService.signUp(
       this.signupForm.value.email,
       this.signupForm.value.password,
+      this.signupForm.value.displayName,
       role
     );
     if (role === 'User') {

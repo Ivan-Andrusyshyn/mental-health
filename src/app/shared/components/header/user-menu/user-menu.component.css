@@ -1,3 +1,14 @@
+.user-menu-container {
+  gap: 0.5rem;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+.user-menu-container p {
+  font-weight: 500;
+}
 .user-menu {
   border: 1px solid #010101;
   width: 44px;

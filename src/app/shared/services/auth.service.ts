@@ -114,7 +114,12 @@ export class AuthService {
     }
   }
 
-  async signUp(email: string, password: string, role: string): Promise<void> {
+  async signUp(
+    email: string,
+    password: string,
+    displayName: string,
+    role: string
+  ): Promise<void> {
     try {
       const currentUser = await this.afAuth.currentUser;
       if (currentUser) {
@@ -130,6 +135,7 @@ export class AuthService {
         email,
         password
       );
+      await result.user?.updateProfile({ displayName: displayName });
       await this.handleAuthSuccess(result.user, role);
     } catch (error: any) {
       console.error('Registration error: ', error);

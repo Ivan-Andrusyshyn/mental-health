@@ -1,5 +1,11 @@
 <div>
   <div
+    *ngIf="currentQuestionIndex !== selectedTest.questions.length"
+    class="goBack-btn-wrap"
+  >
+    <app-tests-go-back-btn></app-tests-go-back-btn>
+  </div>
+  <div
     class="title-wrap"
     *ngIf="currentQuestionIndex !== selectedTest.questions.length"
   >
@@ -24,7 +30,10 @@
     ></app-selected-test-form>
   </div>
 
-  <div class="goBack-btn-wrap">
+  <div
+    *ngIf="currentQuestionIndex === selectedTest.questions.length"
+    class="goBack-btn-wrap"
+  >
     <app-tests-go-back-btn></app-tests-go-back-btn>
   </div>
 </div>

@@ -62,7 +62,6 @@ export class LoginComponent {
 
   changeRole(event: MatSelectChange): void {
     const selectedRole = event.value;
-    this.authService.onChangeRole(selectedRole);
     if (selectedRole === 'User') {
       this.loginForm.patchValue({
         email: 'user@gmail.com',

@@ -11,6 +11,7 @@ import { ProductMoreInfoComponent } from '../../shared/components/product-more-i
 import { SliderComponent } from './slider/slider.component';
 import { GoBackBtnComponent } from '../../shared/components/go-back-btn/go-back-btn.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TestsGoBackBtnComponent } from '../../shared/components/online-tests/tests-go-back-btn/tests-go-back-btn.component';
 
 @Component({
   selector: 'app-product-detail',
@@ -22,6 +23,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
     GoBackBtnComponent,
     ProductMoreInfoComponent,
     BuyBtnComponent,
+    TestsGoBackBtnComponent,
   ],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css',

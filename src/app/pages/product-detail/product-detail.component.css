@@ -18,3 +18,6 @@
   align-items: center;
   gap: 1rem;
 }
+.goBack-btn-wrap {
+  padding: 1rem;
+}

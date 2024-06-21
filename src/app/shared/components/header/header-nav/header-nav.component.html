@@ -59,7 +59,10 @@
         Авторизація
       </button>
       }@else{
-      <app-user-menu (logOut)="logOut()"></app-user-menu>
+      <app-user-menu
+        [userName]="userData?.displayName"
+        (logOut)="logOut()"
+      ></app-user-menu>
       }
     </li>
   </ul>

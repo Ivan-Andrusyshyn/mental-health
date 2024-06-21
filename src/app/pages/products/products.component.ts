@@ -46,8 +46,6 @@ export class ProductsComponent {
       .getObservableProducts()
       .pipe(takeUntilDestroyed())
       .subscribe((resp) => {
-        console.log(resp);
-
         this.products = resp.slice();
         this.filteredProducts = resp.slice();
         this.updatePaginatedProducts();
