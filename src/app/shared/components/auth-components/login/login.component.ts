@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSelectChange } from '@angular/material/select';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -22,6 +22,7 @@ export class LoginComponent {
   private authService = inject(AuthService);
   private fb = inject(FormBuilder);
 
+  @Output() onChangeRole = new EventEmitter<void>();
   loginForm!: FormGroup;
 
   role: Role = {
@@ -62,6 +63,7 @@ export class LoginComponent {
 
   changeRole(event: MatSelectChange): void {
     const selectedRole = event.value;
+    this.onChangeRole.emit();
     if (selectedRole === 'User') {
       this.loginForm.patchValue({
         email: 'user@gmail.com',

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
@@ -24,6 +24,7 @@ export class SignUpComponent {
   isLogin: boolean = false;
 
   signupForm!: FormGroup;
+  @Output() onChangeRole = new EventEmitter<void>();
 
   role: Role = {
     isAdmin: false,
@@ -55,6 +56,7 @@ export class SignUpComponent {
 
   changeRole(event: MatSelectChange): void {
     const selectedRole = event.value;
+    this.onChangeRole.emit();
     if (selectedRole === 'User') {
       this.signupForm.patchValue({
         displayName: 'User',

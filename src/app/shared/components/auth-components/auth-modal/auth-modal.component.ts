@@ -30,6 +30,7 @@ export class AuthModalComponent {
 
   isUser: boolean = false;
   isAdmin: boolean = false;
+
   isLoginPage: boolean = true;
 
   constructor() {
@@ -49,7 +50,17 @@ export class AuthModalComponent {
         this.isAdmin = isAdmin;
       });
   }
-
+  onChangeRole() {
+    if (this.isUser) {
+      // admin
+      this.isAdmin = true;
+      this.isUser = false;
+    } else {
+      // user
+      this.isAdmin = false;
+      this.isUser = true;
+    }
+  }
   closeModal(): void {
     this.dialogRef.close();
   }
