@@ -1,11 +1,15 @@
 .header-menu-btn {
   text-decoration: none;
 
-  font-weight: 600;
+  font-weight: 500;
   color: #060606;
   background-color: transparent;
   cursor: pointer;
+  transition: all 0.25s;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.header-menu-btn:hover {
+  color: #ca3838be;
 }
 .active a {
   color: #ca3838be;

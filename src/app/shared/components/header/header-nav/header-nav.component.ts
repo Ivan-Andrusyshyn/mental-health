@@ -52,7 +52,7 @@ export class HeaderNavComponent {
       .subscribe((role) => {
         this.isAuthRoleAdmin = role;
       });
-    this.authService.user$.subscribe((user) => {
+    this.authService.user$.pipe(takeUntilDestroyed()).subscribe((user) => {
       if (!user) return;
       this.userData = {
         uid: user?.uid,
