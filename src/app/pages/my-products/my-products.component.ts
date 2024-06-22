@@ -1,12 +1,11 @@
-import { Component, Inject, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ChosenProductsService } from '../../shared/services/chosenProducts.service';
 import { Product } from '../../shared/models/product.model';
-import { MyProductListComponent } from '../../shared/components/my-product-list/my-product-list.component';
+import { MyProductListComponent } from '../../shared/components/products/my-product-list/my-product-list.component';
 import { EmailFormComponent } from '../../shared/email-form/email-form.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { TotalAmountComponent } from './total-amount/total-amount.component';
-import { ActivatedRoute } from '@angular/router';
+import { TotalAmountComponent } from '../../shared/components/products/total-amount/total-amount.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
@@ -18,6 +17,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
     MatButtonModule,
     EmailFormComponent,
     TotalAmountComponent,
+    MyProductListComponent,
   ],
   templateUrl: './my-products.component.html',
   styleUrl: './my-products.component.css',

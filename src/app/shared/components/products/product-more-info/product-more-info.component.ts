@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { Product } from '../../models/product.model';
+import { Product } from '../../../models/product.model';
 import { NgFor } from '@angular/common';
 
 @Component({

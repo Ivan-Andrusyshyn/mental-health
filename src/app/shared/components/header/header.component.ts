@@ -12,6 +12,4 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HeaderComponent {
   private authService = inject(AuthService);
-
-  constructor() {}
 }

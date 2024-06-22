@@ -16,7 +16,7 @@ export class BuyBtnComponent {
   @Input() productId!: number;
   @Input() quantity!: number;
   @Input() obviously!: number;
-
+  @Input() isMyProductPage!: boolean;
   chosenProductsService = inject(ChosenProductsService);
   isVisible = false;
 

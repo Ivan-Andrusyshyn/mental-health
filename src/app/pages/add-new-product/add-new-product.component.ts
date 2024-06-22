@@ -7,7 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ProductsService } from '../../shared/services/products.service';
-import { ProductFormComponent } from '../../shared/components/product-form/product-form.component';
+import { ProductFormComponent } from '../../shared/components/products/product-form/product-form.component';
 
 @Component({
   selector: 'app-add-new-product',

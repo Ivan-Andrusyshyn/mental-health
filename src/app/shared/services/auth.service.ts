@@ -168,16 +168,6 @@ export class AuthService {
     return user !== null && user.emailVerified !== false;
   }
 
-  async authLogin(provider: firebase.auth.AuthProvider): Promise<void> {
-    try {
-      const result = await this.afAuth.signInWithPopup(provider);
-      await this.handleAuthSuccess(result.user, 'user');
-    } catch (error) {
-      console.error('Auth login error: ', error);
-      alert(error);
-    }
-  }
-
   private async setUserData(user: firebase.User): Promise<void> {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}`

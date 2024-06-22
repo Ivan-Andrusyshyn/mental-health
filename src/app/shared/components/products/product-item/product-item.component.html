@@ -27,6 +27,7 @@
         [quantity]="product.productQuantity"
         [productId]="product.id"
         [obviously]="product.obviously"
+        [isMyProductPage]="isMyProductPage"
       />
       <app-edit-link *ngIf="authAdmin" [productId]="product.id" />
 

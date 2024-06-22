@@ -4,12 +4,12 @@
   #menuTrigger1="matMenuTrigger"
   class="buy-btn"
 >
-  Купити
+  {{ isMyProductPage ? "Змінити кількість" : "Купити" }}
 </button>
 <mat-menu #myMenu="matMenu">
   <div class="dialog-btn-wrap" matMenuContent>
     <button
-      [disabled]="quantity === 0"
+      [disabled]="quantity === 0 || (quantity === 1 && isMyProductPage)"
       (click)="decrementProduct($event)"
       mat-menu-item
     >

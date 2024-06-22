@@ -5,7 +5,7 @@ import { Location, NgIf } from '@angular/common';
 
 import { ProductsService } from '../../shared/services/products.service';
 import { type Product } from '../../shared/models/product.model';
-import { ProductFormComponent } from '../../shared/components/product-form/product-form.component';
+import { ProductFormComponent } from '../../shared/components/products/product-form/product-form.component';
 import { GoBackBtnComponent } from '../../shared/components/go-back-btn/go-back-btn.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 

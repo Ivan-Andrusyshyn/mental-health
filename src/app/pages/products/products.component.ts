@@ -10,7 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { MatInputModule } from '@angular/material/input';
-import { ProductListComponent } from '../../shared/components/product-list/product-list.component';
+import { ProductListComponent } from '../../shared/components/products/product-list/product-list.component';
 import { Product } from '../../shared/models/product.model';
 import { ProductsService } from '../../shared/services/products.service';
 import { FilterProductsPipe } from '../../shared/pipes/filter-products.pipe';

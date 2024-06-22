@@ -13,6 +13,8 @@ import { DatePipe, NgFor } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { AuthService } from '../../shared/services/auth.service';
+import { TestsGoBackBtnComponent } from '../../shared/components/online-tests/tests-go-back-btn/tests-go-back-btn.component';
+import { GoBackBtnComponent } from '../../shared/components/go-back-btn/go-back-btn.component';
 
 interface Message {
   text: string;
@@ -29,6 +31,7 @@ interface Message {
     MatCardModule,
     NgFor,
     DatePipe,
+    GoBackBtnComponent,
   ],
   templateUrl: './support.component.html',
   styleUrl: './support.component.css',

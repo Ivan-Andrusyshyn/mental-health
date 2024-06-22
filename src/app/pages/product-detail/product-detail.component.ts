@@ -7,7 +7,7 @@ import { Product } from '../../shared/models/product.model';
 import { EditLinkComponent } from '../../shared/components/edit-link/edit-link.component';
 import { BuyBtnComponent } from '../../shared/components/buy-btn/buy-btn.component';
 import { AuthService } from '../../shared/services/auth.service';
-import { ProductMoreInfoComponent } from '../../shared/components/product-more-info/product-more-info.component';
+import { ProductMoreInfoComponent } from '../../shared/components/products/product-more-info/product-more-info.component';
 import { SliderComponent } from './slider/slider.component';
 import { GoBackBtnComponent } from '../../shared/components/go-back-btn/go-back-btn.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';

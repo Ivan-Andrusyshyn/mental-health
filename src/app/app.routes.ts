@@ -87,7 +87,7 @@ export const routes: Routes = [
   {
     path: 'support',
     component: SupportComponent,
-    canActivate: [authAdminGuard],
+    canActivate: [authGuard],
   },
   {
     path: 'about-shop',
