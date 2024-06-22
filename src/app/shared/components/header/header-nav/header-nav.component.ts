@@ -62,7 +62,6 @@ export class HeaderNavComponent {
         emailVerified: user?.emailVerified,
       };
     });
-    console.log(this.userData.photoURL);
 
     this.cp
       .getChosenProducts()

@@ -26,7 +26,7 @@
       <p>Дзвінки на них з усіх мобільних операторів є безоплатними:</p>
     </div>
   </div>
-  <div class="btn-wrap">
+  <div class="btn-wrap" *ngIf="userData?.userId">
     <button class="card__button" [routerLink]="['/support']">
       Написати нам
       <svg class="icon-user">
