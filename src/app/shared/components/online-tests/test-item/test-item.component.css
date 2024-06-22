@@ -1,45 +1,22 @@
-:root {
-  /* Basic */
-  --c-white: #fff;
-  --c-black: #000;
-
-  /* Greys */
-  --c-ash: #eaeef6;
-  --c-charcoal: #a0a0a0;
-  --c-void: #141b22;
-
-  /* Beige/Browns */
-  --c-fair-pink: #ffedec;
-  --c-apricot: #fbc8be;
-  --c-coffee: #754d42;
-  --c-del-rio: #917072;
-
-  /* Greens */
-  --c-java: #1fcac5;
-
-  /* Purples */
-  --c-titan-white: #f1eeff;
-  --c-cold-purple: #a69fd6;
-  --c-indigo: #6558d3;
-  --c-governor: #4133b7;
-}
-
 .test-item {
   border: 1px solid transparent;
   border-radius: 20px;
   box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.06);
 
   display: flex;
+  width: 425px;
   flex-direction: column;
   overflow: hidden;
   background: #fff;
   transition: all 0.5s;
   list-style: none;
 }
-
+.img-title-wrap {
+  display: flex;
+  width: 100%;
+}
 .btns-wrap {
   margin: 0 auto;
-  width: 300px;
 
   display: flex;
   justify-content: center;
@@ -56,7 +33,7 @@
   object-fit: contain;
 }
 .test-text-content {
-  width: 300px;
+  width: 100%;
 }
 .test-item h3 {
   margin: 0;
@@ -72,16 +49,55 @@
   color: #555;
 }
 
+.hidden-text {
+  opacity: 0;
+  width: 0px;
+  height: 0px;
+  bottom: -1.4rem;
+  right: 0;
+  font-size: 0.85rem;
+  border-radius: 1rem;
+  padding: 0.5rem;
+
+  position: absolute;
+  overflow: hidden;
+  transition: all 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #555;
+  color: #fff;
+  display: block;
+}
+
+.readMore-btn:hover .read-more {
+  width: 132px;
+  height: 50px;
+  right: -80%;
+  opacity: 1;
+}
+.lets-start {
+  right: -86%;
+  bottom: 1.4rem;
+  background-color: rgb(36, 160, 36);
+}
+
+.start-test-btn:hover .lets-start {
+  width: 132px;
+  height: 50px;
+  opacity: 1;
+}
 .card {
   border-radius: 16px;
   box-shadow: 0 30px 30px -25px rgba(65, 51, 183, 0.25);
-  max-width: 300px;
-  height: 400px;
+  max-width: 425px;
+  max-height: 400px;
 }
 
 .information {
   background-color: var(--c-white);
   padding: 1.5rem;
+  position: relative;
 }
 .information img {
   width: 200px;
@@ -131,5 +147,5 @@
 
 .information .button:hover,
 .information .button:focus {
-  transform: scale(1.01);
+  transform: scale(0.9);
 }
