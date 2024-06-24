@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../../shared/services/auth.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -10,6 +10,7 @@ import { NgIf } from '@angular/common';
   imports: [RouterLink, NgIf],
   templateUrl: './psychological-help.component.html',
   styleUrl: './psychological-help.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PsychologicalHelpComponent {
   private authSv = inject(AuthService);

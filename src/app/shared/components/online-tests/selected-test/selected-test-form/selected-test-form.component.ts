@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   EventEmitter,
@@ -34,6 +35,7 @@ import { ScrollService } from '../../../../services/scroll.service';
   ],
   templateUrl: './selected-test-form.component.html',
   styleUrl: './selected-test-form.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectedTestFormComponent implements OnDestroy {
   private scrollService = inject(ScrollService);
@@ -70,6 +72,7 @@ export class SelectedTestFormComponent implements OnDestroy {
   }
   onCalculateScore() {
     this.calculateScore.emit();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   getCurrentQuestionValid(): boolean {

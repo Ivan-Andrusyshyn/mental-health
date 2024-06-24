@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, filter, Observable, switchMap, take } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
 import { environment } from '../../../environments/environment.development';
@@ -63,7 +63,14 @@ export class AuthService {
   }
 
   getUserId(): Observable<any> {
-    return this.http.get(this.userIdUrl);
+    return this.user$.pipe(
+      filter((user: any) => !!user),
+      take(1),
+      switchMap((user) => {
+        const userIdUrl = `${environment.backendUrl}/${user?.uid}`;
+        return this.http.get(userIdUrl);
+      })
+    );
   }
 
   onChangeRole(role: string) {

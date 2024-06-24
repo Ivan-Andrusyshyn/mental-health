@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
@@ -29,6 +29,7 @@ import { FilterProductsPipe } from '../../shared/pipes/filter-products.pipe';
   ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsComponent {
   productsService = inject(ProductsService);

@@ -1,11 +1,5 @@
-import { Component, inject } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ProductsService } from '../../shared/services/products.service';
 import { ProductFormComponent } from '../../shared/components/products/product-form/product-form.component';
 
@@ -15,6 +9,7 @@ import { ProductFormComponent } from '../../shared/components/products/product-f
   imports: [ProductFormComponent],
   templateUrl: './add-new-product.component.html',
   styleUrls: ['./add-new-product.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddNewProductComponent {
   productsService = inject(ProductsService);

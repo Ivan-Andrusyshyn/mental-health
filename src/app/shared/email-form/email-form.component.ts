@@ -1,4 +1,10 @@
-import { Component, Inject, inject, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  inject,
+  Input,
+} from '@angular/core';
 import { Product } from '../models/product.model';
 import { NgFor } from '@angular/common';
 import { ChosenProductsService } from '../services/chosenProducts.service';
@@ -10,6 +16,7 @@ import { TotalAmountComponent } from '../components/products/total-amount/total-
   imports: [NgFor, TotalAmountComponent],
   templateUrl: './email-form.component.html',
   styleUrl: './email-form.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EmailFormComponent {
   productList: Product[] = [];

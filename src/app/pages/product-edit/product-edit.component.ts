@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Location, NgIf } from '@angular/common';
@@ -20,6 +20,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   ],
   templateUrl: './product-edit.component.html',
   styleUrl: './product-edit.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductEditComponent {
   productsService = inject(ProductsService);
@@ -30,6 +31,7 @@ export class ProductEditComponent {
 
   productForm!: FormGroup;
   imageUrl: string = '';
+  lastPath: string = 'products';
 
   product!: Product;
 

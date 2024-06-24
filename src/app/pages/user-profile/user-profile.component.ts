@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -26,12 +26,15 @@ import { GoBackBtnComponent } from '../../shared/components/go-back-btn/go-back-
   ],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserProfileComponent {
   profileForm: FormGroup;
-  isLogin: boolean = false;
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
+
+  isLogin: boolean = false;
+  lastPath: string = 'home';
 
   constructor() {
     this.profileForm = this.fb.group({

@@ -1,4 +1,9 @@
-import { Component, inject, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnInit,
+} from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { NgClass, NgIf } from '@angular/common';
 import {
@@ -32,6 +37,7 @@ import { CalculateScoreService } from './calculateScore.service';
   ],
   templateUrl: './selected-test.component.html',
   styleUrl: './selected-test.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectedTestComponent implements OnInit {
   route = inject(ActivatedRoute);
@@ -44,6 +50,7 @@ export class SelectedTestComponent implements OnInit {
   score: number | null = null;
   currentQuestionIndex: number = 0;
   testForm!: FormGroup;
+  lastPath: string = 'online-tests';
 
   constructor() {
     this.options = testOptions;

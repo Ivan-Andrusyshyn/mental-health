@@ -22,6 +22,7 @@
 .message-title {
   width: 100%;
   font-weight: 600;
+  margin-bottom: 0.5rem;
   border-bottom: 1px solid #ccc;
 }
 .mat-toolbar {

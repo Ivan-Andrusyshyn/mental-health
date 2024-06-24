@@ -1,10 +1,14 @@
+.app-container {
+}
+
 .outlet-wrap {
   padding-top: 100px;
 }
 .main {
   width: 100%;
   margin: 0 auto;
-  max-width: 1400px;
+  min-height: 1040px;
+  max-width: 1370px;
   padding: 1rem;
 }
 .footer-wrap {

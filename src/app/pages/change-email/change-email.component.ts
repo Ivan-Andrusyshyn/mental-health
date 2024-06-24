@@ -1,5 +1,10 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnInit,
+} from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
@@ -20,6 +25,7 @@ import { ChangeEmailService } from '../../shared/services/change-email.service';
   ],
   templateUrl: './change-email.component.html',
   styleUrl: './change-email.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChangeEmailComponent implements OnInit {
   private changeEmailService = inject(ChangeEmailService);

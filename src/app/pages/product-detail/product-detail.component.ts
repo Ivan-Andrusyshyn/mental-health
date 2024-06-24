@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgIf } from '@angular/common';
 
@@ -27,17 +27,18 @@ import { TestsGoBackBtnComponent } from '../../shared/components/online-tests/te
   ],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductDetailComponent {
   productsService = inject(ProductsService);
   route = inject(ActivatedRoute);
-
   private authService = inject(AuthService);
 
   isAuthUser: boolean = false;
   isAuthAdmin: boolean = false;
 
   product!: Product;
+  lastPath: string = 'products';
 
   constructor() {
     let productId: number;

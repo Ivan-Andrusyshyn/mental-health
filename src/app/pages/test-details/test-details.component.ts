@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
 
@@ -15,11 +15,13 @@ import { TestsGoBackBtnComponent } from '../../shared/components/online-tests/te
   imports: [NgIf, TestsGoBackBtnComponent, RouterLink],
   templateUrl: './test-details.component.html',
   styleUrl: './test-details.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TestDetailsComponent {
   route = inject(ActivatedRoute);
   testsService = inject(TestsService);
   selectedTest!: Test;
+  lastPath: string = 'online-tests';
 
   constructor() {
     this.route.params.pipe(takeUntilDestroyed()).subscribe((resp) => {

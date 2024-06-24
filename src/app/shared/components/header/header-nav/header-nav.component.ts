@@ -1,4 +1,11 @@
-import { Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  inject,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { NgIf } from '@angular/common';
@@ -27,11 +34,13 @@ import { AdminPanelMenuComponent } from '../admin-panel-menu/admin-panel-menu.co
   ],
   templateUrl: './header-nav.component.html',
   styleUrl: './header-nav.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderNavComponent {
   private cp = inject(ChosenProductsService);
   private authService = inject(AuthService);
   private dialog = inject(MatDialog);
+  private cdr = inject(ChangeDetectorRef);
 
   amountProducts!: number;
   isAuthRoleUser: boolean = false;
@@ -45,13 +54,16 @@ export class HeaderNavComponent {
       .pipe(takeUntilDestroyed())
       .subscribe((role) => {
         this.isAuthRoleUser = role;
+        this.cdr.markForCheck();
       });
     this.authService
       .getIsAdminObservable()
       .pipe(takeUntilDestroyed())
       .subscribe((role) => {
         this.isAuthRoleAdmin = role;
+        this.cdr.markForCheck();
       });
+
     this.authService.user$.pipe(takeUntilDestroyed()).subscribe((user) => {
       if (!user) return;
       this.userData = {
@@ -61,12 +73,14 @@ export class HeaderNavComponent {
         photoURL: user?.phoneNumber,
         emailVerified: user?.emailVerified,
       };
+      this.cdr.markForCheck();
     });
 
     this.cp
       .getChosenProducts()
       .pipe(takeUntilDestroyed())
       .subscribe((resp) => {
+        this.cdr.markForCheck();
         this.amountProducts = resp.length;
       });
   }
@@ -74,6 +88,7 @@ export class HeaderNavComponent {
     this.authService.logout();
     this.userData = null;
   }
+
   openLoginModal(): void {
     this.dialog.open(AuthModalComponent);
   }

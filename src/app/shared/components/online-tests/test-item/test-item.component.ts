@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -7,6 +7,7 @@ import { RouterLink } from '@angular/router';
   imports: [RouterLink],
   templateUrl: './test-item.component.html',
   styleUrl: './test-item.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TestItemComponent {
   @Input() test: any;

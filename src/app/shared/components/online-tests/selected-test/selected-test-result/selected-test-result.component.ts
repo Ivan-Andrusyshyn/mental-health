@@ -1,4 +1,9 @@
-import { Component, inject, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  Input,
+} from '@angular/core';
 import { TestsService } from '../../../../services/tests.service';
 import { TestsResult } from '../../../../models/testsResult.model';
 import { ModalComponent } from '../modal/modal.component';
@@ -10,6 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
   imports: [],
   templateUrl: './selected-test-result.component.html',
   styleUrl: './selected-test-result.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectedTestResultComponent {
   @Input() score!: number | null;

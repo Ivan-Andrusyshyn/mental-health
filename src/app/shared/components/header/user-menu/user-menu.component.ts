@@ -1,4 +1,11 @@
-import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  inject,
+  Input,
+  Output,
+} from '@angular/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -11,6 +18,7 @@ import { Router, RouterLink } from '@angular/router';
   imports: [MatMenuModule, RouterLink, MatIconModule, MatButtonModule],
   templateUrl: './user-menu.component.html',
   styleUrl: './user-menu.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserMenuComponent {
   router = inject(Router);

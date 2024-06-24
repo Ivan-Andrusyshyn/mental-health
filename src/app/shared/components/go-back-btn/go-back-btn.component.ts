@@ -1,5 +1,11 @@
 import { Location } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  Input,
+} from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-go-back-btn',
@@ -7,11 +13,14 @@ import { Component, inject } from '@angular/core';
   imports: [],
   templateUrl: './go-back-btn.component.html',
   styleUrl: './go-back-btn.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GoBackBtnComponent {
-  location = inject(Location);
+  @Input() lastPath!: string;
+
+  private router = inject(Router);
 
   goBack() {
-    this.location.back();
+    this.router.navigate([this.lastPath]);
   }
 }

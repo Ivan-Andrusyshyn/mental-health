@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SocialLinksComponent } from '../social-links/social-links.component';
 @Component({
@@ -7,5 +7,6 @@ import { SocialLinksComponent } from '../social-links/social-links.component';
   imports: [RouterLink, SocialLinksComponent],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FooterComponent {}

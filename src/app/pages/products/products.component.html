@@ -19,7 +19,7 @@
   <app-product-list
     [products]="paginatedProducts | filterProducts : searchControl.value"
   ></app-product-list>
-  <ng-container *ngIf="filteredProducts.length > 5">
+  <ng-container *ngIf="filteredProducts.length >= 5">
     <mat-paginator
       style="background-color: #f4f4f4"
       [length]="filteredProducts.length"

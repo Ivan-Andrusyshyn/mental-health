@@ -1,7 +1,8 @@
 .product-list {
   padding: 1rem 0;
   gap: 2rem;
-  max-width: 1400px;
+  max-width: 1370px;
+  height: 100%;
   margin: 0 auto;
 
   display: flex;

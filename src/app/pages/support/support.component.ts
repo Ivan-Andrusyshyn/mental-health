@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -13,7 +13,6 @@ import { DatePipe, NgFor } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { AuthService } from '../../shared/services/auth.service';
-import { TestsGoBackBtnComponent } from '../../shared/components/online-tests/tests-go-back-btn/tests-go-back-btn.component';
 import { GoBackBtnComponent } from '../../shared/components/go-back-btn/go-back-btn.component';
 
 interface Message {
@@ -35,6 +34,7 @@ interface Message {
   ],
   templateUrl: './support.component.html',
   styleUrl: './support.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SupportComponent {
   private authService = inject(AuthService);
@@ -42,6 +42,7 @@ export class SupportComponent {
   messageForm: FormGroup;
   messages: Message[] = [];
   userData: any;
+  lastPath: string = 'home';
 
   constructor(private fb: FormBuilder) {
     this.authService.user$.pipe(takeUntilDestroyed()).subscribe((user) => {

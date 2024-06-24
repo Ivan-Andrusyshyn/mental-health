@@ -1,99 +1,125 @@
 import { Routes } from '@angular/router';
-
-import { HomeComponent } from './pages/home/home.component';
-import { ProductsComponent } from './pages/products/products.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { ProductEditComponent } from './pages/product-edit/product-edit.component';
-import { AboutShopComponent } from './pages/about-shop/about-shop.component';
 import { authUserGuard } from './authUserGuard.guard';
 import { authAdminGuard } from './auth-admin.guard';
-import { AddNewProductComponent } from './pages/add-new-product/add-new-product.component';
-import { MyProductsComponent } from './pages/my-products/my-products.component';
-import { ChangeEmailComponent } from './pages/change-email/change-email.component';
-import { SupportComponent } from './pages/support/support.component';
-import { ProductsResolver } from './products.resolver';
-import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
-import { OnlineTestsComponent } from './pages/online-tests/online-tests.component';
-import { SelectedTestComponent } from './pages/selected-test/selected-test.component';
-import { TestDetailsComponent } from './pages/test-details/test-details.component';
-import { SuccessEmailComponent } from './pages/success-email/success-email.component';
-import { PsychologicalHelpComponent } from './pages/psychological-help/psychological-help.component';
-import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: 'home',
-    component: HomeComponent,
+    loadComponent: () =>
+      import('./pages/home/home.component').then((m) => m.HomeComponent),
   },
   {
     path: 'products',
-    component: ProductsComponent,
+    loadComponent: () =>
+      import('./pages/products/products.component').then(
+        (m) => m.ProductsComponent
+      ),
   },
   {
     path: 'product/:id',
-    component: ProductDetailComponent,
+    loadComponent: () =>
+      import('./pages/product-detail/product-detail.component').then(
+        (m) => m.ProductDetailComponent
+      ),
   },
   {
     path: 'psychological-help',
-    component: PsychologicalHelpComponent,
+    loadComponent: () =>
+      import('./pages/psychological-help/psychological-help.component').then(
+        (m) => m.PsychologicalHelpComponent
+      ),
   },
   {
     path: 'online-tests',
-    component: OnlineTestsComponent,
     canActivate: [authUserGuard],
+    loadComponent: () =>
+      import('./pages/online-tests/online-tests.component').then(
+        (m) => m.OnlineTestsComponent
+      ),
   },
   {
     path: 'test/success-email',
-    component: SuccessEmailComponent,
     canActivate: [authUserGuard],
+    loadComponent: () =>
+      import('./pages/success-email/success-email.component').then(
+        (m) => m.SuccessEmailComponent
+      ),
   },
   {
     path: 'test/:id',
-    component: SelectedTestComponent,
     canActivate: [authUserGuard],
+    loadComponent: () =>
+      import('./pages/selected-test/selected-test.component').then(
+        (m) => m.SelectedTestComponent
+      ),
   },
   {
     path: 'test-details/:id',
-    component: TestDetailsComponent,
     canActivate: [authUserGuard],
+    loadComponent: () =>
+      import('./pages/test-details/test-details.component').then(
+        (m) => m.TestDetailsComponent
+      ),
   },
   {
     path: 'my-products',
-    component: MyProductsComponent,
     canActivate: [authUserGuard],
+    loadComponent: () =>
+      import('./pages/my-products/my-products.component').then(
+        (m) => m.MyProductsComponent
+      ),
   },
   {
     path: 'products/edit/:id',
-    component: ProductEditComponent,
     canActivate: [authAdminGuard],
+    loadComponent: () =>
+      import('./pages/product-edit/product-edit.component').then(
+        (m) => m.ProductEditComponent
+      ),
   },
   {
     path: 'add-new-product',
-    component: AddNewProductComponent,
     canActivate: [authAdminGuard],
+    loadComponent: () =>
+      import('./pages/add-new-product/add-new-product.component').then(
+        (m) => m.AddNewProductComponent
+      ),
   },
   {
     path: 'user-profile',
-    component: UserProfileComponent,
     canActivate: [authGuard],
+    loadComponent: () =>
+      import('./pages/user-profile/user-profile.component').then(
+        (m) => m.UserProfileComponent
+      ),
   },
   {
     path: 'change-email',
-    component: ChangeEmailComponent,
     canActivate: [authAdminGuard],
+    loadComponent: () =>
+      import('./pages/change-email/change-email.component').then(
+        (m) => m.ChangeEmailComponent
+      ),
   },
   {
     path: 'support',
-    component: SupportComponent,
     canActivate: [authGuard],
+    loadComponent: () =>
+      import('./pages/support/support.component').then(
+        (m) => m.SupportComponent
+      ),
   },
   {
     path: 'about-shop',
-    component: AboutShopComponent,
     canActivate: [authUserGuard],
+    loadComponent: () =>
+      import('./pages/about-shop/about-shop.component').then(
+        (m) => m.AboutShopComponent
+      ),
   },
-  { path: '**', redirectTo: 'not-found' },
   { path: 'not-found', component: NotFoundComponent },
+  { path: '**', redirectTo: 'not-found' },
 ];

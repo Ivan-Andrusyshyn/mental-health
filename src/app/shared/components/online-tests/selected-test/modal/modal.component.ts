@@ -1,6 +1,12 @@
 import { NgIf } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, Inject, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  OnInit,
+} from '@angular/core';
+import { Router } from '@angular/router';
 import {
   FormBuilder,
   FormGroup,
@@ -21,7 +27,6 @@ import {
   MatLabel,
 } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal',
@@ -40,6 +45,7 @@ import { Router } from '@angular/router';
   ],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModalComponent implements OnInit {
   emailForm!: FormGroup;

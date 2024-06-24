@@ -1,5 +1,5 @@
 import { NgFor } from '@angular/common';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { AboutShop, aboutShop } from './about-shop-info';
 
 @Component({
@@ -8,6 +8,7 @@ import { AboutShop, aboutShop } from './about-shop-info';
   imports: [NgFor],
   templateUrl: './about-shop.component.html',
   styleUrls: ['./about-shop.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AboutShopComponent {
   aboutShop: AboutShop[] = aboutShop;

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -7,6 +7,7 @@ import { RouterLink } from '@angular/router';
   imports: [RouterLink],
   templateUrl: './edit-link.component.html',
   styleUrl: './edit-link.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EditLinkComponent {
   @Input() productId!: number;

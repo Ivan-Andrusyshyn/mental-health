@@ -1,4 +1,9 @@
-import { Component, inject, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  Input,
+} from '@angular/core';
 import { ChosenProductsService } from '../../services/chosenProducts.service';
 
 @Component({
@@ -7,6 +12,7 @@ import { ChosenProductsService } from '../../services/chosenProducts.service';
   imports: [],
   templateUrl: './cancel-btn.component.html',
   styleUrl: './cancel-btn.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CancelBtnComponent {
   @Input() productId!: number;

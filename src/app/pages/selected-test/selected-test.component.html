@@ -3,7 +3,7 @@
     *ngIf="currentQuestionIndex !== selectedTest.questions.length"
     class="goBack-btn-wrap"
   >
-    <app-tests-go-back-btn></app-tests-go-back-btn>
+    <app-tests-go-back-btn [lastPath]="lastPath"></app-tests-go-back-btn>
   </div>
   <div
     class="title-wrap"
@@ -34,6 +34,6 @@
     *ngIf="currentQuestionIndex === selectedTest.questions.length"
     class="goBack-btn-wrap"
   >
-    <app-tests-go-back-btn></app-tests-go-back-btn>
+    <app-tests-go-back-btn [lastPath]="lastPath"></app-tests-go-back-btn>
   </div>
 </div>

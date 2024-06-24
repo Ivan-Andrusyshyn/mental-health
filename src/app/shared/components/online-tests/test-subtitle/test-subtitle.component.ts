@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-test-subtitle',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './test-subtitle.component.html',
   styleUrl: './test-subtitle.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TestSubtitleComponent {}
