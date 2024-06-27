@@ -1,0 +1,7 @@
+<li routerLinkActive="active" [routerLink]="['/my-diary/diary-note', entry.id]">
+  <div class="entry">
+    <h3>{{ entry.date | date : "dd.MM.yyyy" }}</h3>
+    <p><strong>Настрій:</strong> {{ entry.mood }}</p>
+    <p><strong>Опис:</strong> {{ entry.description }}</p>
+  </div>
+</li>

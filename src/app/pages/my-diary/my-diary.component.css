@@ -1,0 +1,62 @@
+.container {
+  max-width: 1370px;
+  padding: 1rem;
+  margin: 0 auto;
+}
+.container h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.5rem;
+
+  text-align: center;
+  font-weight: bold;
+  color: #2c3e50;
+}
+.outlet-wrap {
+  width: 1370px;
+  min-height: 500px;
+  border-radius: 1rem;
+  padding: 2rem;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+.btn-wrap {
+  padding: 1rem 2rem;
+}
+.note-container {
+  gap: 2rem;
+  min-height: 800px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.card__button {
+  margin-top: 1rem;
+  padding: 0.75em 1.6em;
+  font-size: 1.125rem;
+  border-radius: 0.45em;
+  outline: 2px solid #010101;
+  transition: all cubic-bezier(0.075, 0.82, 0.165, 1);
+  color: #010101;
+  gap: 1rem;
+
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  width: -moz-fit-content;
+  font-variant: small-caps;
+  font-weight: bold;
+  border: none;
+  background-color: var(--brand-color);
+  font-family: var(--font-title);
+
+  cursor: pointer;
+}
+.card__button:hover {
+  outline: none;
+}

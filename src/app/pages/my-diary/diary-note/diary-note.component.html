@@ -1,0 +1,22 @@
+<div *ngIf="selectedNote; else loadingTemplate">
+  <h3>{{ selectedNote.date | date : "dd.MM.yyyy" }}</h3>
+  <p><strong>Настрій:</strong> {{ selectedNote.mood }}</p>
+  <p><strong>Опис:</strong> {{ selectedNote.description }}</p>
+  <p><strong>Фізичний стан:</strong> {{ selectedNote.physicalState }}</p>
+  <p><strong>Емоції:</strong> {{ selectedNote.emotions }}</p>
+  <p><strong>Події:</strong> {{ selectedNote.events }}</p>
+  <p>
+    <strong>Методи самодопомоги:</strong> {{ selectedNote.selfCareMethods }}
+  </p>
+  <p><strong>Досягнення:</strong> {{ selectedNote.achievements }}</p>
+  <p><strong>Вдячність:</strong> {{ selectedNote.gratitude }}</p>
+  <p><strong>Нотатки:</strong> {{ selectedNote.notes }}</p>
+  <button class="note-delete-btn" (click)="deleteEntry(selectedNote.id)">
+    Видалити
+  </button>
+</div>
+<ng-template #loadingTemplate>
+  <div *ngIf="loading$ | async" class="loading">
+    <p>Loading...</p>
+  </div>
+</ng-template>

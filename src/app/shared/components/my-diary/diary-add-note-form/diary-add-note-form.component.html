@@ -1,0 +1,54 @@
+<form [formGroup]="entryForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label>Настрій (1-10)</mat-label>
+    <input matInput type="number" formControlName="mood" min="1" max="10" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Опис</mat-label>
+    <textarea matInput formControlName="description"></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Фізичний стан (1-10)</mat-label>
+    <input
+      matInput
+      type="number"
+      formControlName="physicalState"
+      min="1"
+      max="10"
+    />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Емоції (через кому)</mat-label>
+    <input matInput formControlName="emotions" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Події</mat-label>
+    <textarea matInput formControlName="events"></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Методи самодогляду</mat-label>
+    <textarea matInput formControlName="selfCareMethods"></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Досягнення</mat-label>
+    <textarea matInput formControlName="achievements"></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Вдячність (через кому)</mat-label>
+    <input matInput formControlName="gratitude" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Нотатки</mat-label>
+    <textarea matInput formControlName="notes"></textarea>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Додати запис</button>
+</form>

@@ -1,0 +1,44 @@
+<div class="diary-bg">
+  <div class="diary-list">
+    <ul>
+      <div class="slider">
+        <div
+          class="slides"
+          [style.transform]="'translateX(' + -currentIndex * 200 + 'px)'"
+        >
+          <app-diary-item
+            *ngFor="let entry of entries$ | async"
+            [entry]="entry"
+          ></app-diary-item>
+          <div *ngIf="!(entries$ | async)">
+            <div class="spinner-wrap" *ngIf="loading$ | async">
+              <mat-progress-spinner
+                class="spinner"
+                mode="indeterminate"
+                color="warn"
+              ></mat-progress-spinner>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        *ngIf="totalLength > 1"
+        class="diary-btn prev"
+        mat-icon-button
+        (click)="prev()"
+        [disabled]="currentIndex === 0"
+      >
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+      <button
+        *ngIf="totalLength > 3"
+        class="diary-btn next"
+        mat-icon-button
+        (click)="next()"
+        [disabled]="currentIndex === totalLength"
+      >
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </ul>
+  </div>
+</div>

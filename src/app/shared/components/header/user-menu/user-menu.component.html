@@ -12,9 +12,9 @@
         <mat-icon>person</mat-icon>
         <span>Профайл</span>
       </button>
-      <button mat-menu-item>
-        <mat-icon>settings</mat-icon>
-        <span>Налаштування</span>
+      <button [routerLink]="['/my-diary']" mat-menu-item>
+        <mat-icon>library_books</mat-icon>
+        <span>Мій щоденник</span>
       </button>
       <button mat-menu-item (click)="onLogOut()">
         <mat-icon>logout</mat-icon>

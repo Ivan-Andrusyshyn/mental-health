@@ -26,6 +26,31 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'my-diary',
+    loadComponent: () =>
+      import('./pages/my-diary/my-diary.component').then(
+        (m) => m.MyDiaryComponent
+      ),
+    canActivate: [authGuard],
+    children: [
+      {
+        path: 'diary-note/:id',
+        loadComponent: () =>
+          import('./pages/my-diary/diary-note/diary-note.component').then(
+            (m) => m.DiaryNoteComponent
+          ),
+      },
+    ],
+  },
+  {
+    path: 'my-diary/add-note',
+    loadComponent: () =>
+      import('./pages/diary-add-note/diary-add-note.component').then(
+        (m) => m.DiaryAddNoteComponent
+      ),
+    canActivate: [authGuard],
+  },
+  {
     path: 'psychological-help',
     loadComponent: () =>
       import('./pages/psychological-help/psychological-help.component').then(
