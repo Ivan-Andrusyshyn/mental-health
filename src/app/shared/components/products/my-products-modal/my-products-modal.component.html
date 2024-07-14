@@ -1,0 +1,104 @@
+<form
+  [class.success-wrap]="submitSuccess()"
+  [formGroup]="myProductsForm"
+  (ngSubmit)="onSubmit()"
+  class="form"
+>
+  <div class="amount-price">
+    <span> Загальна сума: </span>
+    {{ calculateTotalAmount }} грн
+  </div>
+  <div class="form-group">
+    <label for="name">Ім'я:</label>
+    <input
+      type="text"
+      formControlName="name"
+      id="name"
+      class="form-control"
+      [class.invalid]="
+        myProductsForm.get('name')?.invalid &&
+        myProductsForm.get('name')?.touched
+      "
+    />
+    <div
+      *ngIf="
+        myProductsForm.get('name')?.invalid &&
+        myProductsForm.get('name')?.touched
+      "
+      class="error-message"
+    >
+      Ім'я обов'язкове.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="email">Пошта:</label>
+    <input
+      type="email"
+      formControlName="email"
+      id="email"
+      class="form-control"
+      [class.invalid]="
+        myProductsForm.get('email')?.invalid &&
+        myProductsForm.get('email')?.touched
+      "
+    />
+    <div
+      *ngIf="
+        myProductsForm.get('email')?.invalid &&
+        myProductsForm.get('email')?.touched
+      "
+      class="error-message"
+    >
+      Введіть дійсну пошту.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="phoneNumber">Номер телефону:</label>
+    <input
+      type="text"
+      formControlName="phoneNumber"
+      id="phoneNumber"
+      class="form-control"
+      [class.invalid]="
+        myProductsForm.get('phoneNumber')?.invalid &&
+        myProductsForm.get('phoneNumber')?.touched
+      "
+    />
+    <div
+      *ngIf="
+        myProductsForm.get('phoneNumber')?.invalid &&
+        myProductsForm.get('phoneNumber')?.touched
+      "
+      class="error-message"
+    >
+      Номер телефону обов'язковий.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="text">Додаткова інформація:</label>
+    <textarea formControlName="text" id="text" class="form-control"></textarea>
+  </div>
+  <div class="form-group">
+    <label>Вибрані товари:</label>
+    <app-my-product-buy-list
+      [productList]="productList"
+      (removeProduct)="removeProduct($event)"
+    ></app-my-product-buy-list>
+  </div>
+  <button
+    type="submit"
+    class="btn-submit"
+    [disabled]="isLoading() || submitSuccess()"
+  >
+    <span *ngIf="!isLoading() && !submitSuccess() && !submitError()"
+      >Надіслати</span
+    >
+    <span *ngIf="isLoading()" class="loading-message">Зачекайте...</span>
+    <span *ngIf="submitError()" style="color: red" class="loading-message"
+      >Сталася помилка</span
+    >
+    <span *ngIf="submitSuccess()" class="loading-message">
+      Дякуємо за замовлення
+    </span>
+  </button>
+</form>

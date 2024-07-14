@@ -1,6 +1,6 @@
 import { Component, inject, Input } from '@angular/core';
 import { EditLinkComponent } from '../../edit-link/edit-link.component';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { BuyBtnComponent } from '../../buy-btn/buy-btn.component';
 import { NgIf } from '@angular/common';
 import { type ChosenProducts, Product } from '../../../models/product.model';
@@ -18,11 +18,9 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 export class ProductItemComponent {
   @Input() product!: Product;
 
-  private router = inject(Router);
   private authService = inject(AuthService);
   private productService = inject(ProductsService);
 
-  currentPageProduct: boolean = true;
   chosenProduct: boolean = false;
   authUser: boolean = false;
   authAdmin: boolean = false;
@@ -41,11 +39,6 @@ export class ProductItemComponent {
       .subscribe((role) => {
         this.authAdmin = role;
       });
-    if (this.router.url === '/products') {
-      this.currentPageProduct = true;
-    } else {
-      this.currentPageProduct = false;
-    }
   }
 
   removeProduct() {

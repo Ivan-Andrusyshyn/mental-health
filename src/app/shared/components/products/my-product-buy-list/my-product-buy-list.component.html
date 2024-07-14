@@ -1,0 +1,10 @@
+<ul class="product-list">
+  <li *ngFor="let product of productList">
+    <span class="product-name">{{ product.name }}</span>
+
+    <img [src]="product.photo" alt="" />
+    <span>Ціна: {{ product.price * product.productQuantity }}</span>
+    <span>Кількість: {{ product.productQuantity }}</span>
+    <span class="remove-product" (click)="onRemoveProduct(product)">❌</span>
+  </li>
+</ul>

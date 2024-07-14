@@ -1,0 +1,82 @@
+.user-list {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  list-style: none;
+  padding-left: 0;
+}
+.nav-item a {
+  text-decoration: none;
+
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  color: #060606;
+}
+.active .icon-cart {
+  fill: #ca3838be;
+}
+.nav-cart svg {
+  width: 28px;
+  height: 28px;
+  fill: #333;
+}
+
+.icon-user {
+  width: 28px;
+  height: 28px;
+
+  cursor: pointer;
+  fill: #333333cb;
+}
+.nav-item button:hover {
+  transform: scale(1.05);
+  color: #ca3838be;
+}
+.nav-item button:hover svg {
+  fill: #ca3838be;
+}
+.nav-cart {
+  position: relative;
+}
+.nav-item button {
+  text-decoration: none;
+
+  font-weight: 500;
+  display: flex;
+  transition: all 0.25s;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  align-items: center;
+  color: #060606;
+}
+
+.nav-item span {
+  width: 1.2rem;
+  height: 1.2rem;
+  font-weight: 500;
+  border-radius: 50%;
+  font-size: 12px;
+  right: -1rem;
+  top: -1.5rem;
+  border: 1px solid green;
+
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  color: #010101;
+  background-color: transparent;
+}
+.active a {
+  color: #ca3838be;
+  fill: #ca3838be;
+}
+.active .icon-cart {
+  fill: #ca3838be;
+}
+
+.social-links-wrap {
+  margin-left: 3rem;
+}

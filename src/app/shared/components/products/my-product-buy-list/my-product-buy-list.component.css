@@ -1,0 +1,36 @@
+.product-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.product-list img {
+  width: 35px;
+  height: 35px;
+}
+.product-list li {
+  padding: 4px 8px;
+  border-bottom: 1px solid #ccc;
+  gap: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.product-list span {
+  font-size: 12px;
+}
+.product-name {
+  width: 30%;
+}
+.remove-product {
+  cursor: pointer;
+  color: red;
+  font-size: 20px;
+  margin-left: 10px;
+}
+.product-list li:last-child {
+  border-bottom: none;
+}

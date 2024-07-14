@@ -19,29 +19,7 @@
       <a [routerLink]="['/products']">Товари</a>
     </li>
     @if(isAuthRoleUser){
-    <li class="nav-item" routerLinkActive="active">
-      <a [routerLink]="['/online-tests']">Тестування</a>
-    </li>
-    <li class="nav-item" routerLinkActive="active">
-      <a [routerLink]="['/psychological-help']">Психологічна допомога</a>
-    </li>
-    <li class="nav-item" routerLinkActive="active">
-      <a [routerLink]="['/about-shop']">Про нас</a>
-    </li>
-
-    <li class="nav-item nav-cart" routerLinkActive="active">
-      <a [routerLink]="['/my-products']">
-        <svg class="icon-cart">
-          <use xlink:href="../../../../assets/sprite.svg#icon-cart"></use>
-        </svg>
-      </a>
-
-      <span>{{ amountProducts }}</span>
-    </li>
-    <div class="social-links-wrap">
-      <app-social-links></app-social-links>
-    </div>
-
+    <app-user-nav></app-user-nav>
     }@else if(isAuthRoleAdmin){
     <li class="nav-item" routerLinkActive="active">
       <a [routerLink]="['/add-new-product']">Додати товар</a>
@@ -53,20 +31,5 @@
       <app-social-links></app-social-links>
     </div>
     }
-    <li class="nav-item auth-btn" routerLinkActive="active">
-      @if(!userData?.uid){
-      <button type="button" (click)="openLoginModal()">
-        <svg class="icon-user">
-          <use xlink:href="../../../../assets/sprite.svg#icon-user"></use>
-        </svg>
-        Авторизація
-      </button>
-      }@else{
-      <app-user-menu
-        [userName]="userData?.displayName"
-        (logOut)="logOut()"
-      ></app-user-menu>
-      }
-    </li>
   </ul>
 </nav>

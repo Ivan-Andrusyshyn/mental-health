@@ -39,9 +39,9 @@ export class ProductsService {
 
     for (let i = 0; i <= productsOriginal.length - 1; ++i) {
       products.push({
-        id: i,
+        id: productsOriginal[i].id,
         name: productsOriginal[i].name,
-        obviously: Obviously(i),
+        obviously: productsOriginal[i].obviously,
         description: productsOriginal[i].description,
         shortDescription: productsOriginal[i].shortDescription,
         inStock: productsOriginal[i].inStock,

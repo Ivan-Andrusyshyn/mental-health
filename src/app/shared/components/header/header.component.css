@@ -18,6 +18,39 @@
   box-sizing: border-box;
 }
 
+.menu-wrap {
+  margin-left: 2rem;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.icon-user {
+  width: 28px;
+  height: 28px;
+
+  cursor: pointer;
+  fill: #333333cb;
+}
+.menu-btn:hover {
+  transform: scale(1.05);
+  color: #ca3838be;
+}
+.menu-btn:hover svg {
+  fill: #ca3838be;
+}
+.menu-btn {
+  text-decoration: none;
+
+  font-weight: 500;
+  display: flex;
+  transition: all 0.25s;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  align-items: center;
+  color: #060606;
+}
 @media (max-width: 1200px) {
   .header-wrap {
     padding: 1rem;

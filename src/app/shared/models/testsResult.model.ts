@@ -10,4 +10,5 @@ export interface ExplanationItem {
   };
   results: string;
   text: string;
+  recomendIdList?: number[];
 }

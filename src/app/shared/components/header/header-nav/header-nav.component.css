@@ -59,22 +59,7 @@ a,
   align-items: center;
   justify-content: center;
 }
-.nav-item span {
-  width: 1.5rem;
-  height: 1.5rem;
-  font-weight: 500;
-  border-radius: 50%;
-  right: -1rem;
-  top: -1.5rem;
-  border: 1px solid green;
 
-  display: flex;
-  position: absolute;
-  justify-content: center;
-  align-items: center;
-  color: #010101;
-  background-color: transparent;
-}
 .active a {
   color: #ca3838be;
   fill: #ca3838be;

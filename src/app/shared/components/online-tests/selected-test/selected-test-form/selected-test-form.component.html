@@ -34,7 +34,7 @@
             class="progress-bar"
             mode="determinate"
             [value]="
-              (currentQuestionIndex / selectedTest.questions.length) * 100
+              ((currentQuestionIndex + 1) / selectedTest.questions.length) * 100
             "
           ></mat-progress-bar>
           <div class="test-question-number">
@@ -45,13 +45,6 @@
     </div>
   </div>
 
-  <!-- <app-form-buttons
-    (onNextQuestion)="onNextQuestion()"
-    (onPreviousQuestion)="onPreviousQuestion()"
-    [selectedTest]="selectedTest"
-    [currentQuestionIndex]="currentQuestionIndex"
-    [isDisabledButton]="!getCurrentQuestionValid()"
-  ></app-form-buttons> -->
   <div style="display: flex; justify-content: center">
     <button
       type="submit"

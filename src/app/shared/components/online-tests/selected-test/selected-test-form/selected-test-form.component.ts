@@ -17,7 +17,6 @@ import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Test } from '../../../../models/online-test.model';
 import { TestOptions } from '../../../../models/test-options.model';
 import { SelectedTestResultComponent } from '../selected-test-result/selected-test-result.component';
-import { FormButtonsComponent } from './form-buttons/form-buttons.component';
 import { ScrollService } from '../../../../services/scroll.service';
 
 @Component({
@@ -30,7 +29,6 @@ import { ScrollService } from '../../../../services/scroll.service';
     ReactiveFormsModule,
     NgIf,
     NgStyle,
-    FormButtonsComponent,
     MatProgressBar,
   ],
   templateUrl: './selected-test-form.component.html',

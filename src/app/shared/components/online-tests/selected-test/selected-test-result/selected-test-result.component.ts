@@ -4,15 +4,15 @@ import {
   inject,
   Input,
 } from '@angular/core';
-import { TestsService } from '../../../../services/tests.service';
-import { TestsResult } from '../../../../models/testsResult.model';
-import { ModalComponent } from '../modal/modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { TestsService } from '../../../../services/tests.service';
+import { ModalComponent } from '../modal/modal.component';
+import { RecommendProductsComponent } from '../../recommend-products/recommend-products.component';
 
 @Component({
   selector: 'app-selected-test-result',
   standalone: true,
-  imports: [],
+  imports: [RecommendProductsComponent],
   templateUrl: './selected-test-result.component.html',
   styleUrl: './selected-test-result.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -21,6 +21,7 @@ export class SelectedTestResultComponent {
   @Input() score!: number | null;
   @Input() testId!: number;
   @Input() testImg!: string;
+  recommendProducts: boolean = false;
 
   private testService = inject(TestsService);
   public dialog = inject(MatDialog);
@@ -54,6 +55,12 @@ export class SelectedTestResultComponent {
       if (!data) return;
       this.problem = data.problem;
       this.testResult = data.text;
+      if (data.recomendIdList) {
+        this.recommendProducts = true;
+        this.testService.filterProducts(data.recomendIdList);
+      } else {
+        this.recommendProducts = false;
+      }
     }
   }
 }

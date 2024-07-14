@@ -18,7 +18,10 @@ export class ScrollService {
 
     if (currentQuestionElement) {
       const targetPosition =
-        currentQuestionElement.getBoundingClientRect().top + window.pageYOffset;
+        currentQuestionElement.getBoundingClientRect().top +
+        window.pageYOffset -
+        180;
+      console.log(targetPosition);
 
       this.smoothDelay = setTimeout(() => {
         window.scrollTo({

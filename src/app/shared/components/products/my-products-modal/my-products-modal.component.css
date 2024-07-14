@@ -1,0 +1,99 @@
+.form {
+  min-width: 450px;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 8px;
+
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  position: relative;
+}
+
+.amount-price {
+  font-weight: 700;
+  font-size: 1rem;
+  right: 1rem;
+  top: 1rem;
+
+  color: #3f3f3f;
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+  text-align: right;
+  position: absolute;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+.form-control.invalid {
+  border-color: red;
+}
+textarea.form-control {
+  height: 60px;
+  resize: vertical;
+}
+
+.form-group input[type="checkbox"],
+.form-group input[type="radio"] {
+  margin-right: 10px;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  border-radius: 4px;
+
+  border: none;
+  display: block;
+  background-color: #28a745;
+  color: #fff;
+  cursor: pointer;
+}
+.success-wrap {
+  background-color: #28a74677;
+}
+.error-message {
+  color: red;
+  font-size: 0.875em;
+  width: 90%;
+}
+
+.success-message {
+  color: green;
+  font-size: 0.875em;
+}
+.btn-submit:hover {
+  background-color: #218838;
+}
+.loading-message {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  gap: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loading-message img {
+  width: 25px;
+  display: block;
+  border: 1px solid #fff;
+  height: 25px;
+}

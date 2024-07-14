@@ -43,7 +43,7 @@ export const productsOriginal = [
     description:
       'Кроксен - рослинний антидепресант, на основі екстракту шафрану, магнію та вітамінів групи В, який сприяє зниженню симптомів депресії, заспокоєнню та покращенню сну.',
     shortDescription: 'рослинний антидепресант',
-    inStock: false,
+    inStock: true,
     price: 660,
     priceDiscounted: 0,
     photo:
