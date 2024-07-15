@@ -33,6 +33,26 @@
   display: flex;
   justify-content: space-between;
 }
+.img-wrap {
+  border-radius: 1rem;
+  width: 400px;
+  padding: 1rem;
+
+  position: relative;
+  background-color: gainsboro;
+}
+.img-wrap p {
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  width: 200px;
+  padding: 0.5rem;
+  right: 0.5rem;
+  top: 0.5rem;
+  box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.06);
+  color: #00667e;
+  position: absolute;
+  background-color: #fff;
+}
 .diary-subtitle-wrap {
   max-width: 640px;
 }
@@ -55,7 +75,7 @@
   transition: all 0.5s;
 }
 .info-content img {
-  width: 350px;
+  width: 100%;
 }
 .btn-wrap {
   padding: 1rem 2rem;
