@@ -41,6 +41,7 @@ export class ProductsService {
       products.push({
         id: productsOriginal[i].id,
         name: productsOriginal[i].name,
+        slider_img: productsOriginal[i].slider_img,
         obviously: productsOriginal[i].obviously,
         description: productsOriginal[i].description,
         shortDescription: productsOriginal[i].shortDescription,

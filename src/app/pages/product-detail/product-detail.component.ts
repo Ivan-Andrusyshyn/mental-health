@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgIf } from '@angular/common';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { ProductsService } from '../../shared/services/products.service';
 import { Product } from '../../shared/models/product.model';
@@ -8,17 +9,18 @@ import { EditLinkComponent } from '../../shared/components/edit-link/edit-link.c
 import { BuyBtnComponent } from '../../shared/components/buy-btn/buy-btn.component';
 import { AuthService } from '../../shared/services/auth.service';
 import { ProductMoreInfoComponent } from '../../shared/components/products/product-more-info/product-more-info.component';
-import { SliderComponent } from './slider/slider.component';
 import { GoBackBtnComponent } from '../../shared/components/go-back-btn/go-back-btn.component';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TestsGoBackBtnComponent } from '../../shared/components/online-tests/tests-go-back-btn/tests-go-back-btn.component';
-
+import { ProductSliderComponent } from '../../shared/components/products/product-slider/product-slider.component';
+interface Slider {
+  image: string;
+}
 @Component({
   selector: 'app-product-detail',
   standalone: true,
   imports: [
     NgIf,
-    SliderComponent,
+    ProductSliderComponent,
     EditLinkComponent,
     GoBackBtnComponent,
     ProductMoreInfoComponent,
@@ -27,7 +29,6 @@ import { TestsGoBackBtnComponent } from '../../shared/components/online-tests/te
   ],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductDetailComponent {
   productsService = inject(ProductsService);
@@ -38,6 +39,7 @@ export class ProductDetailComponent {
   isAuthAdmin: boolean = false;
 
   product!: Product;
+  sliderImages!: Slider[];
   lastPath: string = 'products';
 
   constructor() {
@@ -51,6 +53,8 @@ export class ProductDetailComponent {
       .pipe(takeUntilDestroyed())
       .subscribe((resp) => {
         this.product = resp.filter((pr) => pr.id === +productId)[0];
+
+        this.sliderImages = this.product.slider_img;
       });
     this.authService
       .getIsUserObservable()

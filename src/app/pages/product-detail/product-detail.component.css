@@ -4,10 +4,20 @@
 .product-detail {
   margin-bottom: 2rem;
 }
+.slider-wrap {
+  padding: 0 2rem;
+  position: relative;
+}
 .product-wrap {
   gap: 2rem;
+  padding: 1rem;
   margin-bottom: 2rem;
+  border-radius: 1rem;
+  border: 1px solid #bdbdbd;
+  min-height: 400px;
 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
   display: flex;
 }
 .product-wrap h2 {

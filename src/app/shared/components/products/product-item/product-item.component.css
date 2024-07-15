@@ -80,6 +80,7 @@
 }
 .product-btn-detail:hover {
   background-color: transparent;
+  border: 1px solid #017f9d;
 }
 .item-btns-wrap {
   width: 100%;

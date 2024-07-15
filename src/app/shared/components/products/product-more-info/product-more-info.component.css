@@ -1,0 +1,35 @@
+mat-accordion {
+  margin: 20px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+mat-expansion-panel {
+  margin: 10px 0;
+}
+mat-expansion-panel-header {
+  background-color: #e0e0e0;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  color: #333;
+}
+mat-panel-title {
+  color: #010101;
+}
+p {
+  margin: 10px;
+  color: #666;
+  font-size: 14px;
+}
+
+ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 10px;
+
+  li {
+    margin: 5px 0;
+    color: #444;
+    font-size: 14px;
+  }
+}

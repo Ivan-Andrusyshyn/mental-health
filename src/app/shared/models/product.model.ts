@@ -6,6 +6,7 @@ export interface Product {
   description: string;
   inStock: boolean;
   shortDescription: string;
+  slider_img: { image: string }[];
   photo: string;
   composition: {
     extract: string;

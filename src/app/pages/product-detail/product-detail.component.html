@@ -1,6 +1,8 @@
 <div class="product-container">
   <div class="product-wrap">
-    <app-slider></app-slider>
+    <div class="slider-wrap">
+      <app-product-slider [sliderImages]="sliderImages"></app-product-slider>
+    </div>
 
     <div class="product-detail">
       <h2>{{ product.name }}</h2>
@@ -22,6 +24,5 @@
       </div>
     </div>
   </div>
-  <hr />
   <app-product-more-info [product]="product" />
 </div>

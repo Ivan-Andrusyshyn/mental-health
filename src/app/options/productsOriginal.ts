@@ -46,6 +46,24 @@ export const productsOriginal = [
     inStock: true,
     price: 660,
     priceDiscounted: 0,
+    slider_img: [
+      {
+        image:
+          'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1703619921.8543.jpg',
+      },
+      {
+        image:
+          'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1703619922.0556.jpg',
+      },
+      {
+        image:
+          'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1703619922.1739.jpg',
+      },
+      {
+        image:
+          'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1703619922.202.jpg',
+      },
+    ],
     photo:
       'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1703619921.8543.jpg',
   },
@@ -59,6 +77,28 @@ export const productsOriginal = [
     inStock: true,
     price: 330,
     priceDiscounted: 220,
+    slider_img: [
+      {
+        image:
+          'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1716977020.1517.jpg',
+      },
+      {
+        image:
+          'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1716977020.3989.jpg',
+      },
+      {
+        image:
+          'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1716977020.5025.jpg',
+      },
+      {
+        image:
+          'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1716977020.5943.jpg',
+      },
+      {
+        image:
+          'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1716977020.6524.jpg',
+      },
+    ],
     photo:
       'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1716977020.1517.jpg',
   },
@@ -72,6 +112,24 @@ export const productsOriginal = [
     inStock: true,
     price: 260,
     priceDiscounted: 0,
+    slider_img: [
+      {
+        image:
+          'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1703709322.3119.jpg',
+      },
+      {
+        image:
+          'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1703709322.5067.jpg',
+      },
+      {
+        image:
+          'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1703709322.625.jpg',
+      },
+      {
+        image:
+          'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1703709322.7149.jpg',
+      },
+    ],
     photo:
       'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1703709322.3119.jpg',
   },
@@ -84,6 +142,24 @@ export const productsOriginal = [
     inStock: true,
     price: 450,
     priceDiscounted: 0,
+    slider_img: [
+      {
+        image:
+          'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1715087022.5242.jpg',
+      },
+      {
+        image:
+          'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1715087022.7095.jpg',
+      },
+      {
+        image:
+          'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1715087022.7633.jpg',
+      },
+      {
+        image:
+          'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1715087022.8175.jpg',
+      },
+    ],
     photo:
       'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1715087022.5242.jpg',
   },
@@ -97,6 +173,24 @@ export const productsOriginal = [
     inStock: true,
     price: 290,
     priceDiscounted: 0,
+    slider_img: [
+      {
+        image:
+          'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1704891879.0558.jpg',
+      },
+      {
+        image:
+          'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1704891879.2197.jpg',
+      },
+      {
+        image:
+          'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1704891879.3379.jpg',
+      },
+      {
+        image:
+          'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1704891879.376.jpg',
+      },
+    ],
     photo:
       'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1704891879.0558.jpg',
   },
@@ -110,6 +204,24 @@ export const productsOriginal = [
     inStock: true,
     price: 300,
     priceDiscounted: 0,
+    slider_img: [
+      {
+        image:
+          'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1703619984.03.jpg',
+      },
+      {
+        image:
+          'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1703619984.2066.jpg',
+      },
+      {
+        image:
+          'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1703619984.2779.jpg',
+      },
+      {
+        image:
+          'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1703619984.3392.jpg',
+      },
+    ],
     photo:
       'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1703619984.03.jpg',
   },
@@ -123,6 +235,24 @@ export const productsOriginal = [
     inStock: true,
     price: 275,
     priceDiscounted: 0,
+    slider_img: [
+      {
+        image:
+          'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1703619882.1582.jpg',
+      },
+      {
+        image:
+          'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1703619882.3093.jpg',
+      },
+      {
+        image:
+          'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1703619882.3796.jpg',
+      },
+      {
+        image:
+          'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1703619882.4877.jpg',
+      },
+    ],
     photo:
       'https://mhealthzdravo-website-app.s3.eu-central-1.amazonaws.com/images/products/1703619984.03.jpg',
   },
