@@ -8,17 +8,25 @@
 
   <div class="auth-container">
     <div class="img-wrap">
-      <div [hidden]="isUser" class="bg-img bg-img-admin"></div>
-      <div [hidden]="isAdmin" class="bg-img bg-img-user"></div>
+      <div [hidden]="isAdmin" class="bg-img bg-img-admin"></div>
+      <div [hidden]="isUser" class="bg-img bg-img-user"></div>
     </div>
     <div class="form-wrap">
       <mat-card>
         <mat-tab-group>
           <mat-tab label="Увійти">
-            <app-login (onChangeRole)="onChangeRole()"></app-login>
+            <app-login
+              [isAdmin]="isAdmin"
+              [isUser]="isUser"
+              (onChangeRole)="onChangeRole()"
+            ></app-login>
           </mat-tab>
           <mat-tab label="Зареєструватися">
-            <app-sign-up (onChangeRole)="onChangeRole()"></app-sign-up>
+            <app-sign-up
+              [isAdmin]="isAdmin"
+              [isUser]="isUser"
+              (onChangeRole)="onChangeRole()"
+            ></app-sign-up>
           </mat-tab>
         </mat-tab-group>
       </mat-card>

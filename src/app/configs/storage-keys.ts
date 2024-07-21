@@ -1,0 +1,15 @@
+const STORAGE_ADMIN_ROLE = 'Admin';
+const STORAGE_USER_ROLE = 'User';
+const STORAGE_USER_DATA = 'user-data';
+const SHOPS_EMAIL = 'selectedEmail';
+const STORAGE_CHOSEN_PRODUCT = 'chosenProducts';
+const STORAGE_PRODUCTS = 'products';
+
+export {
+  STORAGE_ADMIN_ROLE,
+  STORAGE_CHOSEN_PRODUCT,
+  STORAGE_PRODUCTS,
+  STORAGE_USER_ROLE,
+  STORAGE_USER_DATA,
+  SHOPS_EMAIL,
+};

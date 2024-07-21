@@ -1,4 +1,11 @@
-import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  inject,
+  Input,
+  Output,
+} from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -24,6 +31,7 @@ import { NgIf } from '@angular/common';
   ],
   templateUrl: './auth-form.component.html',
   styleUrl: './auth-form.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthFormComponent {
   private dialogRef = inject(MatDialogRef<AuthModalComponent>);

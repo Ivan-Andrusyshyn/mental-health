@@ -1,7 +1,7 @@
 import { Component, inject, Input } from '@angular/core';
-import { EditLinkComponent } from '../../edit-link/edit-link.component';
+import { EditLinkComponent } from '../../buttons/edit-link/edit-link.component';
 import { RouterLink } from '@angular/router';
-import { BuyBtnComponent } from '../../buy-btn/buy-btn.component';
+import { BuyBtnComponent } from '../../buttons/buy-btn/buy-btn.component';
 import { NgIf } from '@angular/common';
 import { type ChosenProducts, Product } from '../../../models/product.model';
 import { AuthService } from '../../../services/auth.service';
@@ -22,17 +22,10 @@ export class ProductItemComponent {
   private productService = inject(ProductsService);
 
   chosenProduct: boolean = false;
-  authUser: boolean = false;
   authAdmin: boolean = false;
   isMyProductPage: boolean = false;
 
   constructor() {
-    this.authService
-      .getIsUserObservable()
-      .pipe(takeUntilDestroyed())
-      .subscribe((role) => {
-        this.authUser = role;
-      });
     this.authService
       .getIsAdminObservable()
       .pipe(takeUntilDestroyed())

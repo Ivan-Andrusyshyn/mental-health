@@ -1,6 +1,12 @@
-import { Component, EventEmitter, inject, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  inject,
+  Input,
+  Output,
+} from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { AuthFormComponent } from '../auth-form/auth-form.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -17,6 +23,7 @@ interface Role {
   imports: [AuthFormComponent],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignUpComponent {
   private authService = inject(AuthService);
@@ -24,6 +31,9 @@ export class SignUpComponent {
   isLogin: boolean = false;
 
   signupForm!: FormGroup;
+
+  @Input() isAdmin = false;
+  @Input() isUser = false;
   @Output() onChangeRole = new EventEmitter<void>();
 
   role: Role = {
@@ -39,19 +49,10 @@ export class SignUpComponent {
       password: ['123456', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['123456', Validators.required],
     });
-    this.authService
-      .getIsUserObservable()
-      .pipe(takeUntilDestroyed())
-      .subscribe((isUser) => {
-        this.role.isUser = isUser;
-      });
-
-    this.authService
-      .getIsAdminObservable()
-      .pipe(takeUntilDestroyed())
-      .subscribe((isAdmin) => {
-        this.role.isAdmin = isAdmin;
-      });
+    this.role = {
+      isAdmin: this.isAdmin,
+      isUser: this.isUser,
+    };
   }
 
   changeRole(event: MatSelectChange): void {

@@ -16,7 +16,6 @@
         ></app-edit-link>
         <app-go-back-btn [lastPath]="lastPath"></app-go-back-btn>
         <app-buy-btn
-          *ngIf="isAuthUser"
           [quantity]="product.productQuantity"
           [obviously]="product.obviously"
           [productId]="product.id"

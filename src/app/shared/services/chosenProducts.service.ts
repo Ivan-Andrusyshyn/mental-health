@@ -2,14 +2,15 @@ import { inject, Injectable } from '@angular/core';
 import { ProductsService } from './products.service';
 import { type Product } from '../models/product.model';
 import { BehaviorSubject } from 'rxjs';
-
-const STORAGE_KEY = 'chosenProducts';
+import { STORAGE_CHOSEN_PRODUCT } from '../../configs/storage-keys';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ChosenProductsService {
-  private ps = inject(ProductsService);
+  private productService = inject(ProductsService);
+  private storageService = inject(StorageService);
 
   private chosenProductsSubject: BehaviorSubject<Product[]> =
     new BehaviorSubject<Product[]>(this.loadFromLocalStorage());
@@ -24,7 +25,7 @@ export class ChosenProductsService {
 
   chooseProduct(productId: number, quantity: number) {
     const currentProducts = this.chosenProductsSubject.value;
-    const productToAdd = this.ps
+    const productToAdd = this.productService
       .getProducts()
       .find((item) => item.id === productId);
 
@@ -45,7 +46,7 @@ export class ChosenProductsService {
       this.chosenProductsSubject.next([...currentProducts]);
       this.saveToLocalStorage([...currentProducts]);
 
-      this.ps.updateProductQuantity(productId, quantity);
+      this.productService.updateProductQuantity(productId, quantity);
     }
   }
 
@@ -60,7 +61,10 @@ export class ChosenProductsService {
       this.chosenProductsSubject.next([...currentProducts]);
       this.saveToLocalStorage([...currentProducts]);
 
-      this.ps.updateProductQuantity(productId, existingProduct.productQuantity);
+      this.productService.updateProductQuantity(
+        productId,
+        existingProduct.productQuantity
+      );
     } else {
       this.cancelChosenProduct(productId);
     }
@@ -75,15 +79,15 @@ export class ChosenProductsService {
     this.chosenProductsSubject.next(updatedProducts);
     this.saveToLocalStorage(updatedProducts);
 
-    this.ps.updateProductQuantity(productId, 0);
+    this.productService.updateProductQuantity(productId, 0);
   }
 
   private saveToLocalStorage(products: Product[]) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
+    localStorage.setItem(STORAGE_CHOSEN_PRODUCT, JSON.stringify(products));
   }
 
   private loadFromLocalStorage(): Product[] {
-    const data = localStorage.getItem(STORAGE_KEY);
-    return data ? JSON.parse(data) : [];
+    const data = this.storageService.getData(STORAGE_CHOSEN_PRODUCT);
+    return data ? data : [];
   }
 }

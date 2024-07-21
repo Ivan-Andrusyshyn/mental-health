@@ -1,10 +1,11 @@
 import { inject, Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+
 import { Test } from '../models/online-test.model';
 import { testsList } from '../../options/tests-list';
 import { TestsResult } from '../models/testsResult.model';
 import { testsResult } from '../../options/tests-options';
 import { ProductsService } from './products.service';
-import { BehaviorSubject } from 'rxjs';
 import { Product } from '../models/product.model';
 
 @Injectable({

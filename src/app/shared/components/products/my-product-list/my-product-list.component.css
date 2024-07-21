@@ -32,6 +32,11 @@
 
   color: gray;
 }
+.last-product-message {
+  font-size: 12px;
+  padding: 0.5rem;
+  border: 1px solid green;
+}
 
 .product-item-price {
   color: #3f3f3f;
@@ -107,7 +112,6 @@
 }
 
 .quantity-product-wrap {
-  width: 100px;
   right: 0.5rem;
   top: 1rem;
 
@@ -120,7 +124,7 @@
 
   display: flex;
   align-items: center;
-  background-color: green;
+  background-color: rgb(24, 165, 24);
   color: #fff;
 }
 

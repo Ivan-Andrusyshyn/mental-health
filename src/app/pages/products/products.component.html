@@ -9,13 +9,17 @@
       />
     </mat-form-field>
   </div>
-  <div class="no-content" *ngIf="!filteredProducts.length">
+  @if(!filteredProducts.length){
+
+  <div class="no-content">
     <img
       src="https://tse1.mm.bing.net/th?id=OIP.M4xNU05rCc_5yHL4wuxqhgHaHa&pid=Api&P=0&h=280"
       alt=""
     />
     <h2>Не знайдено жодного товару.</h2>
   </div>
+  }@else{
+
   <app-product-list
     [products]="paginatedProducts | filterProducts : searchControl.value"
   ></app-product-list>
@@ -29,4 +33,5 @@
     >
     </mat-paginator>
   </ng-container>
+  }
 </div>

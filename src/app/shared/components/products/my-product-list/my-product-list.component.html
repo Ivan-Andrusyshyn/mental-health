@@ -13,13 +13,22 @@
             <sub> грн </sub>
             <span>( {{ product.price }} / 1шт)</span>
           </div>
-
           <div class="quantity-product-wrap">
-            <span class="quantity-product">
-              Кількість
-              <span> ⭐ </span> {{ product.productQuantity }}
+            <span
+              [style.background-color]="
+                product.obviously === 1 ? 'rgb(23, 165, 24)' : ''
+              "
+              class="quantity-product"
+            >
+              <ng-container *ngIf="product.obviously > 1; else lastProduct">
+                Кількість <span> ⭐ </span> {{ product.productQuantity }}
+              </ng-container>
+              <ng-template class="last-product-message" #lastProduct>
+                Нажаль це остання упаковка {{ product.name }} .
+              </ng-template>
             </span>
           </div>
+
           <div class="product-item-btns-wrap">
             <app-buy-btn
               [quantity]="product.productQuantity"

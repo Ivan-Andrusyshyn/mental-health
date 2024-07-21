@@ -9,7 +9,7 @@ import { environment } from '../environments/environment.development';
 import { AngularFireModule } from '@angular/fire/compat';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
-import { bearerTokenInterceptor } from './interceptors.bearer-token';
+import { bearerTokenInterceptor } from './interceptors/interceptors.bearer-token';
 
 export const appConfig: ApplicationConfig = {
   providers: [

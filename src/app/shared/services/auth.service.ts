@@ -8,10 +8,13 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { HttpClient } from '@angular/common/http';
-
-const STORAGE_ADMIN = 'Admin';
-const STORAGE_USER = 'User';
-const STORAGE_USER_KEY = 'user';
+import { UserData } from '../models/user.model';
+import {
+  STORAGE_ADMIN_ROLE,
+  STORAGE_USER_ROLE,
+  STORAGE_USER_DATA,
+} from '../../configs/storage-keys';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -20,11 +23,12 @@ export class AuthService {
   private afAuth = inject(AngularFireAuth);
   private http = inject(HttpClient);
   private afs = inject(AngularFirestore);
+  private storageService = inject(StorageService);
 
   private isUserSubject!: BehaviorSubject<boolean>;
   private isAdminSubject!: BehaviorSubject<boolean>;
-  user$: BehaviorSubject<firebase.User | null> =
-    new BehaviorSubject<firebase.User | null>(null);
+  user$: BehaviorSubject<UserData | null> =
+    new BehaviorSubject<UserData | null>(null);
   userIdUrl = `${environment.backendUrl}/userid`;
 
   constructor() {
@@ -34,15 +38,19 @@ export class AuthService {
   getUserData() {
     return this.user$.value;
   }
+  getUserDataObservable() {
+    return this.user$.asObservable();
+  }
   private initializeUserData() {
-    const storedUser = JSON.parse(
-      localStorage.getItem(STORAGE_USER_KEY) || 'null'
-    );
+    const storedUser = this.storageService.getData(STORAGE_USER_DATA);
 
     if (!storedUser) {
       this.afAuth.authState.subscribe((user) => {
-        this.user$.next(user);
-        localStorage.setItem(STORAGE_USER_KEY, JSON.stringify(user));
+        if (!user) return;
+        const userData: UserData = this.changeUserData(user);
+
+        this.user$.next(userData);
+        this.storageService.setData(STORAGE_USER_DATA, user);
         if (user) {
           this.setUserData(user);
         }
@@ -53,10 +61,9 @@ export class AuthService {
   }
 
   private initializeRoleData() {
-    const isAdminRole = JSON.parse(
-      localStorage.getItem(STORAGE_ADMIN) || 'false'
-    );
-    const isUserRole = JSON.parse(localStorage.getItem(STORAGE_USER) || 'true');
+    const isAdminRole =
+      this.storageService.getData(STORAGE_ADMIN_ROLE) || false;
+    const isUserRole = this.storageService.getData(STORAGE_USER_ROLE) || false;
 
     this.isUserSubject = new BehaviorSubject<boolean>(isUserRole);
     this.isAdminSubject = new BehaviorSubject<boolean>(isAdminRole);
@@ -74,14 +81,15 @@ export class AuthService {
   }
 
   onChangeRole(role: string) {
-    if (role === STORAGE_USER) {
+    if (role === STORAGE_USER_ROLE) {
       this.isUserSubject.next(true);
       this.isAdminSubject.next(false);
     } else {
       this.isAdminSubject.next(true);
       this.isUserSubject.next(false);
     }
-    this.updateLocalStorage();
+    this.storageService.setData(STORAGE_USER_ROLE, this.isUserSubject.value);
+    this.storageService.setData(STORAGE_ADMIN_ROLE, this.isAdminSubject.value);
   }
 
   getIsUserObservable(): Observable<boolean> {
@@ -94,12 +102,12 @@ export class AuthService {
 
   async loginUser(): Promise<void> {
     const currentUser = await this.afAuth.currentUser;
-    if (currentUser) this.onChangeRole(STORAGE_USER);
+    if (currentUser) this.onChangeRole(STORAGE_USER_ROLE);
   }
 
   async loginAdmin(): Promise<void> {
     const currentUser = await this.afAuth.currentUser;
-    if (currentUser) this.onChangeRole(STORAGE_ADMIN);
+    if (currentUser) this.onChangeRole(STORAGE_ADMIN_ROLE);
   }
 
   async signIn(email: string, password: string, role: string): Promise<void> {
@@ -114,6 +122,7 @@ export class AuthService {
         email,
         password
       );
+
       await this.handleAuthSuccess(result.user, role);
     } catch (error: any) {
       console.error('Login error: ', error);
@@ -171,7 +180,7 @@ export class AuthService {
   }
 
   get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem(STORAGE_USER_KEY)!);
+    const user = this.storageService.getData(STORAGE_USER_DATA);
     return user !== null && user.emailVerified !== false;
   }
 
@@ -179,39 +188,39 @@ export class AuthService {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}`
     );
-    const userData = {
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-      emailVerified: user.emailVerified,
-    };
+    const userData: UserData = this.changeUserData(user);
+
+    this.user$.next(userData);
     await userRef.set(userData, { merge: true });
   }
-
+  changeUserData(user: firebase.User) {
+    return {
+      uid: user.uid,
+      email: user.email || '',
+      displayName: user.displayName || '',
+      photoURL: user.photoURL || '',
+      emailVerified: user.emailVerified,
+    };
+  }
   logout(): void {
     this.afAuth
       .signOut()
       .then(() => {
-        this.isUserSubject.next(true);
+        this.isUserSubject.next(false);
         this.isAdminSubject.next(false);
         this.user$.next(null);
-        localStorage.removeItem(STORAGE_USER_KEY);
-        this.updateLocalStorage();
+        this.storageService.removeData(STORAGE_USER_DATA);
+        this.storageService.setData(
+          STORAGE_USER_ROLE,
+          this.isUserSubject.value
+        );
+        this.storageService.setData(
+          STORAGE_ADMIN_ROLE,
+          this.isAdminSubject.value
+        );
       })
       .catch((error) => {
         console.error('Logout error: ', error);
       });
-  }
-
-  private updateLocalStorage(): void {
-    localStorage.setItem(
-      STORAGE_USER,
-      JSON.stringify(this.isUserSubject.value)
-    );
-    localStorage.setItem(
-      STORAGE_ADMIN,
-      JSON.stringify(this.isAdminSubject.value)
-    );
   }
 }

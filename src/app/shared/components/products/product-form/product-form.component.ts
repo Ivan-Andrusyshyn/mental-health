@@ -1,5 +1,11 @@
 import { NgFor } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -8,6 +14,7 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
   imports: [ReactiveFormsModule, NgFor],
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductFormComponent {
   @Input() productForm!: FormGroup;

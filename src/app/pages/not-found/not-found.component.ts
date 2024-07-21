@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { GoBackBtnComponent } from '../../shared/components/go-back-btn/go-back-btn.component';
+import { GoBackBtnComponent } from '../../shared/components/buttons/go-back-btn/go-back-btn.component';
 
 @Component({
   selector: 'app-not-found',

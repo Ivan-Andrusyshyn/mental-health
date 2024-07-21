@@ -5,11 +5,11 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { ProductsService } from '../../shared/services/products.service';
 import { Product } from '../../shared/models/product.model';
-import { EditLinkComponent } from '../../shared/components/edit-link/edit-link.component';
-import { BuyBtnComponent } from '../../shared/components/buy-btn/buy-btn.component';
+import { EditLinkComponent } from '../../shared/components/buttons/edit-link/edit-link.component';
+import { BuyBtnComponent } from '../../shared/components/buttons/buy-btn/buy-btn.component';
 import { AuthService } from '../../shared/services/auth.service';
 import { ProductMoreInfoComponent } from '../../shared/components/products/product-more-info/product-more-info.component';
-import { GoBackBtnComponent } from '../../shared/components/go-back-btn/go-back-btn.component';
+import { GoBackBtnComponent } from '../../shared/components/buttons/go-back-btn/go-back-btn.component';
 import { TestsGoBackBtnComponent } from '../../shared/components/online-tests/tests-go-back-btn/tests-go-back-btn.component';
 import { ProductSliderComponent } from '../../shared/components/products/product-slider/product-slider.component';
 interface Slider {

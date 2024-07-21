@@ -1,20 +1,19 @@
 <div class="header">
   <div class="header-wrap">
-    <app-header-nav />
+    <app-header-nav [isUser]="isUser" [isAdmin]="isAdmin" />
     <div class="menu-wrap">
-      @if(!userData?.uid){
-      <button class="menu-btn" type="button" (click)="openLoginModal()">
-        <svg class="icon-user">
-          <use xlink:href="../../../../assets/sprite.svg#icon-user"></use>
-        </svg>
-        Авторизація
-      </button>
-      }@else{
       <app-dropdown-menu
-        [userName]="userData?.displayName"
+        *ngIf="isAdmin || isUser; else authModal"
         (logOut)="logOut()"
       ></app-dropdown-menu>
-      }
+      <ng-template #authModal>
+        <button class="menu-btn" type="button" (click)="openLoginModal()">
+          <svg class="icon-user">
+            <use xlink:href="../../../../assets/sprite.svg#icon-user"></use>
+          </svg>
+          Авторизація
+        </button>
+      </ng-template>
     </div>
   </div>
 </div>

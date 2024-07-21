@@ -1,18 +1,22 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
+
+import { SHOPS_EMAIL } from '../../configs/storage-keys';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ChangeEmailService {
-  private storageKey = 'selectedEmail';
-
+  private storageService = inject(StorageService);
   constructor() {}
 
   changeEmail(email: string) {
-    localStorage.setItem(this.storageKey, email);
+    this.storageService.setData(SHOPS_EMAIL, email);
   }
 
   getEmail(): string | null {
-    return localStorage.getItem(this.storageKey);
+    const email: string = this.storageService.getData(SHOPS_EMAIL);
+
+    return email;
   }
 }

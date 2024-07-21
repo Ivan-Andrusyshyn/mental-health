@@ -15,7 +15,7 @@ import {
 
 import { Test } from '../../shared/models/online-test.model';
 import { TestsService } from '../../shared/services/tests.service';
-import { GoBackBtnComponent } from '../../shared/components/go-back-btn/go-back-btn.component';
+import { GoBackBtnComponent } from '../../shared/components/buttons/go-back-btn/go-back-btn.component';
 import { testOptions } from '../../options/tests-options';
 
 import { SelectedTestFormComponent } from '../../shared/components/online-tests/selected-test/selected-test-form/selected-test-form.component';

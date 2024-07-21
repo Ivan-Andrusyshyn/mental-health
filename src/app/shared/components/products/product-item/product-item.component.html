@@ -23,7 +23,7 @@
     </div>
     <div class="item-btns-wrap">
       <app-buy-btn
-        *ngIf="authUser"
+        *ngIf="!authAdmin"
         [quantity]="product.productQuantity"
         [productId]="product.id"
         [obviously]="product.obviously"

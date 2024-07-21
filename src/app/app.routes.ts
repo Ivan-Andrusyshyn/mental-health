@@ -1,8 +1,7 @@
 import { Routes } from '@angular/router';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { authUserGuard } from './authUserGuard.guard';
-import { authAdminGuard } from './auth-admin.guard';
-import { authGuard } from './auth.guard';
+import { authAdminGuard } from './guards/auth-admin.guard';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -59,7 +58,6 @@ export const routes: Routes = [
   },
   {
     path: 'online-tests',
-    canActivate: [authUserGuard],
     loadComponent: () =>
       import('./pages/online-tests/online-tests.component').then(
         (m) => m.OnlineTestsComponent
@@ -67,7 +65,6 @@ export const routes: Routes = [
   },
   {
     path: 'test/success-email',
-    canActivate: [authUserGuard],
     loadComponent: () =>
       import('./pages/success-email/success-email.component').then(
         (m) => m.SuccessEmailComponent
@@ -75,7 +72,6 @@ export const routes: Routes = [
   },
   {
     path: 'test/:id',
-    canActivate: [authUserGuard],
     loadComponent: () =>
       import('./pages/selected-test/selected-test.component').then(
         (m) => m.SelectedTestComponent
@@ -83,7 +79,6 @@ export const routes: Routes = [
   },
   {
     path: 'test-details/:id',
-    canActivate: [authUserGuard],
     loadComponent: () =>
       import('./pages/test-details/test-details.component').then(
         (m) => m.TestDetailsComponent
@@ -91,7 +86,6 @@ export const routes: Routes = [
   },
   {
     path: 'my-products',
-    canActivate: [authUserGuard],
     loadComponent: () =>
       import('./pages/my-products/my-products.component').then(
         (m) => m.MyProductsComponent
@@ -139,7 +133,6 @@ export const routes: Routes = [
   },
   {
     path: 'about-shop',
-    canActivate: [authUserGuard],
     loadComponent: () =>
       import('./pages/about-shop/about-shop.component').then(
         (m) => m.AboutShopComponent

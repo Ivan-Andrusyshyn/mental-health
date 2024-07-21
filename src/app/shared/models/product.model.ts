@@ -5,6 +5,7 @@ export interface Product {
   price: number;
   description: string;
   inStock: boolean;
+  priceDiscounted: number;
   shortDescription: string;
   slider_img: { image: string }[];
   photo: string;

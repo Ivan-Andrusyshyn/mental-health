@@ -30,7 +30,6 @@ export class UserNavComponent {
       .subscribe((resp) => {
         this.cdr.markForCheck();
         this.amountProducts = resp.length;
-        console.log(this.amountProducts);
       });
   }
 }

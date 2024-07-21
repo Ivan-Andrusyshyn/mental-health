@@ -1,78 +1,57 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { inject, Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from '../models/product.model';
-import { croxenInfo, productsOriginal } from '../../options/productsOriginal';
+
+import { STORAGE_PRODUCTS } from '../../configs/storage-keys';
+import { StorageService } from './storage.service';
+import { product_list } from '../../options/productsOriginal';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
+  private storageService = inject(StorageService);
+
   private products: Product[] = [];
   private productsSubject: BehaviorSubject<Product[]> = new BehaviorSubject<
     Product[]
   >([]);
   products$ = this.productsSubject.asObservable();
-  private localStorageKey = 'products';
 
   constructor() {
     this.loadProductsFromLocalStorage();
+
     if (this.products.length === 0) {
       this.makeProducts();
     }
   }
 
   private loadProductsFromLocalStorage() {
-    const storedProducts = localStorage.getItem(this.localStorageKey);
-    if (storedProducts) {
-      this.products = JSON.parse(storedProducts);
-      this.productsSubject.next(this.products);
-    }
+    this.products =
+      JSON.parse(this.storageService.getData(STORAGE_PRODUCTS)) || [];
+
+    this.productsSubject.next(this.products);
   }
 
   private saveProductsToLocalStorage() {
-    localStorage.setItem(this.localStorageKey, JSON.stringify(this.products));
+    this.storageService.setData(
+      STORAGE_PRODUCTS,
+      JSON.stringify(this.products)
+    );
   }
 
   private makeProducts() {
-    const products: Product[] = [];
-    const Obviously = (i: number) => Math.ceil(Math.random() + 2 + i);
+    this.products = product_list;
 
-    for (let i = 0; i <= productsOriginal.length - 1; ++i) {
-      products.push({
-        id: productsOriginal[i].id,
-        name: productsOriginal[i].name,
-        slider_img: productsOriginal[i].slider_img,
-        obviously: productsOriginal[i].obviously,
-        description: productsOriginal[i].description,
-        shortDescription: productsOriginal[i].shortDescription,
-        inStock: productsOriginal[i].inStock,
-        photo: productsOriginal[i].photo,
-        composition: croxenInfo.composition,
-        recommendations: croxenInfo.recommendations,
-        symptoms: croxenInfo.symptoms,
-        advantages: croxenInfo.advantages,
-        clinicalExperience: croxenInfo.clinicalExperience,
-        usageInstructions: croxenInfo.usageInstructions,
-        warnings: croxenInfo.warnings,
-        ageRestrictions: croxenInfo.ageRestrictions,
-        packagingAndStorage: croxenInfo.packagingAndStorage,
-        manufacturer: croxenInfo.manufacturer,
-        importer: croxenInfo.importer,
-        price: productsOriginal[i].price,
-        productQuantity: 0,
-      });
-    }
-
-    this.products = products;
     this.productsSubject.next(this.products);
     this.saveProductsToLocalStorage();
   }
 
-  getProducts() {
+  getProducts(): Product[] {
     return this.products;
   }
 
-  getObservableProducts() {
+  getObservableProducts(): Observable<Product[]> {
     return this.products$;
   }
 

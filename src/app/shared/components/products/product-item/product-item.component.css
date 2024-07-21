@@ -47,7 +47,6 @@
   font-weight: 700;
   line-height: 124%;
   margin-bottom: 0.7rem;
-  margin-top: 0.7rem;
   font-style: normal;
   text-align: left;
 }
@@ -62,7 +61,7 @@
 .subtitle {
   font-size: 0.8rem;
   font-weight: 600;
-  line-height: 177%;
+  margin-bottom: 0.2rem;
 
   font-style: normal;
   color: #017f9d;
@@ -85,7 +84,6 @@
 .item-btns-wrap {
   width: 100%;
   gap: 1rem;
-  margin-bottom: 1rem;
 
   display: flex;
   justify-content: center;
@@ -119,8 +117,8 @@
 .item-remove-btn {
   width: 100%;
   padding: 0.5rem;
-  border-radius: 8px;
-
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
   display: block;
   background-color: red;
   color: #fff;
