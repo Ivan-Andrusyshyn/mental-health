@@ -202,6 +202,7 @@ export class AuthService {
       emailVerified: user.emailVerified,
     };
   }
+
   logout(): void {
     this.afAuth
       .signOut()
