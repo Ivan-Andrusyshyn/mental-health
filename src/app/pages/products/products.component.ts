@@ -49,6 +49,7 @@ export class ProductsComponent {
       .subscribe((resp) => {
         this.products = resp.slice();
         this.filteredProducts = resp.slice();
+
         this.updatePaginatedProducts();
       });
 

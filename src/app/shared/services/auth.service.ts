@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, filter, Observable, switchMap, take } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
+
 import { environment } from '../../../environments/environment.development';
 import {
   AngularFirestore,
@@ -14,7 +15,6 @@ import {
   STORAGE_USER_ROLE,
   STORAGE_USER_DATA,
 } from '../../configs/storage-keys';
-import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +23,6 @@ export class AuthService {
   private afAuth = inject(AngularFireAuth);
   private http = inject(HttpClient);
   private afs = inject(AngularFirestore);
-  private storageService = inject(StorageService);
 
   private isUserSubject!: BehaviorSubject<boolean>;
   private isAdminSubject!: BehaviorSubject<boolean>;
@@ -42,28 +41,32 @@ export class AuthService {
     return this.user$.asObservable();
   }
   private initializeUserData() {
-    const storedUser = this.storageService.getData(STORAGE_USER_DATA);
-
+    const storedUser = localStorage.getItem(STORAGE_USER_DATA);
+    if (!storedUser) return;
+    const parsedStoredUser = JSON.parse(storedUser);
     if (!storedUser) {
       this.afAuth.authState.subscribe((user) => {
         if (!user) return;
         const userData: UserData = this.changeUserData(user);
 
         this.user$.next(userData);
-        this.storageService.setData(STORAGE_USER_DATA, user);
+        localStorage.setItem(STORAGE_USER_DATA, JSON.stringify(user));
         if (user) {
           this.setUserData(user);
         }
       });
     } else {
-      this.user$.next(storedUser);
+      this.user$.next(parsedStoredUser);
     }
   }
 
   private initializeRoleData() {
-    const isAdminRole =
-      this.storageService.getData(STORAGE_ADMIN_ROLE) || false;
-    const isUserRole = this.storageService.getData(STORAGE_USER_ROLE) || false;
+    const isAdminRole = JSON.parse(
+      localStorage.getItem(STORAGE_ADMIN_ROLE) || 'false'
+    );
+    const isUserRole = JSON.parse(
+      localStorage.getItem(STORAGE_USER_ROLE) || 'false'
+    );
 
     this.isUserSubject = new BehaviorSubject<boolean>(isUserRole);
     this.isAdminSubject = new BehaviorSubject<boolean>(isAdminRole);
@@ -88,8 +91,14 @@ export class AuthService {
       this.isAdminSubject.next(true);
       this.isUserSubject.next(false);
     }
-    this.storageService.setData(STORAGE_USER_ROLE, this.isUserSubject.value);
-    this.storageService.setData(STORAGE_ADMIN_ROLE, this.isAdminSubject.value);
+    localStorage.setItem(
+      STORAGE_USER_ROLE,
+      JSON.stringify(this.isUserSubject.value)
+    );
+    localStorage.setItem(
+      STORAGE_ADMIN_ROLE,
+      JSON.stringify(this.isAdminSubject.value)
+    );
   }
 
   getIsUserObservable(): Observable<boolean> {
@@ -180,8 +189,10 @@ export class AuthService {
   }
 
   get isLoggedIn(): boolean {
-    const user = this.storageService.getData(STORAGE_USER_DATA);
-    return user !== null && user.emailVerified !== false;
+    const user = localStorage.getItem(STORAGE_USER_DATA);
+    if (!user) return false;
+    const parsedUserData = JSON.parse(user);
+    return parsedUserData !== null && parsedUserData.emailVerified !== false;
   }
 
   private async setUserData(user: firebase.User): Promise<void> {
@@ -193,6 +204,7 @@ export class AuthService {
     this.user$.next(userData);
     await userRef.set(userData, { merge: true });
   }
+
   changeUserData(user: firebase.User) {
     return {
       uid: user.uid,
@@ -210,15 +222,15 @@ export class AuthService {
         this.isUserSubject.next(false);
         this.isAdminSubject.next(false);
         this.user$.next(null);
-        this.storageService.removeData(STORAGE_USER_DATA);
-        this.storageService.setData(
+        localStorage.setItem(
           STORAGE_USER_ROLE,
-          this.isUserSubject.value
+          JSON.stringify(this.isUserSubject.value)
         );
-        this.storageService.setData(
+        localStorage.setItem(
           STORAGE_ADMIN_ROLE,
-          this.isAdminSubject.value
+          JSON.stringify(this.isAdminSubject.value)
         );
+        localStorage.removeItem(STORAGE_USER_DATA);
       })
       .catch((error) => {
         console.error('Logout error: ', error);

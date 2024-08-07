@@ -3,15 +3,12 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from '../models/product.model';
 
 import { STORAGE_PRODUCTS } from '../../configs/storage-keys';
-import { StorageService } from './storage.service';
 import { product_list } from '../../options/productsOriginal';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
-  private storageService = inject(StorageService);
-
   private products: Product[] = [];
   private productsSubject: BehaviorSubject<Product[]> = new BehaviorSubject<
     Product[]
@@ -27,17 +24,19 @@ export class ProductsService {
   }
 
   private loadProductsFromLocalStorage() {
-    this.products =
-      JSON.parse(this.storageService.getData(STORAGE_PRODUCTS)) || [];
+    const storageProducts = localStorage.getItem(STORAGE_PRODUCTS) || '[]';
+    const parsedProducts = JSON.parse(storageProducts);
 
-    this.productsSubject.next(this.products);
+    if (this.products) {
+      this.products = parsedProducts;
+      this.productsSubject.next(this.products);
+    } else {
+      console.log('Products is not exist in storage.');
+    }
   }
 
   private saveProductsToLocalStorage() {
-    this.storageService.setData(
-      STORAGE_PRODUCTS,
-      JSON.stringify(this.products)
-    );
+    localStorage.setItem(STORAGE_PRODUCTS, JSON.stringify(this.products));
   }
 
   private makeProducts() {

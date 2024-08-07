@@ -3,14 +3,12 @@ import { ProductsService } from './products.service';
 import { type Product } from '../models/product.model';
 import { BehaviorSubject } from 'rxjs';
 import { STORAGE_CHOSEN_PRODUCT } from '../../configs/storage-keys';
-import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ChosenProductsService {
   private productService = inject(ProductsService);
-  private storageService = inject(StorageService);
 
   private chosenProductsSubject: BehaviorSubject<Product[]> =
     new BehaviorSubject<Product[]>(this.loadFromLocalStorage());
@@ -87,7 +85,10 @@ export class ChosenProductsService {
   }
 
   private loadFromLocalStorage(): Product[] {
-    const data = this.storageService.getData(STORAGE_CHOSEN_PRODUCT);
-    return data ? data : [];
+    const data = localStorage.getItem(STORAGE_CHOSEN_PRODUCT);
+    if (!data) return [];
+    const parsedData = JSON.parse(data);
+
+    return parsedData;
   }
 }
